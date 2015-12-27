@@ -22,6 +22,7 @@
 | [Rechtstreeks via PCM afspelen](Sunrise Special 2/Rechtstreeks via PCM afspelen.md) | Pierre Gielen | Sunrise Special 2 |
 | [Rel assembleren](Sunrise Special 1/Rel assembleren.md) | Rudy Oppers | Sunrise Special 1 |
 | [Resource dis-assembler](Sunrise Special 2/Resource.md) | Kasper Souren | Sunrise Special 2 |
+| [Screen 4](FD32/Screen 4.md) | Jan-Willem van Helden | Future Disk 32 |
 | [VDP Cursus 1](Sunrise Special 2/VDP Cursus 1.md) | Stefan Boer | Sunrise Special 2 |
 | [VDP Cursus 2](Sunrise Special 2/VDP Cursus 2.md) | Stefan Boer | Sunrise Special 2 |
 
@@ -69,4 +70,9 @@
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
+| [Pascal cursus 1 (Dutch)](FD32/Pascal cursus 1 NL.md) | Jeroen Smael | Future Disk 32 |
+| [Pascal cursus 1 (English)](FD32/Pascal cursus 1 EN.md) | Jeroen Smael | Future Disk 32 |
+| [Pascal cursus 2 (Dutch)](FD32/Pascal cursus 2 NL.md) | Jeroen Smael | Future Disk 32 |
+| [Pascal cursus 2 (English)](FD32/Pascal cursus 2 EN.md) | Jeroen Smael | Future Disk 32 |
 | [Pointers in Pascal](Sunrise Special 1/Pointers in Pascal.md) | Rudy Oppers | Sunrise Special 1 |
+
