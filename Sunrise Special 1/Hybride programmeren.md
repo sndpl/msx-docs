@@ -1,7 +1,7 @@
-H Y B R I D E   P R O G R A M M E R E N   ( 1  )
+# H Y B R I D E   P R O G R A M M E R E N   ( 1  )
 
 
-I N L E I D I N G
+## I N L E I D I N G
 
 Dit is het eerste deel van een serie artikelen waarin ik wat
 dieper in  ga op  het zogenaamde "Hybride programmeren", een
@@ -15,7 +15,7 @@ Maar  eerst zal  ik uitleggen  waar de  naam hybride vandaan
 komt.
 
 
-H Y B R I D E
+## H Y B R I D E
 
 Het woord  "hybride" komt  zowel in de Nederlandse als in de
 Engelse  taal  voor  en  betekent  hetzelfde,  namelijk  het
@@ -33,7 +33,7 @@ de  lezer  zowel  BASIC  als machinetaal  in redelijke  mate
 beheerst.
 
 
-G R E N Z E N
+## G R E N Z E N
 
 MSX BASIC  heeft een  werkgebied nodig  voor het opslaan van
 een  BASIC programma en de daarbij behorende variabelen. Dit
@@ -59,22 +59,22 @@ commando geven.
 
 U  kunt   in  BASIC  het  startadres  van  BASIC  als  volgt
 veranderen: (veranderen naar &HC000)
-
+```
 POKE&HF677,&HC0
 POKE&HF676,1
 POKE&HC000,0
 NEW
-
+```
 Het  kan  ook  vanuit  een  programma. Stel  u wilt  dat het
 programma  "EXAMPLE.BAS"  op  &HC000 staat.  U kunt  dat als
 volgt programmeren:
-
+```
 10 'EXAMPLE.BAS
 20 IF PEEK(&HF677)<>&HC0 OR PEEK(&HF676)<>1 THEN
 POKE&HF677,&HC0:POKE&HF676,1:POKE&HC000,0:
 RUN"EXAMPLE.BAS"
 30 .....
-
+```
 Vanaf regel  30 kunt u uw eigen programma invullen, save het
 programma  als  "EXAMPLE.BAS".  Wordt dit  programma geladen
 terwijl  het adres al goed staat, dan wordt er direct verder
@@ -90,7 +90,7 @@ machinetaal gebruikt  kan worden.  Dit kan voor BASIC worden
 beschermd met de CLEAR instructie.
 
 
-C L E A R
+## C L E A R
 
 Dit   is  een   veelgebruikte  (en   meestal  noodzakelijke)
 instructie bij  hybride programmeren.  Eerst maar  de syntax
@@ -139,7 +139,7 @@ van de BDOS, maar van Disk BASIC, 267 bytes per stuk, aantal
 in te stellen met MAXFILES) verplaatst.
 
 
-D E   B O V E N G R E N S
+## D E   B O V E N G R E N S
 
 De ondergrens  van het  machinetaalprogramma wordt  dus door
 het CLEAR commando bepaald. Maar wat is de bovengrens?
@@ -204,7 +204,7 @@ commando hoort  trouwens vooraan  het BASIC programma, omdat
 het alle variabelen wist.
 
 
-V E I L I G E   B O V E N G R E N S
+## V E I L I G E   B O V E N G R E N S
 
 Bij bovenstaande  methode moet er toch een bovengrens worden
 gekozen.  En het  liefst een die op alle computers werkt, en
@@ -214,7 +214,7 @@ opgestart.  Houd  de  bovengrens  altijd  zo  laag mogelijk.
 enkele configuratie problemen zal geven.
 
 
-S T A C K
+## S T A C K
 
 Houd wel  rekening met  de stack. In principe geeft die geen
 problemen,  maar als  u eigenwijs  toch geen  CLEAR commando
@@ -236,7 +236,7 @@ BASIC te geven:
 - Werkgebied BIOS
 
 
-H I M E M   O P S L A A N
+## H I M E M   O P S L A A N
 
 Als  de  besturing  aan  het  eind  van  het programma  weer
 volledig aan BASIC wordt overgedragen, zorg dan dat HIMEM en
@@ -251,8 +251,7 @@ werkgebied,   het  machinetaal  werkgebied,  het  BIOS/BASIC
 werkgebied en het diskROM werkgebied elkaar niet storen, dus
 we kunnen beginnen met het eigenlijke hybride programmeren.
 
-
-  U S R
+## U S R
 
 Bij  hybride programmeren  wordt het  USR commando van BASIC
 het  meeste  gebruikt.  Met  DEFUSR  kunnen  10 machinetaal-
@@ -283,14 +282,14 @@ USR<nummer>(<parameter>)
 Voor  het  <nummer>  moet  weer  een  getal  van  0-9 worden
 ingevuld. De  parameter kan  niet worden weggelaten. Het USR
 commando wordt als functie gebruikt. Een paar voorbeelden:
-
+```
 U=USR(0)
 PRINT USR3("HALLO")
 A$=USR2(X$)+USR5(3)
 PRINT USR6(3)*USR7("D")
 P=3+USR(8.8354743)
 X=LEN(USR9(5))
-
+```
 Als  de  waarde van  USRx wordt  opgevraagd, wordt  naar het
 adres  dat   met  DEFUSRx  is  gedefinieerd  gesprongen.  De
 parameter   kan   door   het   machinetaalprogramma   worden
@@ -300,7 +299,7 @@ van  USRx". Dit  kan een  getal zijn (INT, SNG of DBL), maar
 ook een  string. Hoe gaat dit doorgeven van parameters nu in
 zijn werk?
 
-             D A T A   U I T W I S S E L I N G
+## D A T A   U I T W I S S E L I N G
 
 Als  een USR  wordt aangeroepen springt de BASIC interpreter
 niet meteen  naar de  machinetaalroutine, maar zal eerst een
@@ -325,10 +324,10 @@ Deze  waarde wordt bovendien in het A register geladen. Wilt
 u  bijvoorbeeld  voordat  u  verdergaat met  de rest  van de
 routine controleren  of de parameter wel een integer is, dan
 ziet dat er in ML zo uit:
-
+```
         CP      2               ; parameter INT?
         RET     NZ              ; nee, dan einde
-
+```
 Het  HL   register  bevat   altijd  de  waarde  &HF7F6,  het
 beginadres  van DAC. Bij parameters van de typen INT, DBL en
 SNG wordt de inhoud in DAC opgeslagen. Dit gaat als volgt:
@@ -386,7 +385,7 @@ van  DAC met  de juiste  waarde voldoende. Bij strings is er
 echter een probleem.
 
 
-                       S T R I N G S
+## S T R I N G S
 
 Het  doorgeven van een string aan een machinetaalroutine kan
 erg handig  zijn en geeft geen enkel probleem. Het doorgeven
@@ -423,12 +422,12 @@ toch   zelden  voor   dat  je  een  machinetaalroutine  wilt
 schrijven waarbij het resultaat een string is.
 
 
-                  H O O F D L E T T E R S
+## H O O F D L E T T E R S
 
 De eerste  voorbeeld assemblerlisting zet van de string alle
 kleine    letters   om   in   hoofdletters.   Hier   is   de
 assemblerlisting, regelmatig onderbroken voor uitleg.
-
+```
 ; C A P S . A S M
 ; Zet alle kleine letters in een string om in hoofdletters
 ; Door Stefan Boer, 2 juli 1992
@@ -441,11 +440,11 @@ FCERR:  EQU   &H475A          ; BIOS error "Illegal
 
         CP    3
         JP    NZ,FCERR        ; error als geen string
-
+```
 Register A  bevat de  soort variabele.  Dit moet  een string
 zijn,  met code 3. CP 3 vergelijkt A met de waarde 3. Is het
 niet gelijk (NZ) dan volgt er een Illegal function call.
-
+```
         LD    A,(DE)
         AND   A
         RET Z                 ; controle op lege string
@@ -456,13 +455,13 @@ niet gelijk (NZ) dan volgt er een Illegal function call.
         INC   DE
         LD    A,(DE)
         LD    H,A             ; HL=beginadres
-
+```
 Hier  wordt  de stringdescriptor  gelezen. De  descriptor (=
 "beschrijver") begint  op het  adres waar  DE naar wijst. De
 lengte  van de string wordt in B gezet en het beginadres van
 de string  in HL. Als het een lege string is wordt er meteen
 teruggesprongen naar BASIC.
-
+```
 LOOP:   LD    A,(HL)
         CP    "a"
         JR    C,NEXT
@@ -476,19 +475,19 @@ NEXT:   INC   HL
 
         RET                   ; VALTYP en DAC hoeven niet
                               ; te worden veranderd
-
+```
 Dit gedeelte zet de kleine letters om in hoofdletters. Eerst
 wordt er  gecontroleerd of het teken wel tussen a en z ligt.
 Zo  ja, dan  wordt bit  5 gereset.  Met een voorbeeld kunt u
 zien hoe dat werkt. Een paar binaire ASCII codes:
-
+```
 A       &B01000001
 a       &B01100001
 S       &B01010011
 s       &B01110011
             ^
             bit 5
-
+```
 Zoals  u ziet  bepaalt bit  5 of  het een  hoofd- of  kleine
 letter is (0=hoofd, 1=klein).
 
@@ -496,31 +495,31 @@ De string wordt in dit voorbeeld gewoon overschreven. Stel u
 heeft   bovenstaande   assemblerlisting   geassembleerd,  de
 machinetaal  staat  dus  op  adres  &HD000. Dan  kunt u  het
 volgende BASIC programma uitvoeren:
-
+```
 10 DEFUSR=&HD000
 20 A$="Sunrise"
 30 B$=USR(A$)
-
+```
 In  dit geval  bevatten zowel A$ als B$ na afloop "SUNRISE".
 Mag de  waarde van  A$ niet  verloren gaan,  dan kunt  u het
 voorbeeld zo doen:
-
+```
 10 DEFUSR=&HD000
 20 A$="Sunrise"
 30 Q$=A$:B$=USR(Q$)
-
+```
 Er gebeurt iets grappigs als u met een constante werkt:
-
+```
 10 DEFUSR=&HD000
 20 U$=USR("Sunrise")
-
+```
 Na  het  RUNnen  van  dit  programma bevat  de variabele  U$
 uiteraard "SUNRISE". Typt u nu maar eens LIST in. Dit is wat
 u dan te zien krijgt:
-
+```
 10 DEFUSR=&HD000
 20 U$=USR("SUNRISE")
-
+```
 Dus  ook in  het BASIC programma is de tekst in hoofdletters
 omgezet.  Dit  komt  omdat  de BASIC  interpreter de  string
 descriptor in  dit geval  gewoon naar de constante "Sunrise"
@@ -530,12 +529,12 @@ U snapt nu wel dat het doorgeven van strings van machinetaal
 aan BASIC nogal problematisch gaat. Andersom gaat het prima.
 
 
-               T E K S T J E   P R I N T E N
+## T E K S T J E   P R I N T E N
 
 Dit  is  een  goed voorbeeld  van een  string doorgeven  aan
 machinetaal. Onderstaande assemblerlisting zet de string die
 als parameter aan USR wordt doorgegeven op het scherm.
-
+```
 ; P R I N T S T R . A S M
 ; Print een string
 ; Door Stefan Boer, 2 juli 1992
@@ -559,29 +558,29 @@ FCERR:  EQU   &H475A          ; BIOS error "Illegal
         INC   DE
         LD    A,(DE)
         LD    H,A             ; HL=beginadres
-
+```
 Dit  gedeelte  is bijna  gelijk aan  de vorige  routine, het
 haalt de stringdescriptor op.
-
+```
 PRINT:  LD    A,(HL)          ; haal teken
         CALL  &HA2            ; teken naar scherm
         INC   HL              ; volgende teken
         DJNZ  PRINT           ; herhaal B maal
 
         RET
-
+```
 Dit  gedeelte zet  de string  op het  scherm, en gebruikt de
 BIOS routine  CHPUT (&HA2).  De volgende routine bewijst dat
 het  doorgeven van  getallen in  beide richtingen geen enkel
 probleem oplevert.
 
 
-                       R E K E N E N
+## R E K E N E N
 
 Onderstaande  routine  doet iets  ontzettend moeilijks,  hij
 telt 1  op bij  het getal  dat als  parameter aan  USR wordt
 meegegeven!!! Geweldig he?!
-
+```
 ; P L U S 1 . A S M
 ; Telt 1 op bij een getal
 ; Door Stefan Boer, 2 juli 1992
@@ -599,19 +598,19 @@ ILLEGA: EQU   &H475A
         INC   HL              ; plus 1
         LD    (DAC+2),HL      ; geef waarde door aan BASIC
         RET
-
+```
 Deze routine  behoeft geen  uitleg meer,  alle uitleg  is al
 eerder  in dit  artikel gegeven.  Toch zit  er hier  wel een
 addertje onder het gras. Typt u bijvoorbeeld:
-
+```
 PRINT USR(3)
-
+```
 Dan  zet  de computer  netjes een  4 op  het scherm.  Typt u
 echter:
-
+```
 A=3
 PRINT USR(A)
-
+```
 Dan  volgt er  een Illegal  function call.  Hoe kan dat? Dat
 komt omdat  alle variabelen  (tenzij anders  bepaald met een
 DEF commando) automatisch van het DBL type zijn. Overal waar
@@ -619,11 +618,11 @@ A  staat moet u dus A# lezen. En natuurlijk krijg je dan een
 illegal  function  call,  omdat  VALTYP dan  een 8  bevat in
 plaats van een 2. Deze fout kan worden voorkomen door DEFINT
 A te typen, of door achter elke A een % te plaatsen.
-
+```
 DEFINT A
 A=3
 PRINT USR(A)
-
+```
 Dit  werkt wel.  Nog een  laatste opmerking:  alle registers
 mogen worden  veranderd door  een routine  die met USR wordt
 aangeroepen  (behalve  natuurlijk  SP,  want  dan kan  er na
@@ -631,7 +630,7 @@ afloop  niet  meer  worden  teruggesprongen  naar  de  BASIC
 interpreter).
 
 
-                      T O T   S L O T
+## T O T   S L O T
 
 Dit lijkt  me wel voldoende voor deze keer, de eerste manier
 van  samenwerking tussen  BASIC en  ML (USR)  is nu volledig
@@ -645,4 +644,4 @@ postbus, ter  attentie van  ondergetekende. Ik  ben zelf  al
 bezig  geweest met  een oplossing, dus misschien kom ik daar
 de volgende keer zelf mee op de proppen.
 
-                                                Stefan Boer
+Stefan Boer

@@ -1,5 +1,4 @@
-
-               G E H E U G E N   T E L L E N
+# G E H E U G E N   T E L L E N
 
 
 Niet  elke  MSX  computer  heeft  dezelfde  hoeveelheid  RAM
@@ -16,7 +15,7 @@ MoonBlaster muziekjes  in het geheugen gezet. Met 128 kB zal
 er meestal al niet meer hoeven worden bijgeladen.
 
 
-                      A D D E R T J E
+## A D D E R T J E
 
 Er zit echter een addertje onder het gras. Veel programmeurs
 vinden  het  blijkbaar  nogal  moeilijk  om zo'n  routine te
@@ -28,7 +27,7 @@ natuurlijk leuk, maar ik heb maar 256 kB dus heb ik er niets
 aan als zo'n demo dat zegt.
 
 
-                  M E M O R Y M A P P E R
+## M E M O R Y M A P P E R
 
 De routine  die ik  geschreven heb, telt het RAM geheugen in
 de  huidige memorymapper  dat op  page 2  (&H8000-&HBFFF) is
@@ -60,7 +59,7 @@ mijn routine gebruikt, zal altijd de grootte van de grootste
 mapper worden bepaald.
 
 
-                        S L O T E N
+## S L O T E N
 
 De  plaats  van  het  RAM  in  de computer  is niet  op alle
 computers hetzelfde. Op de adressen &HF341 t/m &HF344 is per
@@ -85,11 +84,11 @@ De  telroutine  werkt  vanuit  page  2,  dus  daar  moet  de
 memorymapper   worden   geschakeld.   Normaal   staat   daar
 natuurlijk al  RAM, maar  als dat  niet zo is kan er op deze
 manier RAM worden geschakeld:
-
+```
         LD A,(&HF343)           ; A=ID byte RAM page 2
         LD H,&H80               ; page 2
         CALL &H0024             ; ENASLT
-
+```
 Voor  de routine  ENASLT moet de slot-ID byte in A staan, en
 moet in HL een adres staan in de gewenste page. (Het is niet
 nodig om  LD HL,&H8000 te doen, want alleen de bovenste twee
@@ -100,7 +99,7 @@ gang te gaan, maar dat is veel ingewikkelder. Ik zal er hier
 dan ook niet over uitweiden hoe dat in zijn werk gaat.
 
 
-                     S E G M E N T E N
+## S E G M E N T E N
 
 Er staat nu dus RAM op page 2. Dit RAM zit in een zogenaamde
 memorymapper.  Het RAM  in een  memorymapper is  verdeeld in
@@ -145,7 +144,7 @@ dat  segment  ook  het  systeem  RAM  staat,  anders  zal de
 computer zeker hangen.
 
 
-                        T E L L E N
+## T E L L E N
 
 Het bepalen  van de  grootte van de memorymapper is dus heel
 simpel;   gewoon  het   aantal  segmenten   tellen  en   dat
@@ -168,13 +167,13 @@ kunnen we voorkomen door:
   terug te zetten
 
 
-                     D E   S O U R C E
+## D E   S O U R C E
 
 Bovenstaande procedure is terug te vinden in de machinetaal-
 routine  die ik heb geschreven. Hier is de source, rijkelijk
 voorzien van commentaar.
 
-
+```
 ; M E M C O U N T . A S C
 ; Door Stefan Boer
 ; Deze routine telt het aantal aanwezige memorymaps
@@ -280,9 +279,9 @@ RESTOR: OUT   (C),B           ; schakel memorymapper
 
 BUFFER: DS    256             ; ruimte voor opslag +1FF
                               ; inhoud per segment
+```
 
-
-                    O P   D E   D I S K
+## O P   D E   D I S K
 
 Deze source is geschreven in WB-ASS2 en staat in ASCII op de
 disk  onder  de naam  "MEMCOUNT.ASC". Om  de routine  uit te
@@ -292,7 +291,7 @@ u in  het softwaremenu  kunt vinden. Dit programma laat zien
 hoe u de routine vanuit BASIC kunt gebruiken.
 
 
-                        L E T   O P
+## L E T   O P
 
 U  kunt  deze  routine normaal  gesproken altijd  gebruiken,
 omdat  hij het  RAM niet blijvend aantast. Tijdens het lopen
@@ -301,13 +300,13 @@ aangetast.  Het zou  dus kunnen  dat u  een muziekje over de
 interrupt laat  lopen en  dat dit programma in de driver zit
 te   POKEn  en   dan gaat   het mis. De oplossing is simpel:
 gewoon de interrupts uitzetten. Dus:
-
+```
 DI
 CALL MEMCNT
 EI
-
+```
 Misschien  de  volgende  keer  een  uitbreiding  waardoor de
 routine meer  dan ��n  memorymapper aankan.  Voor deze  keer
 laat ik het hierbij.
 
-                                                Stefan Boer
+Stefan Boer

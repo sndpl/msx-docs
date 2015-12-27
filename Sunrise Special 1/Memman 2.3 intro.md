@@ -1,4 +1,4 @@
-M E M M A N   2 . 3   I N T R O D U C T I E
+# M E M M A N   2 . 3   I N T R O D U C T I E
 
 
 File : MM23INTRO.TXT c  MST

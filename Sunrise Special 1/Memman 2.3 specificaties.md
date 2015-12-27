@@ -1,4 +1,4 @@
-M E M M A N   2 . 3   S P E C I F I C A T I E S
+# M E M M A N   2 . 3   S P E C I F I C A T I E S
 
 
 File : MM23SPEC.TXT

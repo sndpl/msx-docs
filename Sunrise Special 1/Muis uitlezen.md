@@ -1,4 +1,4 @@
-M U I Z E N I S S E N
+# M U I Z E N I S S E N
 
 
 Het valt me telkens weer  op  dat  er  op  MSX  maar  weinig
@@ -11,7 +11,7 @@ als je het  beweegt  een  gelijksoortige  beweging  van  een
 voorwerp op het scherm teweeg brengt!
 
 
-D E   G E S C H I E D E N I S
+## D E   G E S C H I E D E N I S
 
 De muis is ��n van de belangerijkste  computerontwikkelingen
 van de afgelopen 15 jaar. Voorheen moesten  alle  commando's
@@ -31,7 +31,7 @@ kaarten (en losse VDP's) gemaakt die de muis nu ook voor het
 grote publiek toegankelijk maakten.
 
 
-D E   M U I Z E N   V A N   N U
+## D E   M U I Z E N   V A N   N U
 
 Nu, zoveel jaar later  kost  een  muis  niet  meer  dan  150
 gulden. Er zijn muizen in alle soorten en  maten  en  er  is
@@ -47,8 +47,7 @@ en ze zijn ook volledig uitwisselbaar (alhoewel de standaard
 meegeleverde muizen van de laatste twee matig tot slecht van
 kwaliteit zijn).
 
-
- D E   W E R K I N G
+## D E   W E R K I N G
 
 Er zijn ruwweg 3 soorten muizen, waarvan  er  twee  weer  op
 elkaar lijken, nl:
@@ -97,7 +96,7 @@ die deze meting dan in een positie omzet. Dit  gebeurd  door
 de afstand bij de vorige positie op te tellen.
 
 
-D E   M U I S   L E E S A K T I E
+## D E   M U I S   L E E S A K T I E
 
 Er  is in  het verleden nogal wat verwarring geweest over de
 vraag hoe  een MSX2  de muis leest omdat de VDP van een MSX2
@@ -141,7 +140,7 @@ lezen waarde op zijn 4  bits  databus  zet.  Na  een  kleine
 wachttijd wordt deze waarde dan uit register 14 gelezen.
 
 
-E E N   M U I S B E S T U R I N G S P R O G R A M M A
+## E E N   M U I S B E S T U R I N G S P R O G R A M M A
 
 Laat ik beginnen met het bedanken van Stefan  Boer  die  het
 basisprogramma voor de muisbesturing heeft gemaakt  waar  ik
@@ -178,7 +177,7 @@ definieert. Je  merkt het  al, dit  programma bevat meer dan
 alleen maar een simpele muisbesturing.
 
 
-H O E   W E R K T   H E T ?
+## H O E   W E R K T   H E T ?
 
 Als het programma opgestart wordt zullen eerst de  benodigde
 sprites ge�nitialiseerd worden. Daarna  zal  naar  een  muis
@@ -214,4 +213,4 @@ stormvloed van programma's zien die de muis  gebruiken,  dat
 spreekt voor zich (ik bedoel dus dat ik hoop dat dit  muisje
 nog een staartje krijgt).
 
-                        Alex van der Wal
+Alex van der Wal                

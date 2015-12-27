@@ -1,9 +1,7 @@
-- DEEL 1 -
-
-D I S K   C U R S U S   S P E C I A L   ( 1  )
+# D I S K   C U R S U S   S P E C I A L   ( 1  )
 
 
-I N L E I D I N G
+## I N L E I D I N G
 
 In  de diskcursus op Sunrise Magazine had ik al aangekondigd
 dat er op de Sunrise Special een diskcursus voor gevorderden
@@ -39,8 +37,7 @@ BASIC 2.01, maar dat is nu nog niet zeker.
 In  dit eerste deel de werking van FAT en directory, oftewel
 hoe staan files op een disk.
 
-
-  F A T
+## F A T
 
 Meteen  al  een  ingewikkeld onderwerp:  de File  Allocation
 Table.  Bij het  MSX Disk Operating System (kortweg MSX-DOS)
@@ -98,7 +95,7 @@ namelijk opgeslagen waar (met welke cluster) een file verder
 gaat.
 
 
-D E   S T R U C T U U R
+## D E   S T R U C T U U R
 
 De eerste  byte van  de FAT  is de  "FAT ID" byte. Dit is de
 gewoon  de "media  ID", waarmee  het formaat  diskette wordt
@@ -167,7 +164,7 @@ niveau  wilt  lezen/schrijven), kunt  u het  overeenkomstige
 deel van de FAT vullen met FFF.
 
 
-P L A A T S   V A N   D E   F A T
+## P L A A T S   V A N   D E   F A T
 
 De  FAT  staat  direct na  de bootsector,  en begint  dus op
 sector  1. Het aantal sectoren dat de FAT in beslag neemt is
@@ -193,7 +190,7 @@ noodzakelijk, en  staat de  FAT dus  op sector  1 en 2 en de
 reserve FAT op sector 3 en 4.
 
 
-D I R E C T O R Y
+## D I R E C T O R Y
 
 Met  alleen de  FAT kom  je er niet. Je kunt een file immers
 niet terugvinden zonder te weten waar hij begint (het nummer
@@ -214,7 +211,7 @@ directory entry  vergt 32  bytes, er passen dus 112 files op
 een diskette. Maar dat wist u natuurlijk al.
 
 
-D E   S T R U C T U U R
+## D E   S T R U C T U U R
 
 Hoe  is de  directory opgebouwd? De 112 entry's staan achter
 elkaar op  de zeven  sectoren. Elke  entry is 32 bytes lang.
@@ -242,19 +239,19 @@ enige  attribuut  die door  MSX-DOS1 wordt  "ondersteund" is
 komt  niet in  de filelist voor als die wordt opgevraagd met
 DIR of  FILES. Onder MSX-DOS1 is de attribuut byte als volgt
 opgebouwd:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
-x   x   x   x   x   x   H   x
-
+      x   x   x   x   x   x   H   x
+```
 x:      niet gebruikt
 H:      1=hidden, 0=normaal
 
 De tijd is opgeslagen in twee bytes:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
 U4  U3  U2  U1  U0  M5  M4  M3    Byte 23
 M2  M1  M0  S4  S3  S2  S1  S0    Byte 22
-
+```
 U0-U4:  uren (0-23)
 M5-M0:  minuten (0-59)
 S4-S0:  secondes (0-29)
@@ -264,11 +261,11 @@ te krijgen moet de waarde die in S0-S4 is opgeslagen dus met
 2 worden vermenigvuldigd). Let op de volgorde van de bytes!
 
 De datum is op soortgelijke wijze opgeslagen:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
 J6  J5  J4  J3  J2  J1  J0  M3    Byte 25
 M2  M1  M0  D4  D3  D2  D1  D0    Byte 24
-
+```
 J0-J6:  jaar (1980-2079, moet 1980 bij worden opgeteld)
 M0-M3:  maand (1-12)
 D0-D4:  dag (1-31)
@@ -303,7 +300,7 @@ clusters  zijn. Bij  MSX-DOS2 is  dit probleem opgelost door
 subdirectories, maar  bij DOS1  zullen we  gewoon een nieuwe
 disk moeten pakken of een paar oude files moeten killen.
 
-E E N   V O O R B E E L D
+## E E N   V O O R B E E L D
 
 Op  deze  Sunrise  Special  #1  staat  het  BASIC  programma
 "DIR.BAS".  Dit  programma past  de eerder  verworven kennis
@@ -331,8 +328,8 @@ vinden  is.  De  listing  wordt regelmatig  onderbroken voor
 uitleg.
 
 
-D I R . B A S
-
+## D I R . B A S
+```
 1000 'DIR.BAS
 1010 'Door Stefan Boer
 1020 'Geeft dir met filenaam, tijd, datum, lengte, aantal
@@ -341,30 +338,30 @@ clusters en clusterverdeling van file
 1040 '(c) SteveSoft/Stichting Sunrise 1992
 1050 '
 1060 CLEAR200,&HBFFF:DEFINTA-Z:DEFUSR=&H156
-
+```
 In  regel 1060  wordt het  gebied vanaf  &HC000 tegen  BASIC
 beschremd,  hier  komen  de FAT en de directory te staan. De
 BIOS routine  op adres  &H156 wist de toetsenbordbuffer, met
 DEFINTA-Z wordt bepaald dat alle variabelen integers zijn.
-
+```
 1070 DEFFNA$(X)=RIGHT$("0"+MID$(STR$(X),2),2)
 1080 KEYOFF:SCREEN0:WIDTH80:COLOR=(4,0,0,4):COLOR15,4,4
 1090 PRINT"Uitgebreide directory"
 1100 PRINT"Door Stefan Boer"
 1110 PRINT"Gepubliceerd op Sunrise Special #1"
 1120 PRINT"(c) Stichting Sunrise 1992"
-
+```
 In  regel 170  wordt een  functie gedefinieerd, die nodig is
 voor een  nette datum  en tijd.  De functie voegt waar nodig
 "verloopnullen"   toe,  zodat   je  bijvoorbeeld  01/06/1992
 krijgt.
-
+```
 1130 PRINT
 1140 PRINT"Plaats een diskette...";:U=USR(0):I$=INPUT$(1)
 1150 PRINT:PRINT:PRINT"Inlezen van FAT en directory..."
 1160 POKE&HF351,0:POKE&HF352,&HC0:A$=DSKI$(0,1):
 POKE&HF352,&HC2:A$=DSKI$(0,2)
-
+```
 In regel  1160 worden  de eerste  twee sectoren  van de  FAT
 gelezen  en vanaf &HC000 in het RAM gezet. Door het commando
 A$=DSKI$(drive,sector)  komt  er  niets  in de  variabele A$
@@ -373,11 +370,11 @@ tekens  lang zijn,  en geen  512). De  inhoud van  de sector
 wordt in  het geheugen geplaatst, en wel vanaf het adres dat
 op  locatie &HF351/&HF352 staat. Drive 0 betekent de default
 drive.
-
+```
 1170 IFPEEK(&HC000)=&HF9THENS=7:POKE&HF352,&HC4:
 A$=DSKI$(0,3)ELSES=5
 1180 FORI=0TO6:POKE&HF352,&HC6+2*I:A$=DSKI$(0,S+I):NEXT
-
+```
 In regel  1170 wordt  de FAT  ID byte gelezen. Hieraan is te
 zien  of de  diskette enkelzijdig (&HF8) is, of dubbelzijdig
 (&HF9). Is  de diskette dubbelzijdig, dan bestaat de FAT uit
@@ -388,17 +385,17 @@ en begint de directory op sector 5 (S=5).
 
 In regel  1180 wordt  de directory ingelezen, die 7 sectoren
 lang is. De directory wordt vanaf &HC600 in het RAM gezet.
-
+```
 1190 PRINT:PRINT"Filenaam:    Datum:     Tijd:    Bytes:
 Cls: Clusters:":PRINT
-
+```
 "Cls"  staat  voor de  lengte in  clusters, "Bytes"  voor de
 lengte in  bytes. Onder "Clusters:" komen de clusters waarop
 de file staat in de juiste volgorde te staan.
-
+```
 1200 FORAD=&HC600TO&HD3FFSTEP32
 1210 IFPEEK(AD)=0THENENDELSEIFPEEK(AD)=&HE5THEN1360
-
+```
 Regel  1200 doorloopt  de complete directory in het RAM. Die
 directory begint  op &HC600 en is 3.5 kB lang. Een directory
 entry  is 32 bytes groot. In regel 1210 wordt gekeken of het
@@ -415,51 +412,53 @@ FORI=8TO10:PRINTCHR$(PEEK(AD+I));:NEXT:PRINT" ";
 Deze twee  regels zetten  de filenaam  op het  scherm. Regel
 1230  zet  alleen  een  punt  op  het  scherm indien  er een
 extensie is.
-
+```
 1240 PRINTFNA$(PEEK(AD+24)AND31);"/";FNA$((PEEK(AD+24)
 AND224)\32+8*(PEEK(AD+25)AND1));"/";:PRINTUSING
 "#### ";PEEK(AD+25)\2+1980;
-
+```
 Regel 1240 zet de datum op het scherm, die in de bytes 24 en
 25  van  de  directory  entry  staat.  Met  de  ingewikkelde
 formules worden  de juiste bits uit de twee bytes gefilterd.
 De  dag staat  bijvoorbeeld in  bit 0 t/m 4 van byte 24. Met
 een AND  31 (=&B11111)  instruktie wordt  de dag uit de byte
 gehaald. Ter herinnering:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
 J6  J5  J4  J3  J2  J1  J0  M3    Byte 25
 M2  M1  M0  D4  D3  D2  D1  D0    Byte 24
-
+```
+```
 1250 PRINTFNA$(PEEK(AD+23)\8);":";FNA$((PEEK(AD+23)AND7)*8+
 (PEEK(AD+22)AND224)\32);":";FNA$(2*(PEEK(AD+22)AND31));
 " ";
-
+```
 Met  de tijd  gaat het net zo. Het schema van de tijd opslag
 nog een keer:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
 U4  U3  U2  U1  U0  M5  M4  M3    Byte 23
 M2  M1  M0  S4  S3  S2  S1  S0    Byte 22
-
+```
+```
 1260 L#=PEEK(AD+28)+256*PEEK(AD+29)+65536!*PEEK(AD+30):
 PRINTUSING"###### ";L#;
-
+```
 Hier wordt de lengte in bytes uit de directory gelezen en op
 het   scherm  gezet.   Eigenlijk  moet   ook  AD+31   worden
 uitgelezen,  maar  die  wordt  bij  een  diskette toch  niet
 gebruikt. Er  moet een  # achter de L, omdat een file groter
 kan  zijn  dan  32767  bytes,  en dan  zou je  zonder #  een
 "Overflow" foutmelding krijgen (vanwege de DEFINTA-Z).
-
+```
 1270 PRINTUSING"###  ";INT((L#+1023)/1024);:X=45
-
+```
 Hier  wordt het  aantal clusters dat de file in beslag neemt
 berekend  en  op  het  scherm gezet.  De berekening  zou ook
 als volgt kunnen worden gedaan:
-
+```
 CL=INT(L#/1024):IFCL<>L#/1024THENCL=CL+1
-
+```
 Het  resultaat  is  precies  hetzelfde  (CL  is  het  aantal
 clusters),  maar  ik  vind  de  eerste  manier veel  mooier.
 INT(L#/1024)  is  niet  goed,  omdat je  dan bijna  altijd 1
@@ -467,15 +466,15 @@ cluster te  weinig hebt  (INT(1000/1024) is 0, maar een file
 van  1000 bytes neemt ��n cluster in beslag). INT(L#/1024)+1
 is  meestal  goed, maar niet als L# een veelvoud van 1024 is
 (zoals in de tweede oplossing duidelijk is te zien).
-
+```
 1280 C=PEEK(AD+26)+256*PEEK(AD+27)
-
+```
 Lees het  nummer van de eerste cluster uit de directory. Dit
 staat op byte 26 en 27.
-
+```
 1290 FA=(CAND1022)*1.5+&HC000:PRINTTAB(X);:
 PRINTUSING"###";C;:X=X+4:IFX=81THENX=45
-
+```
 In  regel 1290 wordt het FAT adres (FA) berekend. C AND 1022
 zorgt dat C een even getal wordt, door er 1 vanaf te trekken
 als het  oneven was. Omdat twee FAT entry's samen 3 bytes in
@@ -487,18 +486,18 @@ bijgehouden,  zodat de  clusternummers netjes  rechts van de
 overige informatie  komen te  staan. Het clusternummer wordt
 op  het scherm  gezet met  een PRINT  USING, en  de nieuwe X
 coordinaat wordt berekend.
-
+```
 1300 IFC<>(CAND1022)THEN1340
-
+```
 In  deze   regel  wordt   gekeken  of  we  de  eerste  (even
 clusternummer) of de tweede (oneven clusternummer) FAT entry
 uit  het groepje  van 3  bytes moeten  hebben. In regel 1310
 wordt de even gelezen, in regel 1340 de oneven.
-
+```
 1310 V=C:C=(PEEK(FA+1)AND15)*256+PEEK(FA)
 1320 IFC=&HFFFTHEN1370ELSEIFV<>C-1THENPRINTTAB(X-1);">";
 1330 GOTO1290
-
+```
 Hier wordt  de even  FAT entry  gelezen. De  4 hoogste  bits
 staan  op FA+1 en de 8 laagste bits op FA. Deze waarde wijst
 naar de  volgende cluster. Als de waarde gelijk is aan &HFFF
@@ -512,18 +511,18 @@ gekeken  of  dat  ��n  lager  is  dan het  zojuist berekende
 clusternummer  (als  dat  zo  is,  dan  zijn het  twee opeen
 volgende clusters).  Er wordt  een > op het scherm gezet als
 er een "gat" is.
-
+```
 1340 V=C:C=((PEEK(FA+1)AND240)\16)+PEEK(FA+2)*16
 1350 IFC=&HFFFTHEN1370ELSEIFV<>C-1THENPRINTTAB(X-1);">";
 1360 GOTO1290
-
+```
 In  regel 1340 t/m 1360 precies hetzelfde, alleen nu voor de
 FAT entry  met een  oneven nummer.  Hier staan  de 4 laagste
 bits op FA+1 en de 8 hoogste bits op FA+2.
-
+```
 1370 IFPOS(0)>0THENPRINT
 1380 NEXT
-
+```
 Regel 1370  zorgt ervoor  dat er  op een  nieuwe regel wordt
 begonnen. Als er alleen PRINT zou hebben gestaan, zou er een
 regel  over worden  geslagen als  de cursor al op een nieuwe
@@ -531,7 +530,7 @@ regel  stond.  Regel  1380  zorgt  dat  er  met  de volgende
 directory entry wordt verdergegaan.
 
 
-V O O R B E E L D   U I T V O E R
+## V O O R B E E L D   U I T V O E R
 
 Laten we  een eerder  gebruikt voorbeeld  nog eens nemen. Op
 een disk staan de files:
@@ -569,7 +568,7 @@ FastCopy,  WorkMate, TurboCopy,  etc.) heeft  hier geen zin,
 omdat de diskette dan letterlijk wordt overgenomen.
 
 
- B D O S
+## B D O S
 
 Dit  is  behoorlijk  ingewikkeld,  maar  gelukkig  hoeft  de
 machinetaalprogrammeur  zich normaal  gesproken niet druk te
@@ -588,7 +587,7 @@ Dit  systeem wordt  toegepast bij  BK, de BestandsKopieerder
 voor MemMan van MCM's MST.
 
 
-W A A R S C H U W I N G ! !
+## W A A R S C H U W I N G ! !
 
 Dit is  een zeer belangrijke waarschuwing die ik ook nog wel
 eens  op Sunrise  Magazine zal  zetten. Stel  er gebeurt het
@@ -605,7 +604,7 @@ of Abort.
 De logische oplossing lijkt nu om de werkdisk in de drive te
 doen (write enable) en voor retry te kiezen.
 
-D O E   D I T   N O O I T ! ! !
+## D O E   D I T   N O O I T ! ! !
 
 U  kunt uw  werkdisk daarna  wel formatteren,  want in ieder
 geval  de  FAT  en  meestal  ook  de directory  zal compleet
@@ -637,7 +636,7 @@ zal hier  bij alle software die Sunrise uitgeeft persoonlijk
 op letten!)
 
 
-T O T   S L O T
+## T O T   S L O T
 
 Ik denk dat ik er na deze afdwaling maar een eind aan draai.
 Ik  weet nu  nog niet  wat ik de volgende keer ga doen, maar
@@ -645,4 +644,4 @@ dat zou  best wel eens de BDOS kunnen zijn. Dat zal een hele
 lange  tekst  worden,  want er  zijn 42  BDOS calls!  Tot de
 volgende keer!
 
-                       Stefan Boer
+Stefan Boer

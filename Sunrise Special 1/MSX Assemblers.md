@@ -1,4 +1,4 @@
-A S S E M B L E R S   O P   M S X
+# A S S E M B L E R S   O P   M S X
 
 
 Het schrijven van machinetaalprogramma's  op  MSX  is  nooit
@@ -15,7 +15,7 @@ de twee meest gebruikte assemblers op MSX.  Deze  assemblers
 zijn WBASS-2 en GEN80.
 
 
-           G E N   8 0
+## G E N   8 0
 
 Dit is een redelijk oude assembler  die  nog  uit  het  CP/M
 tijdperk stamt. Het is echter in technisch opzicht een prima
@@ -63,7 +63,7 @@ raden om  de  doodsimpele  reden  dat  hij  daar  niet  voor
 geschreven is.
 
 
-          W B A S S - 2
+## W B A S S - 2
 
 Dit is bij mijn weten de enige assembler die  speciaal  voor
 MSX geschreven is.  Ik  moet  hierbij  meteen  opmerken  dat
@@ -183,7 +183,7 @@ Voor verdere tips moet ik naar  de  uitstekende  handleiding
 verwijzen.
 
 
-G E T A L R E P R E S E N T A T I E
+## G E T A L R E P R E S E N T A T I E
 
 Voor Z80 mnemonics  bestaan  4  verschillende  manieren  van
 getalsrepresentatie en wel:
@@ -257,7 +257,7 @@ de macro in je programma neer te zetten inplaats van de hele
 routine.
 
 
-        C O N C L U S I E
+## C O N C L U S I E
 
 Ik heb gemerkt dat mensen die met GEN 80 werken liever  niet
 omschakelen naar WBASS-2 en andersom. Ik heb in ieder  geval
@@ -271,4 +271,4 @@ Vooral bij de wat grotere programma's wordt  het  lastig  om
 toch nog in het RAM te assembleren, maar  voor  de  rest  is
 WBASS-2 de beste keus voor je MSX assembly creativiteit.
 
-                              Alex van der Wal
+Alex van der Wal

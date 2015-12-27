@@ -1,8 +1,8 @@
-S E T   S C R O L L   I N   B A S I C
+# S E T   S C R O L L   I N   B A S I C
 
 
 
-          I N L E I D I N G
+## I N L E I D I N G
 
 Op een  MSX2+ kan  (in BASIC) m.b.v. het SET SCROLL commando
 een  vrijwel vloeiende  scroll beweging  krijgen. Omdat niet
@@ -11,7 +11,7 @@ programmeren,   leg  ik  in  deze  tekst  uit  hoe  je  heel
 gemakkelijk het SET SCROLL commando kunt gebruiken.
 
 
-         S E T   S C R O L L
+## S E T   S C R O L L
 
 Het  SET SCROLL  commando kan je in alle schermen gebruiken,
 behalve in SCREEN 0. Bij gebruik van het SET SCROLL commando
@@ -28,7 +28,7 @@ maar krijg  je het sprites-blok te zien. Daar heb ik wel een
 truukje voor maar dat komt later.
 
 
-            G E B R U I K
+## G E B R U I K
 
 Het gebruik is eigenlijk heel gemakkelijk, je hoeft namelijk
 alleen  het  commando  plus  een  getal voor  de horizontale
@@ -48,7 +48,7 @@ links en de eerste naar
 rechts. Zo werkt dat ook met het verticaal scrollen.
 
 
- V D P ( 1 9  )  E N   V D P ( 2 4  )
+## V D P ( 1 9  )  E N   V D P ( 2 4  )
 
 Het set  scroll commando  komt overeen  met VDP(19)  (of set
 adjust)  en VDP(24).  VDP(19) geeft  namelijk een  soort van
@@ -74,12 +74,12 @@ hetzelfde als VDP(24).
 -------------------------------------------------
 
 
-          V O O R B E E L D
+## V O O R B E E L D
 
 Dan  nu maar even een klein voorbeeld programaatje. Met de '
 geef ik  wat kommentaar.  Bedenk wel  dat dit  programmaatje
 ALLEEN voor MSX2+ bedoeld is.
-
+```
 ; Dit programma is alleen voor grafische schermen 5 en 8
 
 10 COLOR 15,0,0:SCREEN X ' VUL HIER VOOR X IN 5 OF 8
@@ -95,7 +95,7 @@ ALLEEN voor MSX2+ bedoeld is.
 100 IF Y2<50 THEN Y1 = 1               'Y2<50  ? JA,DAN +1
 110 SET SCROLL X2,Y2                   'SCROLLEN
 120 IF INKEY$="" THEN GOTO 70 ELSE END
-
+```
 Je  kan eventueel  nog _BC  gebruiken en dan in regel 55 het
 rem (')  teken weghalen. Als je het programma RUNt zie je de
 tekst MSX 2+ over het beeld schuiven, de tekst gaat ook door
@@ -105,4 +105,4 @@ sprites blok te bekennen.
 Veel  plezier met  het SET  SCROLL commando  en misschien de
 volgende keer een complete tekstzoek routine met scroll.
 
-                                   Bart Schouten
+Bart Schouten

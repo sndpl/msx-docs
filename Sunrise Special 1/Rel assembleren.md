@@ -1,4 +1,4 @@
-R E L O C A T A B L E   A S S E M B L E R E N
+# R E L O C A T A B L E   A S S E M B L E R E N
 
 
 Eerst  even  dit:  ik  ga bij  dit stukje  uit van  de GEN80
@@ -10,7 +10,7 @@ Naast GEN80 kun je bijvoorbeeld ook met M80 en RMAC reloca-
 table assembleren.
 
 
-    N O R M A A L   A S S E M B L E R E N
+## N O R M A A L   A S S E M B L E R E N
 
 Veel mensen die wel eens iets in machinetaal doen, schrijven
 hun  listing  als  een  lange  lijst  met  instructies.  Het
@@ -35,7 +35,7 @@ programmatekst  moet  worden  verwerkt  kan dit,  vooral bij
 lange listings, enorm veel tijd kosten.
 
 
-R E L O C A T A B L E   A S S E M B L E R E N
+## R E L O C A T A B L E   A S S E M B L E R E N
 
 Maar  het kan ook  anders, en dat  anders  heet 'relocatable'
 assembleren.
@@ -60,7 +60,7 @@ ma's.  Je  kunt  zo dus  een bibliotheek  van kant  en klare
 modules  opbouwen.
 
 
-              W E R K W I J Z E
+## W E R K W I J Z E
 
 Bij  relocatable  assembleren ga je er  van uit dat een lang
 programma op  te splitsen valt in kortere delen, die als het
@@ -84,7 +84,7 @@ linken  gebeurt  met een  apart programma,  de linker  (bij-
 voorbeeld LINK.COM of L80.COM).
 
 
-             H E T   L I N K E N
+## H E T   L I N K E N
 
 Bij dit 'linken' geef je op welke modules je aan elkaar wilt
 koppelen.  Daarna  geef  je  de  naam van  het uiteindelijke
@@ -115,7 +115,7 @@ De '/e'  wil zeggen  dat de  linker na  het wegschrijven van
 prognaam.com moet stoppen, zodat je weer in DOS zit.
 
 
-          H E T   R E S U L T A A T
+## H E T   R E S U L T A A T
 
 Nu  heb   je  een  programma  op  disk  staan  met  de  naam
 prognaam.com.  Het testen  kan beginnen.  Dit testen bestaat
@@ -137,7 +137,7 @@ gen80 %1
 l80 init,commando,diversen,edit,drawscr,getconv,monitor/n/e
 
 
-   A S S S E M B L E R O P D R A C H T E N
+## A S S S E M B L E R O P D R A C H T E N
 
 Een  assembler die in een relocatable mode kan worden gezet,
 kent een aantal speciaal op die mode gerichte opdrachten.
@@ -157,7 +157,7 @@ de  absolute mode wilt assembleren, dan kun je dat doen door
 op de eerste regel * R- te zetten.
 
 
-              V O O R B E E L D
+## V O O R B E E L D
 
 Op deze disk staan als voorbeeld 3 modules (.GEN) en hun ge-
 assembleerde vorm (.REL en .SYM).
@@ -170,4 +170,4 @@ niet  echt nuttig,   maar het  gaat dan  eigenlijk ook om de
 listings.
 
 
-                                         Rudy Oppers
+Rudy Oppers

@@ -1,4 +1,4 @@
-P O I N T E R S
+#P O I N T E R S
 
 
 Ik wil in dit stukje wat uitleg geven over pointers; wat kun
@@ -8,7 +8,7 @@ fantasie  om  te  zetten  naar  bijvoorbeeld  machinetaal of
 BASIC.
 
 
-W A T   I S   E E N   P O I N T E R
+## W A T   I S   E E N   P O I N T E R
 
 Een  pointer is  in feite een adres en op dat adres staat de
 inhoud van een variabele. De variabele waar een pointer naar
@@ -17,7 +17,7 @@ het  allemaal moeilijk te maken kun je ook nog pointers naar
 pointers (naar pointers naar pointers enz.) hebben.
 
 
-W A A R O M   P O I N T E R S   G E B R U I K E N
+## W A A R O M   P O I N T E R S   G E B R U I K E N
 
 Voor  het  structureren van  'gelijksoortige data-elementen'
 (dus bv. integers, arrays, bytes, records) zijn er in Pascal
@@ -45,7 +45,7 @@ worden,  maar  aan  de  andere  kant  zijn er  ook erg  veel
 voordelen.
 
 
-D E   S P E L R E G E L S
+## D E   S P E L R E G E L S
 
 * TYPE-DEFINITIE
 Een pointer-type wordt in pascal als volgt gedefinieerd:
@@ -137,7 +137,7 @@ die door  deze variabele bezet werd is weer vrijgegeven en
 is dus weer beschikbaar. De pointer p is ongedefinieerd.
 
 
-T E N   S L O T T E
+## T E N   S L O T T E
 
 Je  kunt  met  pointers  leuke  dingen uithalen.  Zo kun  je
 bijvoorbeeld  een  'gelinkte  lijst'  opzetten.  Dit is  een
@@ -175,4 +175,4 @@ Bij lijsten wordt de waarde NIL gebruikt om het einde van de
 lijst  aan te  geven (je  moet de pointer(s) zelf die waarde
 geven; standaard staat er alleen onzin in).
 
-                          Rudy Oppers
+Rudy Oppers

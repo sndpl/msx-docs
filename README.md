@@ -57,9 +57,9 @@
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
-| [Cursus DD-Graph](Sunrise Special 2/Cursus dd-graph.md | Bart Schouten | Sunrise Special 2 |
-| [MSX-DOS 2.31](Sunrise Special 2/MSX-DOS 2.31.md | Kasper Souren | Sunrise Special 2 |
-| [MSX-DOS 2 - Redirection](Sunrise Special 2/Redirection.md | Kasper Souren | Sunrise Special 2 |
+| [Cursus DD-Graph](Sunrise Special 2/Cursus dd-graph.md) | Bart Schouten | Sunrise Special 2 |
+| [MSX-DOS 2.31](Sunrise Special 2/MSX-DOS 2.31.md) | Kasper Souren | Sunrise Special 2 |
+| [MSX-DOS 2 - Redirection](Sunrise Special 2/Redirection.md) | Kasper Souren | Sunrise Special 2 |
 | [Rescursief programmeren](Sunrise Special 1/Recursief programmeren.md) | Alex van der Wal | Sunrise Special 1 |
 | [Stereo SCC](Sunrise Special 2/Stereo SCC.md) | Haiko de Boer | Sunrise Special 2 |
 | [Te zachte PSG bij de NMS 8250/55/80](Sunrise Special 1/Te zachte PSG bij de NMS 8250 55 80.md) | Haiko de Boer | Sunrise Special 1 |

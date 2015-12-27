@@ -1,4 +1,4 @@
-R E C U R S I E F   P R O G R A M M E R E N
+# R E C U R S I E F   P R O G R A M M E R E N
 
 
 Dit is een onderwerp waar de gemiddelde MSX'er niet veel van
@@ -8,7 +8,7 @@ werkelijkheid gebruikt kon worden  (lees:  computers  genoeg
 geheugen hadden).
 
 
-           D E   T E C H N I E K
+## D E   T E C H N I E K
 
 Een recursieve routine is een routine die zichzelf aanroept.
 Dit klinkt mischien een beetje  vreemd,  maar  het  is  best
@@ -88,7 +88,7 @@ heel  goed  voorstellen  als  dit  alles  maar  moeilijk  te
 bevatten is, maar het klopt toch allemaal echt.
 
 
-      V O O R -   E N   N A D E L E N
+## V O O R -   E N   N A D E L E N
 
 Het allergrootste voordeel van recursief programmeren is dat
 het extreem weinig programmacode oplevert. Ik daag  u  graag
@@ -123,7 +123,7 @@ dan van praktische aard voor MSX omdat ook C op MSX een ware
 ramp is (programmatechnisch gesproken dan).
 
 
-             C O N C L U S I E
+## C O N C L U S I E
 
 Het zal sommige mensen wel  niet  aanstaan,  maar  voor  dit
 soort dingen heb je toch snel een PC of Atari  nodig  (werkt
@@ -147,4 +147,4 @@ professioneel met computers aan de gang gaan. Het is  daarom
 voor deze  mensen  gewoon  leuk  om  alvast  eens  met  deze
 techniek in aanraking te komen.
 
-                                   Alex van der Wal
+Alex van der Wal

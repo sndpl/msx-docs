@@ -1,5 +1,4 @@
-H E T   . R E L   F I L E   F O R M A A T
-
+# H E T   . R E L   F I L E   F O R M A A T
 
 Een GEN80  REL bevat  informatie gecodeerd in een bit-stream
 dat als volgt ingedeeld is.
@@ -37,7 +36,7 @@ lengte teller gevolgd door de naam van de label in 8
 bits ASCII.
 
 
-    H E T   C O N T R O L   F I E L D
+## H E T   C O N T R O L   F I E L D
 
 De volgende link items worden gevolgd door een naam veld:
 

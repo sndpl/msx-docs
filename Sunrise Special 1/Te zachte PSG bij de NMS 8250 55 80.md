@@ -1,6 +1,4 @@
-T E   Z A C H T E   P S G   B I J
-
-D E   N M S   8 2 5 0 / 5 5 / 8 0
+# T E   Z A C H T E   P S G   B I J D E   N M S   8 2 5 0 / 5 5 / 8 0
 
 
 Vaak is  het zo  dat de PSG wegvalt door het gebruik van een
@@ -35,4 +33,4 @@ spraak na 18:00 uur, vragen naar Haiko...)
 
 Veel luisterplezier,
 
-                                 Haiko de Boer
+Haiko de Boer
