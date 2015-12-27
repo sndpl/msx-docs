@@ -48,4 +48,4 @@
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
-| [Pointers in Pascal][Sunrise Special 1/Pointers in Pascal.md) | Rudy Oppers | Sunrise Special 1 |
+| [Pointers in Pascal](Sunrise Special 1/Pointers in Pascal.md) | Rudy Oppers | Sunrise Special 1 |
