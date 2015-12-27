@@ -4,6 +4,7 @@
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---             | ---          |
+| [Assembly cursus 8](FD40/Assembly cursus 8.md) | Arjan | Future Disk 40 |
 | [CDD](Sunrise Special 2/CDD.md) | Stefan Boer | Sunrise Special 2 |
 | [Disk cursus special 1](Sunrise Special 1/Disk cursus special 1.md) | Stefan Boer | Sunrise Special 1 |
 | [Geheugen schakelen](Sunrise Special 2/Geheugen schakelen.md) | Stefan Boer | Sunrise Special 2 |
@@ -22,6 +23,7 @@
 | [Rechtstreeks via PCM afspelen](Sunrise Special 2/Rechtstreeks via PCM afspelen.md) | Pierre Gielen | Sunrise Special 2 |
 | [Rel assembleren](Sunrise Special 1/Rel assembleren.md) | Rudy Oppers | Sunrise Special 1 |
 | [Resource dis-assembler](Sunrise Special 2/Resource.md) | Kasper Souren | Sunrise Special 2 |
+| [Schuiven en roteren](FD40/Schuiven en roteren.md) | Arjan | Future Disk 40 |
 | [Screen 4](FD32/Screen 4.md) | Jan-Willem van Helden | Future Disk 32 |
 | [VDP Cursus 1](Sunrise Special 2/VDP Cursus 1.md) | Stefan Boer | Sunrise Special 2 |
 | [VDP Cursus 2](Sunrise Special 2/VDP Cursus 2.md) | Stefan Boer | Sunrise Special 2 |
