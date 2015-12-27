@@ -1,8 +1,6 @@
-= MSX Documentation
+# MSX Documentation
 
-
-== Assembly
-
+## Assembly
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---             | ---          |
@@ -15,15 +13,32 @@
 | [R800] | | Sunrise Special 1 |
 | [Rel assembleren] | | Sunrise Special 1 |
 
-== Basic
+## Basic
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
 | [Set scroll in basic] | Rudy Oppers | Sunrise Special 1 |
 
-== C
+## C
+| Title        | Author           | Disk Magazine |
+| ---          | ---             | ---          |
 
-== Divers
+
+## Hybrid (Basic + Assembly)
+
+| Title        | Author           | Disk Magazine |
+| ---          | ---             | ---          |
+| Hybride programmeren (deel 1) | Stefan Boer | Sunrise Special 1 |
+| Hybride programmeren (deel 2) | Stefan Boer | Sunrise Special 1 |
+
+## Memman
+
+| Title        | Author           | Disk Magazine |
+| ---          | ---              | ---          |
+| [Memman 2.3 intro] |  | Sunrise Special 1 |
+| [Memman 2.3 specificaties] | | Sunrise Special 1 |
+
+## Other
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
@@ -31,23 +46,7 @@
 | [Te zachte PSG bij de NMS 8250/55/80] | | Sunrise Special 1 |
 | [Track 0 op de turbo-r] | Stefan Boer | Sunrise Special 1 |
 
-
-== Hybrid (Basic + Assembly)
-
-| Title        | Author           | Disk Magazine |
-| ---          | ---             | ---          |
-| Hybride programmeren (deel 1) | Stefan Boer | Sunrise Special 1 |
-| Hybride programmeren (deel 2) | Stefan Boer | Sunrise Special 1 |
-
-== Memman
-
-| Title        | Author           | Disk Magazine |
-| ---          | ---              | ---          |
-| [Memman 2.3 intro] |  | Sunrise Special 1 |
-| [Memman 2.3 specificaties] | | Sunrise Special 1 |
-
-
-== Pascal
+## Pascal
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
