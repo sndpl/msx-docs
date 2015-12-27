@@ -112,12 +112,12 @@
 
  Van de instructies die met de accumulator werken, bestaan er 
  twee versies, namelijk:
-
+```
  RLCA en RLC A
  RLA  en RL  A
  RRCA en RRC A
  RRA  en RR  A
-
+```
  Het is een misverstand om te denken dat de instructies uit 
  de linker kolom hetzelfde doen als de instructies uit de 
  rechter kolom. De meeste programmeurs weten wel dat de 
