@@ -1,6 +1,5 @@
 = MSX Documentation
 
-
 == Assembly
 
 | Title        | Author           | Disk Magazine |
@@ -39,6 +38,7 @@
 | Hybride programmeren (deel 2) | Stefan Boer | Sunrise Special 1 |
 
 == Memman
+
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
 | [Memman 2.3 intro] |  | Sunrise Special 1 |
