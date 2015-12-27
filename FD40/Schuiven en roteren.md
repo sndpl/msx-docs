@@ -1,10 +1,4 @@
-       SCHUIVEN & ROTEREN
-
-                             ◊◊◊◊
-                             ◊◊◊◊
-                             ◊◊◊◊
-                             ◊◊◊◊
-
+# SCHUIVEN & ROTEREN
 
  De moeilijkste commando's die de Z80 kent, zijn wat mij 
  betreft wel de schuif- en roteerinstructies, en dan wel met 
@@ -22,7 +16,7 @@
  ik) is hier meer informatie over te vinden.
 
 
-        SCHUIVEN MAAR
+## SCHUIVEN MAAR
 
  Er zijn 3 verschillende (offici◊le) soorten schuifinstruc-
  ties, namelijk SLA, SRA en SRL. Deze instructies kunnen als 
@@ -43,7 +37,7 @@
  terwijl bij SRL bit 7 nul wordt.
 
 
-           ROTEER ZE
+## ROTEER ZE
 
  Het hele probleem van de roteer-instructies wordt veroor-
  zaakt door de naamgeving van de instructies. Volgens mijn 
@@ -114,7 +108,7 @@
  aan vuil.
 
 
-         RLCA = RLC A???
+## RLCA = RLC A???
 
  Van de instructies die met de accumulator werken, bestaan er 
  twee versies, namelijk:
@@ -127,11 +121,11 @@
  Het is een misverstand om te denken dat de instructies uit 
  de linker kolom hetzelfde doen als de instructies uit de 
  rechter kolom. De meeste programmeurs weten wel dat de 
- instructies uit de linker kolom ÇÇn byte korter en twee keer 
+ instructies uit de linker kolom een byte korter en twee keer 
  zo snel zijn, maar dat de flag-be◊nvloeding anders is weet 
  bijna niemand. Bij de instructies RLCA/RLA/RRCA en RRA 
  worden de zero-flag, de P/V-flag en de Sign-flag namelijk 
  niet be◊nvloed, terwijl dit bij de langere versies van deze 
- instructies w◊l het geval is. Let hier dus goed op!!!
+ instructies wel het geval is. Let hier dus goed op!!!
 
 Arjan
