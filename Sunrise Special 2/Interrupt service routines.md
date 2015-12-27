@@ -1,7 +1,4 @@
-
-                    - EERSTE GEDEELTE -
-
-    I N T E R R U P T   S E R V I C E   R O U T I N E S 
+# I N T E R R U P T   S E R V I C E   R O U T I N E S 
                                                          
 
 Soms  zit het  mee en soms zit het tegen. Deze eerste regels 
@@ -21,7 +18,7 @@ een nutteloos artikel is.
 veel beter en uitgebreider dan dat in MCM.)
 
 
-         H E T   M A K E N   V A N   E E N   I S R 
+## H E T   M A K E N   V A N   E E N   I S R 
                                                     
 
 ISR  is  een  algemeen  gebruikte  afkorting voor  Interrupt 
@@ -39,7 +36,7 @@ omdat  wij  allen  maar  een simpele  MSX bezitten  komt die
 situatie bij ons nauwelijks voor.
 
 
-         I N T E R R U P T S   V S   P O L L I N G 
+## I N T E R R U P T S   V S   P O L L I N G 
 
 Polling is  de tegenhanger van interrupts. Bij polling wordt 
 er   geen  interrupt  gegenereerd,  maar  zal  de  CPU  zelf 
@@ -78,7 +75,7 @@ mag  komen. Met  polling heb  je dit  probleem niet omdat je
 immers weet waar het optreed.
 
 
-          W A N N E E R   I N T E R R U P T S ? ? 
+## W A N N E E R   I N T E R R U P T S ? ? 
 
 ALs we het even over een algemene  moderne  computer  hebben 
 kunnen we stellen dat interrupts  voor  twee  hoofdsituaties 
@@ -132,7 +129,7 @@ alleen maar voor te zorgen dat de interrupts zoveel mogelijk
 aan staan.
 
 
-      I S R   M O G E L I J K H E D E N   O P   M S X 
+## I S R   M O G E L I J K H E D E N   O P   M S X 
 
 Laten we  maar eens  wat methoden en programmaatjes bekijken 
 die  interrupts  afhandelen  en  polling  uitvoeren.  Om  te 
@@ -188,26 +185,12 @@ MSX een interrupt optreed op de INT-lijn.
   nadat naar FD9AH gesprongen is.
 
 
-Omdat  dit  artikel 'iets'  groter is  geworden dan  ik zelf 
-gedacht had  staat het nu uitgesmeerd over 3 submenu-opties. 
-De  volgende optie van het submenu bevat deel 2 en de daarop 
-volgende optie deel 3.
-
-                                           Alex van der Wal
-
-
-
-                    - TWEEDE GEDEELTE -
-
-    I N T E R R U P T   S E R V I C E   R O U T I N E S 
-                                                         
-
 Wat nu  volgt is  een listing  van het  voor ons belangrijke 
 deel  van de  MSX2 ISR.  Nogmaals, de  ISR's van de 2+ en de 
 turbo R  zijn een beetje anders (dat verklaart voor een deel 
 waarom screensplits op de turbo R vaak fout gaan indien deze 
 voor MSX2 geschreven zijn).
-
+```
 &H0038  C33C0C    JP    &H0C3C
 
 &H0C3C  E5        PUSH  HL         ; Push registers
@@ -344,7 +327,7 @@ voor MSX2 geschreven zijn).
 &H148C  DB99      IN    A,(&H99)   ; Lees statreg. 0 van VDP 
 &H148E  A7        AND   A          ; Zie ook: Opm 5
 &H148F  C9        RET
-
+```
 
 Opm. 1
 Nadat  naar &HFD9F  is gesprongen  worden de interrupts weer 
@@ -425,7 +408,7 @@ dat  nadat ��n  toets ingedrukt is het even duurt voordat de
 herhaling begint.
 
 
-    D I T   K A N   B E T E R   O F   N I E T   S O M S 
+## D I T   K A N   B E T E R   O F   N I E T   S O M S 
 
 Natuurlijk kunnen  wij zo'n ISR veel beter schrijven dan die 
 oenen  van Microsoft (geen wonder dat IBM met Apple samen is 
@@ -441,12 +424,12 @@ die  zinloze  ellende  over  te  slaan en  daar bestaat  een
 buitengewoon leuk geintje voor.
 
 
-           D E   I N T E R R U P T   B Y P A S S 
+## D E   I N T E R R U P T   B Y P A S S 
 
 Wat  we gaan  doen is  ervoor zorgen dat de interrupt alleen 
 nog maar naar &HFD9A springt en de rest overslaat. Ik zal nu 
 even een voorbeeld geven hoe je zoiets aanpakt.
-
+```
 V_BLNK:  EQU  &HFD9F
 
          ORG  &HFD9A     ; Ints staan uit !!!!!!!!
@@ -474,7 +457,7 @@ VDPISR:  IN   A,(&H99)   ; Lees S#0 en wis bron van int.
          POP  HL
          EI
          RET
-
+```
 V_BLNK is  een afkorting  voor Vertical  Blank en het is een 
 standaars  benaming (op  zo'n beetje  ALLE computers behalve 
 MSX) voor  de standaard 50 of 60Hz interrupt die de computer 
@@ -519,7 +502,7 @@ reaktiesnelheid  op een  VDP int.  hoger als  bij de gegeven
 routine staat.
 
 Het ziet er dan ongeveer zo uit:
-
+```
 DOINT:   IN   A,(&H99)
          RLCA
          PUSH AF
@@ -531,7 +514,7 @@ DOINT:   IN   A,(&H99)
           .
           .
          etc.
-
+```
 Overigens  kan  alleen de  VDP interrupts  doorgeven aan  de 
 processor via  de CPU interrupt pin. Geen enkel ander IC kan 
 een  interrupt aan  de CPU  doorgeven (als dit niet waar is, 
@@ -543,17 +526,7 @@ eigen ISR  wil ik  toch eerst  even wat kwijt over de andere
 interrupts en de interrupt faciliteiten van de Z80, maar dat 
 kan je allemaal op de volgende submenu-optie lezen.
 
-                                           Alex van der Wal
-
-
-
-                     - DERDE GEDEELTE -
-
-    I N T E R R U P T   S E R V I C E   R O U T I N E S 
-                                                         
-
-
-                         M O D E S 
+## M O D E S 
 
 De Z80 kent 3 verschillende 'modes' van interruptafhandeling 
 Deze  modes  kunnen  met  een  simpele  instruktie  aangezet 
@@ -597,7 +570,7 @@ iemand het  dus over vektor interrupts heeft, dan weet je nu
 waar hij het over heeft.
 
 
-        E V E N   E E N   A A N T A L   F E I T E N 
+## E V E N   E E N   A A N T A L   F E I T E N 
 
 Laten we nu eerst maar eens opsommen wat we precies weten.
 
@@ -630,7 +603,7 @@ manier  kan je  dus eerst nog een RET doen na een EI voordat
 een geaccepteerde int. gehonoreerd wordt.
 
 
-                           N M I 
+## N M I 
 
 De Z80  heeft echter  nog een  interrupt die  bij alle modes 
 aanwezig  is, maar die op de MSX niet aangesloten is. Het is 
@@ -664,7 +637,7 @@ onder ons  is het toch een leuk en simpel projekt om eens te
 doen.
 
 
-                          R E T I 
+## R E T I 
 
 Veel mensen weten van het bestaan van deze instruktie,  maar 
 er zijn er maar weinig die weten waar hij voor dient. Welnu, 
@@ -677,13 +650,13 @@ Het gebruik ervan is echter best handig  omdat  je  zo  heel
 snel een ISR routine kunt herkennen.
 
 
-                      E I   O F   D I 
+## E I   O F   D I 
 
 Heb je dat nu ook wel eens dat  je  wilt  weten  of  op  een 
 bepaald moment de ints aan of uit  staan  ??  Lang  werd  er 
 gedacht dat dit niet te testen is, maar dat  is  niet  waar. 
 Het volgende programma kan dit testen:
-
+```
          LD   A,R       ; Het werkt ook met LD   A,I
          PUSH AF
          POP  BC
@@ -691,13 +664,13 @@ Het volgende programma kan dit testen:
          JR   Z,INTUIT
 INTAAN:     .
             .
-
+```
 In bit 2 van het F-register staat na een LD  A,R  de  inhoud 
 van de IFF flip-flop. Dit bit wordt 0  gemaakt  bij  een  DI 
 instruktie en 1 bij een EI.
 
 
-                  D E   E I G E N   I S R 
+## D E   E I G E N   I S R 
 
 Om  een kompleet  eigen ISR te kunnen schrijven is het nodig 
 om de  BIOS weg  te halen  en deze door RAM te vervangen. Zo 
@@ -711,7 +684,7 @@ veranderen  en  niet de  hele meute  zoals de  standaard ISR
 doet.
 
 
-                   S L I M M E   T R U C 
+## S L I M M E   T R U C 
 
 Bij screensplits is het te voorspellen welke screensplit aan 
 de beurt  is door een soort tellertje bij te houden. Stel je 
@@ -727,26 +700,26 @@ worden,  maar  hoe  doe  je dat  nu zonder  uiteindelijk een
 register te veranderen (iets dat immers niet mag in een ISR) 
 Welnu, laat  ik eerst  maar de oplossing geven en daarna nog 
 wat verdere uitleg.
-
+```
 0038H         PUSH HL
 0039H         LD   HL,(ISRPNT)   ; De ISR pointer
 003CH         EX   (SP),HL
 003DH         RET
 
 00F0H ISRPNT: DW &HFD9A          ; Het pointeradres
-
+```
 HL  moet op de stack gezet worden omdat je anders de pointer 
 niet uit  kan lezen.  De EX  (SP),HL draait de pointer en de 
 oude  waarde van  HL echter  om zodat  het programma  ook te 
 beschrijven is als:
-
+```
               PUSH (ISRPNT)
               RET
-
+```
 of:
-
+```
               JP   (ISRPNT)
-
+```
 Deze   laatste   twee   oplossingen   kunnen   echter   niet 
 gerealiseerd worden omdat de Z80 deze instrukties niet kent. 
 In principe doen ze echter hetzelfde. Het resultaat van  dit 
@@ -768,12 +741,12 @@ dat  de  ints.  zoveel  mogelijk  aan  staan  (ook   om   de
 responstijd hoog te houden).
 
 
-             D E   F E I T E L I J K E   I S R 
+## D E   F E I T E L I J K E   I S R 
 
 Hier is nu nog maar weinig over te vertellen. Het enige  dat 
 je hier extra moet doen  t.o.v.  de  standaard  ISR  is  het 
 PUSHen van registers die je gaat veranderen oftewel:
-
+```
 0038H        JP   ISR
 
 0100H ISR:   PUSH AF
@@ -785,12 +758,12 @@ PUSHen van registers die je gaat veranderen oftewel:
              POP  xx
              POP  AF
              RET           ; Einde van int. afhandeling
+```
 
-
-                   B I O S   W E G   ? ? 
+## B I O S   W E G   ? ? 
 
 Dat is heel simpel met de volgende routine:
-
+```
              LD   A,(&HF341)
              LD   H,0
              CALL &H24       ; Zet RAM over BIOS
@@ -798,7 +771,7 @@ Dat is heel simpel met de volgende routine:
              OUT (&HFC),A
          [ Initialiseer de ISR ]
              EI
-
+```
 Nu staat  mapper page RAMPGE vanaf adres 0000H tot 3FFFH. Je 
 hoeft  nu alleen  nog maar  de ISR  af te  buigen en je bent 
 klaar  voor  aktie.  Na  een  CALL  op adres  &H24 staan  de 
@@ -814,15 +787,15 @@ staat de assembly listing "ENASLT.ASM" waar de complete CALL
 eigen programma  toe en  gebruik hem inplaats van CALL &H24. 
 Alle schakelproblemen zouden dan opgelost moeten zijn. Om de 
 BIOS weer terug te krijgen moet je het volgende intikken.
-
+```
              LD   A,(&HFCC1)
              LD   H,0
              CALL ENASLT     ; Dus niet CALL &H24
-
+```
 
 Hopelijk  zijn jullie  iets nieuws te weten gekomen uit deze 
 informatie en moet het mogelijk zijn om eens lekker ISR's te 
 kunnen gaan  maken. Het  resultaat zie  ik dan wel op bv. de 
 Sunrise Picturedisk!!
 
-                                           Alex van der Wal
+Alex van der Wal

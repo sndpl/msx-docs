@@ -1,4 +1,4 @@
- R E C H T S T R E E K S   V I A   P C M   A F S P E L E N 
+# R E C H T S T R E E K S   V I A   P C M   A F S P E L E N 
                                                             
 
 De PCM  afspeelroutines in de turbo R zijn via een BIOS call 
@@ -48,14 +48,14 @@ snelheid worden  afgespeeld, dan  moet je er wel voor zorgen
 dat de processor altijd in dezelfde 'mode' staat.
 
 
-                     P R O G R A M M A 
+## P R O G R A M M A 
 
 Hieronder vind je een voorbeeld van een ML-subroutine waarin 
 een   PCM  sample  op  adres  HL  en  met  lengte  BC  wordt 
 afgespeeld. Het  voorbeeld staat  ook op  disk onder de naam 
 PCMPLAY.ASC.
 
-
+```
 ;SpeelPCM
 
 PCM:    CALL    RESPCM          ;reset de PCM
@@ -76,19 +76,19 @@ PLAY:   LD      A,(HL)          ;pak byte op adres in HL
         OR      C               ;is BC al 0?
         JR      NZ,PLAY         ;nee, volgende byte
         RET                     ;ja, klaar
-
+```
 
 Bovenstaande afspeelroutine zal onder normale omstandigheden 
 veel  te snel  zijn, ook  als de Z80 ingeschakeld is. Daarom 
 moet in de PLAY routine een vertragingslus worden ingebouwd:
 
-
+```
 WACHT:  PUSH    BC              ;bewaar teller
         LD      B,WACHTTIJD     ;wachten (0..255)
 LUS:    DJNZ    LUS             ;verlaag B, als niet 0 ga
                                 ; naar LUS
         POP     BC              ;herstel teller
-
+```
 
 Deze wachtlus  is bijvoorbeeld in te bouwen tussen de INC HL 
 en  DEC BC  instructies. De  BIOS van  de turbo R bevat geen 
@@ -99,7 +99,7 @@ heeft. Onderstaande routine is een stukje disassembly uit de
 turbo  R BIOS,  dat thuishoort  op de  plaats waar hierboven 
 alleen de instructie OUT (0A4H),A staat:
 
-
+```
         OUT     (0A4H),A        ;stuur byte naar PCM
 PAKPCM: IN      (0A4H),A        ;lees byte uit PCM
         OR      A               ;nul?
@@ -110,7 +110,7 @@ PAKPC2: IN      A,(0A4H)        ;lees byte uit PCM
         JR      NZ,PAKPC2       ;nee, herhaal
         EXX                     ;terug naar normale
                                 ; registers
-
+```
 
 Het  moge duidelijk  zijn dat de snelheid die de aanroepende 
 routine aan de BIOS-CALL PLAYPCM heeft doorgegeven inmiddels 
@@ -120,4 +120,4 @@ toetsenbord-matrix  om  te  kijken  of  de  STOP-toets wordt
 ingedrukt. Ik  laat het aan de fantasie van de lezer over om 
 daar zelf een routine voor te schrijven.
 
-                                              Pierre Gielen
+Pierre Gielen

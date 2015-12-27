@@ -1,6 +1,4 @@
-
-                    S T E R E O   S C C 
-                                         
+# S T E R E O   S C C 
 
 Het  idee van  het ombouwen  van de  SCC naar een zogenaamde 
 stereo SCC is niet nieuw. Maar omdat ik nog nooit ergens een 
@@ -19,4 +17,4 @@ van de file: STEREOSC.PCT).
 
 Veel plezier met de "stereo SCC" en tot een volgende keer!
 
-                                              Haiko de Boer
+Haiko de Boer

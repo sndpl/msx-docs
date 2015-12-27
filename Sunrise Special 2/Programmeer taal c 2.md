@@ -1,8 +1,8 @@
-      D E   P R O G R A M M E E R T A A L   C   ( 2  )
+# D E   P R O G R A M M E E R T A A L   C   ( 2  )
                                                        
 
 
-                     I N L E I D I N G 
+## I N L E I D I N G 
 
 In  de vorige  aflevering hebben we wat ge�xperimenteerd met 
 wat simpel  rekenwerk in C. Deze aflevering gaan we eens wat 
@@ -16,34 +16,34 @@ volstaat het  er een  ';' achter  te zetten. Deze manier van
 werken  maakt het  mogelijk allerlei onzinnige statements te 
 maken,  die  zonder  problemen  door  de  compiler  verwerkt 
 worden. Kijk dus uit, want
-
+```
      1;
-
+```
 is foutloos C, alleen gebeurt er weinig.
 
 
-    R E K E N K U N D I G E   U I T D R U K K I N G E N 
+## R E K E N K U N D I G E   U I T D R U K K I N G E N 
 
 Een expression  levert altijd  een waarde op, maar als je er 
 een statement van maakt wordt er verder niets met die waarde 
 gedaan.  De '='  (toewijzing, oftewel assignment) is ook een 
 operator, en geen (deel van) een statement. De waarde van
-
+```
      x = 35
-
+```
 is gewoon  35, dus  de uitdrukking  die rechts  van het  '=' 
 teken  staat. Dit  heeft grote voordelen als je effici�nt en 
 compact wil programmeren. Zo maakt de uitdrukking
-
+```
      y = (x = 35) + 2
-
+```
 x gelijk  aan 35,  en y gelijk aan 37, wat ook het resultaat 
 van  de hele  uitdrukking is.  De haakjes  zijn hier  nodig, 
 omdat de '+'-operator een hogere prioriteit heeft dan de '=' 
 operator. de uitdrukking
-
+```
      y = x = 2 + 35
-
+```
 zou  zowel x  als y gelijk maken aan 37. De prioriteiten van 
 de vele operators die C kent - en er zijn er ruim 40! - zijn 
 zelfs voor geoefende C-programmeurs nauwelijks uit het hoofd 
@@ -57,15 +57,15 @@ de '==' operator. Laatstgenoemde is een vergelijkingoperator
 (zie  de vorige  aflevering) die  veel gebruikt  wordt, maar 
 soms wordt  er wel  eens een  enkele '='  getypt als  er een 
 dubbele bedoeld wordt. Vergelijk eens de volgende lussen:
-
+```
      do { /* hier allerlei statements */ }
      while (x == 10);
-
+```
 en
-
+```
      do { /* hier allerlei statements */ }
      while (x = 10);
-
+```
 Je  leest gemakkelijk over het verschil heen, maar de eerste 
 lus wordt  be�indigd als  x ongelijk  aan 10 wordt, en in de 
 tweede lus wordt x altijd 10 gemaakt. Bovendien is de waarde 
@@ -78,8 +78,8 @@ programmeur.
 
 
 
-    D E   A L G O R I T H M E   V A N   E U C L I D E S 
-
+## D E   A L G O R I T H M E   V A N   E U C L I D E S 
+```
 |                                                          |
 | #include <STDIO.H>                                       |
 |                                                          |
@@ -123,7 +123,7 @@ programmeur.
 |   printf("\nEinde programma\n\n");                       |
 | }                                                        |
 |                                                          |
-
+```
 
 In  dit   programma  worden  heel  wat  nieuwe  taalelemenen 
 ge�ntroduceerd:  allereerst  het  gebruik van  functies, het 
@@ -137,10 +137,10 @@ kunnen gebruiken.  De functiewaarde,  die de  functie geeft,
 wordt dan eenvoudig niet gebruikt.
 
 Met de regels
-
+```
      int ggd(grootste, kleinste)
      int grootste, kleinste;
-
+```
 geven we  aan dat  de definitie  van de functie 'ggd' volgt. 
 (Voor  functienamen  gelden  dezelfde regels  als namen  van 
 variabelen). Het 'int' voor 'ggd' laat de compiler weten dat 
@@ -178,10 +178,10 @@ gedeclareerd, d.w.z.  aan het  begin van  het programma,  of
 tussen de functies in.
 
 De regels
-
+```
   if (grootste < kleinste) {
     temp = kleinste; kleinste = grootste; grootste = temp; }
-
+```
 is een if-statement in C. Het lijkt veel op dat van BASIC of 
 PASCAL,  alleen ontbreekt  hier 'THEN'. Het 'THEN' is echter 
 impliciet! De algemene vorm van een if-statement is:
@@ -269,4 +269,4 @@ functiewaarde  krijg  je  dan  de pointer  naar de  functie,
 oftewel het  adres van  de functie. Over pointers wil ik het 
 echter pas in de volgende aflevering hebben).
 
-                                               Robert Amesz
+Robert Amesz

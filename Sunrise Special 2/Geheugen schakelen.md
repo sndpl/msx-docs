@@ -1,6 +1,4 @@
-                    - EERSTE GEDEELTE -
-
-            G E H E U G E N   S C H A K E L E N 
+# G E H E U G E N   S C H A K E L E N 
                                                  
 
 Een   tijdje  geleden   vroeg  iemand   aan  mij  waarom  de 
@@ -17,14 +15,14 @@ dat uit  te leggen, moet ik eerst uitleggen hoe het geheugen
 geschakeld dient te worden.
 
 
-         P R I M A I R E   E N   S U B S L O T E N 
+## P R I M A I R E   E N   S U B S L O T E N 
 
 Elke  MSX computer  heeft vier primaire sloten, die elk weer 
 kunnen worden gesplitst in vier subsloten. Zowel de primaire 
 als de subsloten worden genummerd van 0 tot 3.
 
 Een voorbeeld van een slotindeling is (FS-A1ST MSX turbo R):
-
+```
         0-0     0-2     3-0     3-1     3-2     3-3
 
 0000    MAIN    -       RAM     SUB     -       HIRO
@@ -38,7 +36,7 @@ BFFF                            BASIC
 
 C000    -       -       RAM     -       -       -
 FFFF
-
+```
 
 Slot 1 en 2 zijn de cartridge sloten, de indeling hiervan is 
 afhankelijk van  wat men  in het cartridgeslot stopt. Als er 
@@ -46,11 +44,11 @@ een  slotexpander in  steekt, wordt  het slot  uitgebreid in
 vier subsloten, bijvoorbeeld slot 1-0, 1-1, 1-2 en 1-3.
 
 Het MAIN  ROM moet volgens de MSX standaard altijd in slot 0 
-zitten,  als slot 0 is ge�xpandeerd is dit dus slot 0-0. Het 
+zitten,  als slot 0 is geexpandeerd is dit dus slot 0-0. Het 
 MAIN  ROM  vanaf adres  &H0000 bevat  het BIOS  (Basic Input 
 Output System), vanaf &H4000 staat de BASIC interpreter.
 
-Slot 0  is bij de turbo R ge�xpandeerd voor de FM BASIC, die 
+Slot 0  is bij de turbo R geexpandeerd voor de FM BASIC, die 
 in  slot 0-2 is geplaatst. In slot 3-0 zit het memory mapper 
 RAM,  de  I/O  poorten  &HFC t/m  &HFF bepalen  welke memory 
 mapper segmenten hier staan. De SUB ROM is de MSX2 BASIC, de 
@@ -69,17 +67,17 @@ het  ingebouwde pakket,  dat met  een CALL HIRO of een reset
 roepen.
 
 
-                       S L O T   I D 
+## S L O T   I D 
 
 De BIOS heeft een handige manier om een bepaald slot weer te 
 geven, dit  is de  zogenaamde slot ID byte. Deze byte is als 
 volgt opgebouwd:
-
+```
 MSB   7   6   5   4   3   2   1   0   LSB
 
       E   0   0   0   --S--   --P--
-
-E: slot ge�xpandeerd? (1=ja)
+```
+E: slot geexpandeerd? (1=ja)
 S: nummer van secundair slot
 P: nummer van primair slot
 
@@ -96,12 +94,12 @@ Slot:   ID-byte:
 
 Merk op  dat er  verschil is  tussen slot 0 en 0-0!!! Dit is 
 natuurlijk  alleen  zo  bij  computers  waarbij  slot  0  is 
-ge�xpandeerd, maar als je een programma schrijft is het toch 
+geexpandeerd, maar als je een programma schrijft is het toch 
 meestal  de bedoeling  dat het  op alle computers werkt denk 
 ik.
 
 
-                 B I O S   R O U T I N E S 
+## B I O S   R O U T I N E S 
 
 De  veiligste manier  om met  het geheugen  te schakelen  is 
 natuurlijk via  het BIOS, zo hoort het ook via de standaard. 
@@ -169,7 +167,7 @@ Page 3  &HC000-&HFFFF   H tussen &HC0 en &HFF
 &H0030     CALLF
 
 Deze  routine kan  behalve met  CALL &H0030 ook met RST &H30 
-worden aangeroepen.  Dit kost  maar ��n  byte in  plaats van 
+worden aangeroepen.  Dit kost  maar een  byte in  plaats van 
 drie, en is iets sneller.
 
 Werking:   roept een routine in een bepaald slot aan (inter- 
@@ -177,29 +175,29 @@ Werking:   roept een routine in een bepaald slot aan (inter-
 Input  en output  zijn afhankelijk  van de routine die wordt 
 aangeroepen. De waarde van AF wordt gewijzigd. De invoer van 
 adres en slot gaan als volgt:
-
+```
         RST &H30        ; inter-slot call
         DB  SLOT        ; slot ID byte van slot waarin
                         ; de routine staat
         DW  ADRES       ; adres van aan te roepen routine
-
+```
 Dit is  dus een  zeer snelle en korte methode om een routine 
 in een "ver" slot aan te roepen. Dit wordt veel gebruikt bij 
 hooks, daar is precies voldoende ruimte (5 bytes) om een RST 
 &H30 plus slot, adres en een RET neer te zetten.
 
 Voorbeeld:
-
+```
         RST  &H30
         DB   &H83
         DW   &H5A00
-
+```
 Hiermee  wordt  de  routine  op  adres  &H5A00  in slot  3-0 
 aangeroepen. Dit was het overzicht van de BIOS routines voor 
 geheugen schakeling, nu gaan we verder met ons "probleem".
 
 
-             R O M / R A M   S C H A K E L E N 
+## R O M / R A M   S C H A K E L E N 
 
 Bij ML  programma's die vanuit BASIC worden opgestart is het 
 vaak nodig om de MAIN ROM tijdelijk weg te schakelen en daar 
@@ -234,37 +232,20 @@ geselecteerd.
 Met  deze  gegevens  komen  we  tot  de  volgende  standaard 
 routines.
 
-(Nvdr.  De tekst  was langer  dan 16  kB, u  kunt het tweede 
-gedeelte in het submenu vinden.)
-
-                                                Stefan Boer
-
-
-
-                    - TWEEDE GEDEELTE -
-
-            G E H E U G E N   S C H A K E L E N 
-                                                 
-
-
-(Nvdr.  De tekst  was langer  dan 16  kB, u  kunt het eerste 
-gedeelte in het submenu vinden.)
-
-
-                       R A M   A A N 
+##  R A M   A A N 
 
 Met deze routine selecteert u ROM op &H0000 (page 0):
-
+```
         LD   A,(&HF341)
         LD   H,&H00
         CALL &H24
-
+```
 Met deze routine selecteert u RAM op &H4000 (page 1):
-
+```
         LD   A,(&HF342)
         LD   H,&H40
         CALL &H24
-
+```
 Gebruik altijd  deze methode,  dan werkt het altijd. Bij het 
 wegschakelen van de BIOS op page 0 moet u er wel voor zorgen 
 dat de interrupts uit staan, of dat op adres &H0038 uw eigen 
@@ -284,7 +265,7 @@ routine staat op adres &H159, het adres van de routine die u
 wilt aanroepen moet in IX staan.
 
 
-                       R O M   A A N 
+## R O M   A A N 
 
 En nu zijn we dan tot de kern van de zaak doorgedrongen: wat 
 is de  juiste manier  om ROM  te selecteren  op page 0 en/of 
@@ -297,39 +278,39 @@ MAIN ROM te vinden.
 
 Toch  kunt u hem wel uit het MAIN ROM halen. Op adres &HFCC1 
 staat namelijk  een tabel  van 4 bytes, die per primair slot 
-aangeeft  of het  slot is ge�xpandeerd of niet. Slot 0 staat 
+aangeeft  of het  slot is geexpandeerd of niet. Slot 0 staat 
 op &HFCC1, slot 1 op &HFCC2, enz.
 
 Deze  tabel heet  EXPTBL (EXPansion  TaBLe). Er zijn slechts 
-twee waarden mogelijk: &H80 (wel ge�xpandeerd) en &H00 (niet 
-ge�xpandeerd). Het  leuke is  nu dat  deze byte  voor slot 0 
+twee waarden mogelijk: &H80 (wel geexpandeerd) en &H00 (niet 
+geexpandeerd). Het  leuke is  nu dat  deze byte  voor slot 0 
 precies het slot van de MAIN ROM aangeeft!
 
-Is  slot  0  namelijk  ge�xpandeerd, dan  staat er  op adres 
+Is  slot  0  namelijk  geexpandeerd, dan  staat er  op adres 
 &HFCC1 een  &H80, de  slot ID  byte van  slot 0-0. Is slot 0 
-niet ge�xpandeerd, dan staat er op adres &HFCC1 een &H00, de 
+niet geexpandeerd, dan staat er op adres &HFCC1 een &H00, de 
 slot ID byte voor slot 0!
 
 De juiste routines om ROM te selecteren zijn dus:
 
 ROM selecteren op &H0000 (page 0):
-
+```
         LD   A,(&HFCC1)
         LD   H,&H00
         CALL &H24
-
+```
 ROM selecteren op &H4000 (page 1):
-
+```
         LD   A,(&HFCC1)
         LD   H,&H40
         CALL &H24
-
+```
 Gebruik  altijd deze  methode, dan  werkt het altijd! Helaas 
 zijn er  veel programmeurs  die het  niet zo  doen, hierover 
 gaat de volgende paragraaf.
 
 
-             H O E   H E T   N I E T   M O E T 
+## H O E   H E T   N I E T   M O E T 
 
 Een aantal  (Nederlandse) programmeurs  denken dat  op adres 
 &HFCC0  de slot ID byte staat voor het MAIN ROM in page 0 en 
@@ -339,20 +320,20 @@ byte voor page 1 EN page 0!!!
 
 Helaas zijn er daarom veel programmeurs die als volgt ROM op 
 &H0000 selecteren:
-
+```
         LD   A,(&HFCC0)
         LD   H,&H00
         CALL &H24
-
+```
 Dit  is dus echt helemaal fout!!! Doe dit dus nooit zo!!! Ik 
 snap wel  hoe ze  hierbij komen,  het komt door CALSLT. Deze 
 BIOS  routine wordt  vaak onder MSX-DOS gebruikt om een BIOS 
 routine aan  te roepen.  Voor CALSLT moet de slot ID byte in 
 de  HOOGSTE ACHT  BITS van  register IY  staan. Dit  kan als 
 volgt worden gedaan:
-
+```
         LD   IY,(&HFCC0)
-
+```
 Op  deze manier  worden de  laagste acht bits geladen met de 
 waarde op &HFCC0 (die waarde doet er verder niet toe), en de 
 hoogste acht  bits (waar  het om  draait) met  de waarde  op 
@@ -360,7 +341,7 @@ hoogste acht  bits (waar  het om  draait) met  de waarde  op
 de verwarring met &HFCC0 vandaan.
 
 
-                         B S A V E 
+## B S A V E 
 
 Dat het  echt onzin  is om &HFCC0 te gebruiken om de slot ID 
 byte  van het MAIN ROM te achterhalen blijkt wel als we gaan 
@@ -389,55 +370,55 @@ zijn hoofd  is, want  de waarde  die daar  staat is volkomen
 onvoorspelbaar!!!
 
 
-         H O E   H E T   O O K   N I E T   M O E T 
+## H O E   H E T   O O K   N I E T   M O E T 
 
 Een andere methode die ik vaak zie is de volgende, het maakt 
 hierbij niet uit of het om page 0 of page 1 gaat:
-
+```
         XOR  A
         LD   H,&H40     ; &H00 voor page 0
         CALL &H24
-
+```
 Zoals  u weet is XOR A hetzelfde als LD A,0, voor de slot ID 
 byte wordt  dus 0  genomen. Bij  computers waar  slot 0 niet 
-ge�xpandeerd  is geeft  dit natuurlijk  geen problemen, maar 
-als slot 0 wel ge�xpandeerd kan dit problemen geven.
+geexpandeerd  is geeft  dit natuurlijk  geen problemen, maar 
+als slot 0 wel geexpandeerd kan dit problemen geven.
 
 Dit  komt omdat  de routine  op &H24  naar bit 7 kijkt om te 
 kijken of het secundaire slot moet worden veranderd of niet.
 
-Stel  u heeft  een computer  waarvan slot  0 is ge�xpandeerd 
+Stel  u heeft  een computer  waarvan slot  0 is geexpandeerd 
 (bijvoorbeeld een turbo R), en u heeft slot 3-3 geselecteerd 
 op &H4000 (page 1). Nu doet u
-
+```
         XOR  A
         LD   H,&H40
         CALL &H24
- 
+```
 om  het ROM  te selecteren  op &H4000.  Dit gaat  nu mis! De 
 routine op  &H24 kijkt  immers naar  bit 7, en die is gelijk 
 aan  0. Het  gevolg is  dat slot 0-3 wordt geselecteerd, dit 
 uiteraard met onbekende gevolgen (meestal een vastloper).
 
 
-              H E T   F S T   P R O B L E E M 
+## H E T   F S T   P R O B L E E M 
 
 U raadt  het al: de replay routine van FAC Soundtracker doet 
 het  niet  altijd  goed  omdat  hij  het  geheugen  verkeerd 
 schakelt. Om precies te zijn schakelt FAC Soundtracker op de 
 volgende manier ROM op &H0000:
-
+```
         LD   A,(&HFCC0)
         LD   H,&H40
         CALL &H24
-
+```
 Zoals  u  weet  bevat  &HFCC0  de  high-byte  van  het BSAVE 
 startadres, de waarde op dit adres is dus onvoorspelbaar. Er 
 wordt  op   deze  manier   dus  naar  een  willekeurig  slot 
 geschakeld, met onbekende gevolgen.
 
 
- W A A R O M   W E R K T   H E T   M E E S T A L   W E L ? 
+## W A A R O M   W E R K T   H E T   M E E S T A L   W E L ? 
 
 De  oplettende lezertjes vragen zich nu natuurlijk af waarom 
 FST.BIN onder  BASIC wel altijd werkt. Dit wordt veroorzaakt 
@@ -445,7 +426,7 @@ door toeval, oftewel ontzettende mazzel voor de FAC.
 
 Zoals  u weet  staat de  MAIN ROM  altijd in  slot 0 of 0-0, 
 waarvan de  slot ID  bytes resp.  &H00 en &H80 zijn. &H80 is 
-echter  altijd goed,  want als  slot 0  niet ge�xpandeerd is 
+echter  altijd goed,  want als  slot 0  niet geexpandeerd is 
 maakt het  tenslotte niet uit of het subslot wordt veranderd 
 of niet.
 
@@ -468,13 +449,13 @@ slot  ID  byte  voor het  MAIN ROM!!!  Kortom, de  FAC heeft
 ontzettende mazzel gehad.
 
 
-                     D E   M O R A A L 
+## D E   M O R A A L 
 
 Ik  hoop  dat  alle  Nederlandse  programmeurs hier  wat van 
 hebben   geleerd,  en  voortaan  de  enige  echte  standaard 
 routines gebruiken  om het  geheugen te schakelen. Ik zal ze 
 hier voor de zekerheid nog maar een keer geven:
-
+```
 RAM000: LD   A,(&HF341)
         LD   H,&H00
         CALL &H24
@@ -490,10 +471,10 @@ ROM000: LD   A,(&HFCC1)
 ROM400: LD   A,(&HFCC1)
         LD   H,&H40
         CALL &H24
-
+```
 De  FAC is  echt niet  de enige  die dit  fout doet, er zijn 
 helaas  veel  meer  Nederlandse  MSX  programmeurs  die  dit 
 verkeerd doen.  Ik hoop  dat dit artikel daar verandering in 
 gaat brengen...
 
-                                                Stefan Boer
+Stefan Boer

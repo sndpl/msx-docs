@@ -1,4 +1,4 @@
-                        L E D J E S 
+# L E D J E S 
                                      
 
 Zoals  u weet  heeft de turbo R een schitterende rij ledjes. 
@@ -13,7 +13,7 @@ geschikt  voor een  simpele output indicator voor muziek, of
 een simpele input indicator voor samples.
 
 
-                   L E D J E S   S H O W 
+## L E D J E S   S H O W 
 
 Hier doen  we er  iets anders  mee, we laten de ledjes op de 
 interrupt een bepaald patroontje uitvoeren, wat er heel leuk 
@@ -29,7 +29,7 @@ assemblerlisting  staat ook  als LED.ASC  op de  disk. Zoals
 gebruikelijk  onderbreek   ik  de  listing  regelmatig  voor 
 uitgebreide uitleg.
 
-
+```
 ; L E D . A S M 
 ; Show met de ledjes van de MSX turbo R
 ; Alleen turbo R!!!
@@ -63,7 +63,7 @@ AD_TAB: DS    2               ; ruimte om huidige plaats
 W_A7:   DS    1               ; ruimte opslag poort &HA7
 TIME:   DB    WACHT           ; wachttijd
 TELLER: DS    1               ; ruimte om tijd bij te houden
-
+```
 
 De  ledjes  show  wordt  gestart  door  adres &HD000  aan te 
 roepen, en weer gestopt door &HD003 aan te roepen. Op ST_TAB 
@@ -73,7 +73,7 @@ twee   simpele  POKEs  kan  worden  verwijderd.  De  default
 wachttijd is  5, dit  betekent dat  om de vijf interrupts de 
 "stand" van de ledjes wordt gewijzigd.
 
-
+```
 INIT:   LD    HL,HOOK
         LD    DE,OLDHOK
         LD    BC,5
@@ -91,7 +91,7 @@ INIT:   LD    HL,HOOK
         LD    (TELLER),A      ; teller op 0 zetten
         EI
         RET
-
+```
 
 Dit is  de initialisatieroutine.  Eerst wordt  de oude  hook 
 bewaard,  dit is nodig voor het terugzetten van de oude hook 
@@ -99,12 +99,12 @@ en bovendien  zijn zo  geneste hooks  mogelijk. De oude hook
 wordt   daarvoor   aangeroepen   nadat   onze   routine   is 
 afgehandeld.
 
-De  adrespointer wordt  ge�nitialiseerd door  het startadres 
+De  adrespointer wordt  geinitialiseerd door  het startadres 
 van  de  tabel  in  te  vullen.  Bovendien wordt  de default 
 wachttijd ingesteld, en wordt de teller die bijhoudt hoeveel 
 interrupts er al zijn geweest op 0 gezet.
 
-
+```
 EXIT:   DI
         LD    HL,OLDHOK
         LD    DE,HOOK
@@ -112,12 +112,12 @@ EXIT:   DI
         LDIR                  ; herstel oude hook
         EI
         RET
-
+```
 
 Hiermee wordt  de ledjes  show stopgezet, de oude hook wordt 
 weer hersteld.
 
-
+```
 LEDPRG: PUSH  AF              ; verplicht bij gebruik &HFD9F
         LD    A,(TIME)
         LD    HL,TELLER
@@ -126,7 +126,7 @@ LEDPRG: PUSH  AF              ; verplicht bij gebruik &HFD9F
         JP    NZ,ENDINT       ; nee, dan einde interrupt
         XOR   A
         LD    (HL),A          ; teller op 0 zetten
-
+```
 
 Bij binnenkomst wordt eerst AF bewaard. Dit is verplicht als 
 je  de routine  onder BASIC wilt gebruiken!! Anders werkt ON 
@@ -142,7 +142,7 @@ niet  bereikt, dan  wordt de  interrupt be�indigd  door naar
 ENDINT te  springen. Anders  wordt de  teller op  0 gezet en 
 gaan we verder met de rest van de routine.
 
-
+```
         LD    HL,(AD_TAB)     ; adres commando inlezen
 GETCMD: LD    A,(HL)          ; haal commando op
         CP    255             ; einde tabel?
@@ -152,7 +152,7 @@ GETCMD: LD    A,(HL)          ; haal commando op
         LD    C,A
         INC   HL
         LD    (AD_TAB),HL     ; nieuwe pointer wegzetten
-
+```
 
 Hier  wordt eerst  het commando opgehaald. Is dit gelijk aan 
 255, dan  is het  einde van  de tabel  bereikt en wordt naar 
@@ -166,7 +166,7 @@ van  de ledjes weergeeft. Dit getal wordt in C bewaard en de
 pointer  wordt   naar  de   volgende  positie  in  de  tabel 
 verplaatst.
 
-
+```
 ; Commando uitvoeren
 ; A-register: 0 - - - C K P R
 ; C=caps, K=kana, P=pause, R=R800
@@ -178,7 +178,7 @@ verplaatst.
         JR    NZ,CAPS
         SET   6,A             ; caps uit
 CAPS:   OUT   (&HAA),A
-
+```
 
 Dit stukje code bestuurd het caps lampje, dat wordt bestuurd 
 door bit 6 van poort &HAA. Bit 6 heeft overigens een inverse 
@@ -189,7 +189,7 @@ aan,  dan is  de waarde  van het A register al goed en wordt
 die bij  het label  CAPS: naar  poort &HAA  gestuurd. Anders 
 wordt bit 6 eerst gezet (ledje uit).
 
-
+```
         LD    A,15
         CALL  RDPSG
         RES   7,A
@@ -199,7 +199,7 @@ wordt bit 6 eerst gezet (ledje uit).
 KANA:   LD    E,A
         LD    A,15
         CALL  WRTPSG
-
+```
 
 Het  kana  lampje  zit  op  register 15  van de  PSG! Bit  7 
 bestuurd  het led,  ook dit  bit heeft  een inverse werking. 
@@ -209,7 +209,7 @@ lampje  bit 7  op de  juiste wijze  veranderd en  vervolgens
 wordt  register   15  via  de  BIOS  met  de  nieuwe  waarde 
 beschreven.
 
-
+```
         XOR   A               ; pause en R800 led uit
         BIT   1,C             ; pause aan/uit?
         JR    Z,R800
@@ -218,7 +218,7 @@ R800:   BIT   0,C             ; R800 aan/uit?
         JR    Z,WR_A7
         SET   7,A             ; R800 led aan
 WR_A7:  OUT   (&HA7),A
-
+```
 
 Het R800  ledje en  het PAUSE  ledje zitten  allebei op  I/O 
 poort  &HA7. Het R800 led zit op bit 0, het PAUSE led op bit 
@@ -229,7 +229,7 @@ bits  0 en  7 van  A aan de hand van bit 0 en 1 van C indien
 nodig aangezet.  Tenslotte wordt  de waarde  naar poort &HA7 
 gestuurd.
 
-
+```
 ENDINT: POP   AF              ; einde introutine, herstel AF
                               ; (=S#0 voor BASIC)
 OLDHOK: RET                   ; hier komt oude interrupt
@@ -237,7 +237,7 @@ OLDHOK: RET                   ; hier komt oude interrupt
         RET
         RET
         RET
-
+```
 
 Einde  van de hoofdroutine. Aan het begin van de routine heb 
 ik  al  uitgelegd  waarom  AF moet  worden bewaard.  Over de 
@@ -246,32 +246,32 @@ hook  neergezet. Hierdoor  zijn geneste interrupts mogelijk,
 en kan  er bijvoorbeeld MoonBlaster muziek worden afgespeeld 
 tijdens de ledjes show.
 
-
+```
 ; Commando 128+tijd (1-127) verandert wachttijd
 
 CHTIME: RES   7,A             ; wis bit 7
         LD    (TIME),A        ; nieuwe wachttijd
         INC   HL
         JP    GETCMD          ; ga verder met volgende cmd
-
+```
 
 Hier  wordt een  "change time"  commando afgehandeld. Na het 
 instellen van  de nieuwe  wachttijd wordt weer direct verder 
 gegaan met het volgende commando.
 
-
+```
 ; Commando &HFF: begin opnieuw in tabel
 
 EINDE:  LD    HL,(ST_TAB)
         LD    (AD_TAB),HL     ; zet adres op begin tabel
         JP    GETCMD          ; ga verder met eerste cmd
-
+```
 
 Hier wordt het "einde van de tabel" commando afgehandeld. De 
 adrespointer  wordt weer  op het begin van de tabel gezet en 
 er wordt direct verdergegaan met het volgende commando.
 
-
+```
 ; tabel met commando's, vergeet niet 255 laatste data
 
 TABEL:  DB    128+10,15,0,15,0,15,0,15,0,15,0,15,0
@@ -282,17 +282,17 @@ TABEL:  DB    128+10,15,0,15,0,15,0,15,0,15,0,15,0
         DB    128+5,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1
         DB    2,4,8,4,2,1,2,4,8
         DB    4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,255
-
+```
 
 Deze  tabel  bevat  voorbeelddata.  Deze data  is als  volgt 
 opgebouwd:
-
+```
 MSB   7     6     5     4     3     2     1     0   LSB
 
       0     -     -     -    CAPS  KANA PAUSE  R800
 
 of    1     --------------wachttijd--------------
-
+```
 
 En natuurlijk 255 voor het einde van de tabel. Het komt erop 
 neer  dat  128+tijd  (0-127)  voor  het  veranderen  van  de 
@@ -302,7 +302,7 @@ commando  te krijgen  dat de  stand van de ledjes verandert.
 Veel plezier met het zelf maken van leuke patroontjes!
 
 
-                      T O T   S L O T 
+## T O T   S L O T 
 
 Ik  hoop  dat  dit  een  leerzaam  artikel  was. Behalve  de 
 aansturing  van de ledjes zijn ook andere technieken aan bod 
@@ -321,4 +321,4 @@ routine. Zet  de ren  sha autofire  maar eens  aan en  start
 vervolgens  de ledjes routine. Iedere keer als het pause led 
 aangaat stopt het rensha led!
 
-                                                Stefan Boer
+Stefan Boer

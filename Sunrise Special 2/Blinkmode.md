@@ -1,4 +1,4 @@
-                     B L I N K M O D E 
+# B L I N K M O D E 
                                         
 
 Ik  ga ervan  uit dat  de blinkmode in Text Mode 2 (SCREEN 0 
@@ -12,7 +12,7 @@ routine  geschreven  waarmee van  een bepaalde  rechthoek de
 blinkmode aan of uit kan worden gezet.
 
 
-              G E B R U I K   I N   B A S I C 
+## G E B R U I K   I N   B A S I C 
 
 Ik heb  de routine  meteen maar  in een  CMD jasje gestoken, 
 zodat  hij vanuit  BASIC te  gebruiken is.  Dit heeft  extra 
@@ -21,11 +21,12 @@ rekenwerk, maar ook veel tijd.
 
 Met    een   BLOAD"CMDBLINK.BIN",R   initialiseert   u  vier 
 nieuwe BASIC commando's:
-
+```
 CMD BFIL (x1,y1)-(x2,y2)
 CMD BRES (x1,y1)-(x2,y2)
 CMD BCOL (voorgrondkleur,achtergrondkleur)
 CMD BTIM (normaaltijd,blinktijd)
+```
 
 Met (x1,y1)-(x2,y2)  geeft u  een rechthoek  op, net als bij 
 LINE(x1,y1)-(x2,y2),,BF.  De  x  co�rdinaten  moeten  liggen 
@@ -40,7 +41,7 @@ moeten  tussen 0  en 15  liggen. De  tijd wordt opgegeven in
 eenheden van ca. 1/6 seconde.
 
 
-                           C M D 
+## C M D 
 
 Voordat we  met de  assemblerlisting gaan  beginnen moet  ik 
 natuurlijk  eerst nog  even uitleggen  hoe CMD werkt. CMD is 
@@ -73,7 +74,7 @@ Nu is  het tijd  voor de  assemblerlisting. Zoals gewoonlijk
 zal  ik  hem  regelmatig  onderbreken  voor  commentaar.  De 
 listing is aanwezig op de disk onder de naam "CMDBLINK.ASC".
 
-
+```
 ; C M D B L I N K . A S M 
 ; Gebruikt BLINK
 ; Door Stefan Boer 21/10/92
@@ -120,19 +121,19 @@ INIT:   LD    HL,HOOK
 HOOK:   POP   AF              ; wis terugspringadres
         CALL  PROG
         RET
-
+```
 
 Met een CALL INIT wordt de nieuwe hook over de oude CMD hook 
 gezet.  De POP  AF zorgt  ervoor dat er geen foutmelding zal 
 volgen  na  het  uitvoeren  van  een  van  de  nieuwe  BASIC 
 commando's. De nieuwe hook roept daarna PROG aan.
 
-
+```
 ; dit wordt aangeroepen bij een CMD
 
 PROG:   RST   8
         DB    "B"             ; eerste letter altijd "B"
-
+```
 
 HL wijst naar de huidige positie in het BASIC programma. Bij 
 aanroep van PROG is dit dus de positie direct achter de code 
@@ -151,7 +152,7 @@ een   foutmelding.  HL  wordt  automatisch  verzet  naar  de
 volgende   positie,   waarbij  spaties   automatisch  worden 
 overgeslagen.
 
-
+```
         LD    A,(HL)
         INC   HL
         CP    "F"             ; bFil
@@ -163,7 +164,7 @@ overgeslagen.
         CP    "T"             ; bTim
         JP    Z,BTIM
         JP    SYNTAX          ; Syntax error
-
+```
 
 Hier wordt de volgende code opgehaald, HL wordt daarna op de 
 volgende positie gezet met een INC HL. Vervolgens wordt naar 
@@ -173,7 +174,7 @@ gedaan. Wordt geen van de tweede letters gevonden, dan staat
 er  blijkbaar een  verkeerd woord  achter CMD  en wordt  een 
 foutmelding gegeven.
 
-
+```
 BFIL:   RST   8
         DB    "I"
         RST   8
@@ -181,7 +182,7 @@ BFIL:   RST   8
         LD    A,1             ; blink aan
         LD    (MODE),A
         JP    FILRES
-
+```
 
 Hier wordt naartoe gesprongen als er "BF" is gevonden. Eerst 
 moet  er dus  nog worden  gecontroleerd of  er ook inderdaad 
@@ -192,20 +193,20 @@ rechthoek de  blinkmode aan-  of uitgezet  wordt. Vervolgens
 wordt  er naar  FILRES gesprongen,  vanaf daar is de routine 
 voor BFIL en BRES hetzelfde.
 
-
+```
 BRES:   RST   8
         DB    "E"
         RST   8
         DB    "S"             ; brES
         XOR   A               ; blink uit
         LD    (MODE),A
-
+```
 
 Dit is ongeveer hetzelfde, alleen nu voor BRES. (MODE) wordt 
 nu op 0 gezet, een JP FILRES is niet nodig omdat FILRES hier 
 direct achter staat.
 
-
+```
 ; routine voor BFIL en BRES (MODE is al ingevuld)
 
 FILRES: RST   8
@@ -214,7 +215,7 @@ FILRES: RST   8
         LD    (BEGIN+1),A
         RST   8
         DB    ","
-
+```
 
 Eerst wordt  op het  haakje openen gecontroleerd, vervolgens 
 wordt  met de  routine GETBYT  van de  BASIC interpreter  de 
@@ -222,20 +223,20 @@ eerste x  co�rdinaat opgehaald.  GETBYT verhoogt  zelf HL en
 zet  het resultaat  in A  en in  E. We  bewaren de  eerste x 
 co�rdinaat en controleren vervolgens op de komma.
 
-
+```
         CALL  GETBYT          ; lees Y1
         LD    (BEGIN),A
         RST   8
         DB    ")"
         RST   8
         DB    &HF2            ; is "-"
-
+```
 Hier  wordt  de  eerste y  co�rdinaat opgehaald.  Vervolgens 
 wordt  het haakje sluiten gecontroleerd en het streepje. Let 
 op: dit kan niet met RST 8, DB "-", omdat het token voor het 
 streepje niet gelijk is aan de ASCII code, maar &HF2!
 
-
+```
         RST   8
         DB    "("
         CALL  GETBYT          ; lees x2
@@ -247,43 +248,43 @@ streepje niet gelijk is aan de ASCII code, maar &HF2!
         RST   8
         DB    ")"
         PUSH  HL              ; save BASIC pointer
-
+```
 
 Hier worden  ook de  tweede x-  en y  co�rdinaten opgehaald. 
 Vervolgens   wordt  HL   bewaard,  want  die  moet  bij  het 
 terugkeren naar  BASIC wijzen  naar de positie direct achter 
 het commando.
 
-
+```
         LD    BC,(BEGIN)      ; aanroep standaardroutine
         LD    DE,(EIND)       ; met juiste waarden
         LD    A,(MODE)        ; in registers
         CALL  BLINK           ; (B,C)-(D,E), A=aan/uit
-
+```
 
 Hier worden  de registers  met de juiste waardes gevuld voor 
 de  standaardroutine  BLINK.  De  routine  wordt  vervolgens 
 aangeroepen.  De standaardroutine  BLINK staat aan het einde 
 van de assemblerlisting.
 
-
+```
         POP   HL              ; BASIC pointer terug
         RET                   ; terug naar BASIC
-
+```
 
 Het commando  is uitgevoerd,  dus we  gaan terug naar BASIC. 
 Eerst   wordt  natuurlijk  de  juiste  waarde  van  HL  weer 
 teruggehaald. Nu de routines voor BCOL en BTIM.
 
-
+```
 BCOL:   RST   8
         DB    "O"
         RST   8
         DB    "L"             ; bcOL
         RST   8
-
+```
 Eerst controleren we wel of er echt BCOL stond.
-
+```
         DB    "("
         CALL  GETBYT          ; lees voorgrondkleur
         AND   &H0F
@@ -292,12 +293,12 @@ Eerst controleren we wel of er echt BCOL stond.
         ADD   A,A
         ADD   A,A
         LD    (BUF1),A
-
+```
 Vervolgens  controleren  we  op het  haakje en  halen we  de 
 voorgrondkleur  op. Deze  verplaatsen we  naar de  4 hoogste 
 bits, en we slaan deze waarde zolang op in (BUF1).
 
-
+```
         RST   8
         DB    ","
         CALL  GETBYT          ; lees achtergrondkleur
@@ -305,14 +306,14 @@ bits, en we slaan deze waarde zolang op in (BUF1).
         LD    (BUF2),A
         RST   8
         DB    ")"
-
+```
 
 Ook de  achtergrondkleur wordt  opgehaald. De AND instructie 
 is nodig omdat alleen de onderste vier bits van belang zijn. 
 Deze   waarde  wordt  in  (BUF2)  opgeslagen,  en  er  wordt 
 gecontroleerd of het laatste haakje er wel staat.
 
-
+```
         LD    A,(BUF1)
         LD    C,A
         LD    A,(BUF2)
@@ -324,7 +325,7 @@ gecontroleerd of het laatste haakje er wel staat.
         OUT   (&H99),A
         EI
         RET
-
+```
 
 De  juiste waarde  wordt berekend  en naar  VDP register  12 
 gestuurd, dit  is hetzelfde als VDP(13). Om te zorgen dat in 
@@ -333,7 +334,7 @@ we  de waarde ook op de juiste plaats in het systeem RAM. HL
 wordt hier  niet veranderd,  daarom hoeft hij niet te worden 
 gePUSHd en gePOPt.
 
-
+```
 BTIM:   RST   8
         DB    "I"
         RST   8
@@ -368,31 +369,14 @@ BTIM:   RST   8
 
 BUF1:   DS    1
 BUF2:   DS    1
-
+```
 
 De  routine voor BTIM lijkt zo sterk op de routine voor BCOL 
 dat  ik   hier  verder  niets  aan  heb  toe  te voegen. Dit 
 gedeelte  van de  routine is  nu klaar,  alleen de standaard 
 blink routine moet nog worden toegevoegd.
 
-                                                Stefan Boer
-
-(Nvdr.  Dit artikel  was te  lang voor de layout van Sunrise 
-Special, en wordt daarom in twee gedeeltes geplaatst. U kunt 
-het tweede gedeelte in het submenu vinden.)
-
-
-
-                    - TWEEDE GEDEELTE -
-
-                     B L I N K M O D E 
-                                        
-
-(Nvdr. Dit  artikel was  te lang  voor de layout van Sunrise 
-Special, en wordt daarom in twee gedeeltes geplaatst. U kunt 
-het eerste gedeelte in het submenu vinden.)
-
-
+```
 ; BLINK
 ; Standaardroutine voor blinkmode SCREEN0:WIDTH80 (T2)
 ; Door Stefan Boer 21/10/92
@@ -413,7 +397,7 @@ BLINK:  LD    (MODE),A        ; bewaar mode
         LD    L,D
         LD    D,B
         LD    B,L             ; verwissel B en D
-
+```
 
 Voor  het  juist functioneren  van de  BLINK routine  moet B 
 kleiner of gelijk zijn aan D en C kleiner of gelijk zijn aan 
@@ -422,7 +406,7 @@ worden  indien  nodig  verwisseld.  Omdat  er  geen  EX  B,D
 instructie  is  wordt dit  met een  klein truukje  gedaan, L 
 wordt daarbij als hulpregister gebruikt.
 
-
+```
 CHECK2: LD    A,E
         CP    C
         JR    NC,SAVE
@@ -432,26 +416,26 @@ CHECK2: LD    A,E
 
 SAVE:   LD    (BEGIN),BC
         LD    (EIND),DE
-
+```
 
 Ook C  en E  zijn nu  gecheckt en  indien nodig  verwisseld, 
 vervolgens  worden  de  co�rdinaten  opgeslagen  voor  later 
 gebruik.
 
-
+```
 ; bereken hoogte
 
         LD    A,E
         SUB   C
         INC   A               ; A=aantal regels
         LD    (HOOGTE),A
-
+```
 
 Dit  stukje spreekt  eigenlijk voor  zich, de hoogte van het 
 blok waarvan  de blink  mode aan  of uit  gezet gaat  worden 
 wordt hier uitgerekend en opgeslagen.
 
-
+```
 ; bereken beginadres
 
         LD    HL,0
@@ -465,7 +449,7 @@ TELOP:  ADD   HL,DE
 ZETWEG: LD    DE,2048         ; beginadres blinktabel VRAM
         ADD   HL,DE
         LD    (BEGADR),HL
-
+```
 
 C  bevat  de  bovenste  regel  van  het  blok waarvan  we de 
 "blinkstand"  gaan wijzigen,  het beginadres  van deze regel 
@@ -479,7 +463,7 @@ speciaal zouden checken zou bij C=0 het verkeerde beginadres
 (namelijk 2048 + 10) worden genomen. Het gevonden beginadres 
 wordt opgeslagen voor later gebruik.
 
-
+```
 ; wis masker
 
         LD    HL,MASKER
@@ -487,7 +471,7 @@ wordt opgeslagen voor later gebruik.
 LEEG:   LD    (HL),0
         INC   HL
         DJNZ  LEEG
-
+```
 
 Ik  heb voor  deze routine  een systeem  bedacht waarbij  er 
 eerst een  masker wordt  aangemaakt, dat  vervolgens over de 
@@ -496,7 +480,7 @@ wordt dit masker leeg gemaakt, d.w.z. gevuld met nullen. Het
 belangrijkste  en ingewikkeldste  gedeelte van de routine is 
 het maken van het masker.
 
-
+```
 ; maak masker
 
 ; bepaal eerste byte in masker die moet worden aangepast
@@ -509,7 +493,7 @@ het maken van het masker.
         LD    C,A
         LD    B,0             ; LD BC,A
         ADD   HL,BC           ; sla bytes over
-
+```
 
 Hier wordt  aan de  hand van  de linker x coordinaat bepaald 
 welke  bytes aan  de linkerkant van het masker kunnen worden 
@@ -517,7 +501,7 @@ overgeslagen. Bijvoorbeeld:  linker x  coordinaat =  10, dan
 hoeft  met de  linker 8 posities niets te gebeuren en is het 
 masker daar dus 0.
 
-
+```
 ; bepaal eerste bit in die byte die moet worden aangepast
 
         LD    A,(BEGIN+1)
@@ -530,7 +514,7 @@ MAAK0:  SRL   A               ; maak bit 0 en schuif
         DJNZ  MAAK0
         LD    (HL),A          ; zet byte weg
 BACK:   LD    (VLGND),HL
-
+```
 
 Hier wordt het al wat moeilijker. We halen wederom de linker 
 x co�rdinaat  op en  bekijken daarvan alleen de drie laagste 
@@ -551,7 +535,7 @@ wordt  er  naar  SPEC2  gesprongen. SPEC2  maakt het  masker
 zojuist  berekende  masker  neergeset,  in (VLGND)  wordt de 
 waarde van HL bewaard.
 
-
+```
 ; bepaal laatste byte in masker die moet worden aangepast
 
 ACHTER: LD    A,(EIND+1)      ; rechtse x coordinaat
@@ -567,14 +551,14 @@ ACHTER: LD    A,(EIND+1)      ; rechtse x coordinaat
         OR    A               ; wis carry (voor SBC)
         SBC   HL,BC           ; laatste byte
         LD    (LAATS),HL
-
+```
 
 Hier wordt  gekeken welke bytes we aan de rechterkant kunnen 
 overslaan   omdat  daar   toch  niets   verandert.  Met  SRL 
 instructies wordt het aantal bytes uitgerekend, het gevonden 
 adres wordt in (LAATS) bewaard.
 
-
+```
 ; maak gebied na byte links t/m byte rechts FF
 
         LD    DE,(VLGND)
@@ -584,7 +568,7 @@ MAAKFF: LD    (HL),255
         DEC   HL
         RST   &H20
         JP    NZ,MAAKFF
-
+```
 
 Bovenaan staat  al precies wat dit stukje doet. De bytes van 
 (VLGND)+1  t/m  (LAATS)  worden  255  gemaakt, het  gedeelte 
@@ -594,7 +578,7 @@ alles  zich in een byte afspeelt, dus (VLGND) = (LAATS), dan
 moet deze  byte op een aparte manier worden bepaald (zie bij 
 het label SPECIA) en rest van de bytes blijft 0.
 
-
+```
 ; bepaal laatste bit in die byte die moet worden aangepast
 
         LD    A,(EIND+1)
@@ -607,14 +591,14 @@ MAAK_0: SLA   A               ; maak bit 0 en schuif
         DJNZ  MAAK_0
         LD    HL,(LAATS)
         LD    (HL),A          ; zet laatste byte weg
-
+```
 
 Hier  wordt aan  de rechterkant de juiste hoeveelheid nullen 
 toegevoegd. Eerst  wordt weer  het bitnummer berekend. Omdat 
 we  het nu  van de rechterkant bekijken is de XOR instructie 
 nodig. Het masker is nu klaar.
 
-
+```
 ; inverteer masker als MODE=0 (wissen)
 
 INVERT: LD    A,(MODE)
@@ -627,7 +611,7 @@ INVER2: LD    A,(HL)
         LD    (HL),A
         INC   HL
         DJNZ  INVER2
-
+```
 
 Het masker dat we hebben gemaakt bevat een 0 op posities die 
 hetzelfde  moeten blijven  en een  1 op  posities die moeten 
@@ -638,7 +622,7 @@ blinkmode gaat  echter met AND, en daar moeten de bits juist
 1  zijn om  de blinkstand  niet te laten veranderen. Vandaar 
 dat hele masker geXORd wordt als (MODE)=0.
 
-
+```
 ; masker is klaar, zet het over de blinktabel
 
 POKE:   LD    A,(HOOGTE)
@@ -649,26 +633,26 @@ POKE1:  PUSH  BC
         LD    BC,10
         CALL  LDIRMV          ; kopieer regel uit VRAM
                               ; naar BUFFER
-
+```
 
 Het B  register bevat  het aantal regels waarover het masker 
 moet  worden gezet.  We maken namelijk een lus met DJNZ. Met 
 een CALL  LDIRMV wordt  een regel  uit de blink tabel in het 
 VRAM naar een buffer in het RAM gekopieerd.
 
-
+```
         CALL  CALCUL          ; bereken nieuwe data
         LD    DE,(BEGADR)
         LD    HL,BUFFER
         LD    BC,10
         CALL  LDIRVM
-
+```
 
 Met   CALL  CALCUL  wordt  het  masker  er  overheen  gezet, 
 vervolgens wordt  de nieuwe  regel van de blinktabel met een 
 LDIRVM in de blinktabel in het VRAM gezet.
 
-
+```
         LD    HL,(BEGADR)
         LD    BC,10
         ADD   HL,BC
@@ -677,24 +661,24 @@ LDIRVM in de blinktabel in het VRAM gezet.
         DJNZ  POKE1
 
         RET                   ; einde hoofdroutine
-
+```
 
 Het nieuwe adres in de blinktabel in het VRAM wordt berekend 
 en weggezet, einde van de DJNZ lus. Met een RET besluiten we 
 de hoofdroutine.
 
-
+```
 ; zet het masker over de buffer
 
 CALCUL: LD    A,(MODE)
         OR    A
         JP    Z,WIS
-
+```
 
 Eerst  wordt gekeken  of het  masker moeten  ORren of ANDen. 
 Vervolgens wordt naar de juiste routine gesprongen.
 
-
+```
 ZET:    LD    HL,MASKER
         LD    DE,BUFFER
         LD    B,10
@@ -705,12 +689,12 @@ ZET1:   LD    A,(DE)
         INC   HL
         DJNZ  ZET1
         RET
-
+```
 
 Hier wordt  het masker  over de buffer geORd. Verdere uitleg 
 overbodig.
 
-
+```
 WIS:    LD    HL,MASKER
         LD    DE,BUFFER
         LD    B,10
@@ -721,12 +705,12 @@ WIS2:   LD    A,(DE)
         INC   HL
         DJNZ  WIS2
         RET
-
+```
 
 Hier  wordt het  masker over de buffer geAND. Verdere uitleg 
 overbodig.
 
-
+```
 ; speciaal geval: zowel begin als eind van breedte
 ; ligt in 1 byte
 
@@ -745,7 +729,7 @@ BACK2:  LD    A,(HL)
         LD    (HL),A
         JP    INVERT          ; ga verder met
                               ; normale routine
-
+```
 
 Dit is  de speciale  routine waar ik het al eerder over had. 
 Dit komt voor als de beide x co�rdinaten in een byte liggen. 
@@ -760,7 +744,7 @@ als  de x  co�rdinaten niet  in dezelfde byte zouden zitten,
 dit is  dus 11111000.  Vervolgens ANDen  we die over de oude 
 byte, en klaar is Kees!! Het masker is nu ook klaar.
 
-
+```
 ; nog twee speciale gevallen!
 
 SPEC2:  LD    (HL),255
@@ -768,7 +752,7 @@ SPEC2:  LD    (HL),255
 
 SPEC3:  LD    C,255
         JP    BACK2
-
+```
 
 Hier  worden de  gevallen opgelost waarbij helemaal geen nul 
 moet worden  ingeschoven. Door  de constructie  met een DJNZ 
@@ -776,7 +760,7 @@ lus  wordt deze lus namelijk ook doorlopen als het aantal te
 verschuiven  bits  gelijk is  aan 0.  Dit vangen  we af  met 
 voorwaardelijke sprongen en deze twee kleine routinetjes.
 
-
+```
 ; data gebied
 
 BEGIN:  DS    2
@@ -788,20 +772,20 @@ VLGND:  DS    2
 LAATS:  DS    2
 MASKER: DS    10
 BUFFER: DS    10
-
+```
 
 Tot  slot wordt  het datagebied nog gedefinieerd. De routine 
 is nu helemaal klaar!!!
 
 
-                      B L I N K B A L 
+## B L I N K B A L 
 
 In het softwaremenu vindt u onder de naam "BLINKBAL.BAS" een 
 simpel spelletje  computertennis, dat  gebruikt maakt van de 
 vier nieuwe BASIC commando's.
 
 
-                     T E N S L O T T E 
+## T E N S L O T T E 
 
 Best een  ingewikkelde routine  om te  schrijven, maar  zeer 
 handig in het gebruik. In machinetaal nooit meer ingewikkeld 
@@ -810,4 +794,4 @@ het bovendien een heel stuk sneller.
 
 Veel plezier met deze vier nieuwe BASIC commando's!
 
-                                                Stefan Boer
+Stefan Boer

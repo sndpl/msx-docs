@@ -1,5 +1,4 @@
-
-                   M E M M A N   2 . 4 2 
+# M E M M A N   2 . 4 2 
                                           
 
 In  de speciale MemMan rubriek op de Special mag de nieuwste 
@@ -7,7 +6,7 @@ versie van MemMan natuurlijk niet ontbreken. Eerst maar even
 wat er allemaal nieuw is in deze nieuwe versie...
 
 
-                 W A T   I S   N I E U W ? 
+## W A T   I S   N I E U W ? 
 
 1 - Voor mensen die de 32 kB RAM willen kunnen aansturen die 
     in BASIC achter de ROM's zitten, is er de functie GetTPA 
@@ -41,7 +40,7 @@ wat er allemaal nieuw is in deze nieuwe versie...
     6 besproken, makkelijker.
 
 
-             H O E   K O M   J E   E R A A N ? 
+## H O E   K O M   J E   E R A A N ? 
 
 Heel simpel te beantwoorden: Op deze disk staat MEMM242.PMA. 
 Deze library  bevat alle  13 bestanden  die bij  MemMan 2.42 
@@ -64,7 +63,7 @@ Na afloop natuurlijk wel nog even de files naar een diskette
 kopi�ren.
 
 
-                 D A T U M   E N   T I J D 
+## D A T U M   E N   T I J D 
 
 Leuk aan  MemMan is  dat ze  de datum  en tijd  van de files 
 aanpassen.  Bij de meeste files is de tijd op 2:42 gezet, en 
@@ -73,5 +72,5 @@ de datum op 19/09/92, de releasedatum van deze MemMan.
 Voor uitleg  en technische  specificaties bij MemMan verwijs 
 ik u naar de tekstfiles in MEMM242.PMA.
 
-                                                Stefan Boer
-                                              Kasper Souren
+Stefan Boer
+Kasper Souren

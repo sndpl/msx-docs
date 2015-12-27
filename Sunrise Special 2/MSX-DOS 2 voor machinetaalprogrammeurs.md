@@ -1,6 +1,4 @@
-         C U R S U S   M S X - D O S   2   V O O R 
-
-       M A C H I N E T A A L P R O G R A M M E U R S 
+# C U R S U S   M S X - D O S   2   V O O R  M A C H I N E T A A L P R O G R A M M E U R S 
                                                       
 
 Op deze  Sunrise Special  start ik  een cursus  waarin ik de 
@@ -12,7 +10,7 @@ zal ik  de programma-omgeving beschrijven die MSX-DOS 2 voor
 programma's biedt.
 
 
-              H E T   T P A - G E H E U G E N 
+## H E T   T P A - G E H E U G E N 
 
 TPA staat voor Transient Program Area. Een Transient Program 
 (TP) is  een moeilijk  woord voor een normale COM-file. Deze 
@@ -28,7 +26,7 @@ MSX-DOS   function-calls   zullen   meestal  de   interrupts
 aanzetten als ze uitstonden.
 
 
-        T E R U G K E E R   N A A R   M S X - D O S 
+## T E R U G K E E R   N A A R   M S X - D O S 
 
 Een  TP kan  zichzelf be�indigen  door middel van een van de 
 onderstaande manieren:
@@ -51,12 +49,12 @@ Abort als  er een  diskerror optreedt. Een TP kan een "abort
 routine" definieren, die deze gevallen kan opvangen.
 
 
-         A D R E S   # 0 0 0 0   T O T   # 0 1 0 0 
+## A D R E S   # 0 0 0 0   T O T   # 0 1 0 0 
 
 In de eerste 256 bytes van het geheugen worden door COMMAND2 
 enige  parameters gezet  voor het  TP. De  indeling van deze 
 eerste bytes is als volgt.
-
+```
       +0    +1    +2    +3    +4    +5    +6    +7
       +-----+-----+-----+-----+-----+-----+-----+-----+
 #0000 |   Reboot Entry  | Reserved  |  MSX-DOS Entry  |
@@ -99,7 +97,7 @@ eerste bytes is als volgt.
       .                                               .
 #00F8 |                                               |
       +-----+-----+-----+-----+-----+-----+-----+-----+
-
+```
 Op  adres #0000  staat de  jump, die gebruikt wordt voor het 
 be�indigen van  een programma.  Deze jump  kan ook  gebruikt 
 worden  om de BIOS jump vector te vinden. (Zie verderop). De 
@@ -156,7 +154,7 @@ staat.  Het tweede environment item dat COMMAND2 op zet heet
 voor het geladen programma.
 
 
-            D E   B I O S   J U M P   T A B L E 
+## D E   B I O S   J U M P   T A B L E 
 
 De jump  op adres  #0000 zal springen naar een adres dat ook 
 een  jump bevat.  Deze jump  is de  tweede entry in een jump 
@@ -172,7 +170,7 @@ stack,  zodat  de userstack  niet groter  hoeft te  zijn dan
 ongeveer acht bytes.
 
 Overzicht BIOS jumptable:
-
+```
 #xx00  Warm boot
 #xx03  Idem
 #xx06  Console status
@@ -190,9 +188,9 @@ Overzicht BIOS jumptable:
 #xx2A  Geen functie
 #xx2D  List status
 #xx30  Geen functie
+```
 
-
-               G E H E U G E N G E B R U I K 
+## G E H E U G E N G E B R U I K 
 
 Een  TP mag  zoveel slotswitching  doen als het wil, als het 
 maar rekening  houdt met  de interrupts e.d. als het TP page 
@@ -213,7 +211,7 @@ TPA  segmenten weer  ingeschakelt worden,  als het programma
 eindigt.
 
 
-                  F I L E   H A N D L E S 
+## F I L E   H A N D L E S 
 
 File handles zijn de nieuwe verbeterde methoden om files aan 
 te  spreken en  te manipuleren.  Een file handle is een byte 
@@ -227,13 +225,13 @@ functies  wordt  gebruikt:  "Close  file  handle"  (#45)  of
 "delete  file handle" (#46). MSX-DOS 2 opent als het opstart 
 al enige  file handles  voor de  standaard IO-kanalen.  Deze 
 default file handles zijn:
-
+```
 #00  Standaard input (CON)
 #01  Standaard output (CON)
 #02  Standaard error in/output (CON)
 #03  Standaard auxiliary in/output (AUX)
 #04  Standaard printer output (PRN)
-
+```
 Een  TP mag deze file handles sluiten, verwijderen of op een 
 andere manier  beschadigen, omdat COMMAND2 deze file handles 
 automatisch  zal herstellen. Ook als een TP zich niet netjes 
@@ -242,7 +240,7 @@ probleem opleveren,  omdat COMMAND2 dit zal doen. (Netjes is
 anders).
 
 
-        F I L E   I N F O   B L O C K S   ( F I B  )
+## F I L E   I N F O   B L O C K S   ( F I B  )
 
 Alle  nieuwe MSX-DOS  2 functies die op files werken, kunnen 
 aangeroepen worden  met een simpele pointer naar een string. 
@@ -250,7 +248,7 @@ Deze  string bevat  dan de  benodigde parameters  afgesloten
 door een nul. Dit soort strings noemt men ASCIIZ-strings. In 
 plaats van  een ASCIIZ-string  mag men ook een FIB doorgeven 
 aan MSX-DOS 2. FIB's zien er als volgt uit:
-
+```
      0 - Altijd #FF
  1..13 - Filename als ASCIIZ-string
     14 - File atributen
@@ -260,13 +258,13 @@ aan MSX-DOS 2. FIB's zien er als volgt uit:
 21..24 - Grootte van de file
     25 - Logische drive (A: = 1)
 26..63 - Interne informatie
-
+```
 De  #FF aan het begin van een FIB is als herkenning voor het 
 systeem  dat  het  om  een FIB  gaat en  niet om  een platte 
 ASCIIZ-string. De interne informatie vanaf byte 26 mag nooit 
 verandert worden.  De byte  van de file atributen ziet er zo 
 uit:
-
+```
 Bit 0  Read only
 Bit 1  Hidden
 Bit 2  System
@@ -275,7 +273,7 @@ Bit 4  Directory
 Bit 5  Archive
 Bit 6  Gereserveerd
 Bit 7  Device
-
+```
 De tijd en datum moet men zo coderen:
 Tijd:  Bits 15..11  Uren (0..23)
        Bits 10...5  Minuten (0..59)
@@ -290,10 +288,10 @@ worden  door de functie calls "Find first entry", "Find next
 entry" en "Find new entry" ingevuld.
 
 
-     F I L E   C O N T R O L   B L O C K S   ( F C B  )
+# F I L E   C O N T R O L   B L O C K S   ( F C B  )
 
 Een FCB is 32 bytes lang en bevat de volgende informatie:
-
+```
      #00  Drive nummer (A:=1, Default=0)
 #01..#08  Filename
 #09..#0B  Filename extensie
@@ -305,21 +303,21 @@ Een FCB is 32 bytes lang en bevat de volgende informatie:
 #18..#1F  Interne informatie
      #20  Current record
 #21..#24  Random recordnummer
-
+```
 Het  wordt  niet aanbevolen  om deze  verouderde manier  van 
 fileacces nog te gebruiken. Men kan onder MSX-DOS 2 beter de 
 file  handles   gebruiken.  Deze   laatste  kunnen  ook  met 
 directory's werken en dat kunnen FCB's niet.
 
 
-                 F O U T M E L D I N G E N 
+## F O U T M E L D I N G E N 
 
 MSX-DOS  2  kan vele  foutmeldingen teruggeven.  Deze hebben 
 alle een nummer tussen #FF en #00. De complete lijst (?) van 
 foutmeldingen volgt nu:
 
 Nummer Melding
-
+```
 #FF    Incompatible disk.
 #FE    Write error
 #FD    Disk error
@@ -416,6 +414,7 @@ Nummer Melding
  .     Niet gebruikt
  .
 #00
+```
 
 De  hierboven  met  "niet  gebruikt" aangegeven  codes geven 
 meestal een system of user error xx.
@@ -426,4 +425,4 @@ een  gedeelte van de function-calls bespreken. Ik zal er dan
 enige voorbeelden  bij doen  zodat u  niet helemaal in slaap 
 valt.
 
-                                            Daniel Wiermans
+Daniel Wiermans

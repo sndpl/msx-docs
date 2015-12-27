@@ -1,6 +1,4 @@
-DE NIEUWSTE MSX-DOS:
-
-                  M S X - D O S   2 . 3 1 
+# M S X - D O S   2 . 3 1 
                                            
 
 Bij de  Panasonic FS-A1GT wordt MSX-DOS 2.31 geleverd in het 
@@ -9,7 +7,7 @@ ROM- en  SRAMdisk, en dus voor MSX-View. Dat bleek toch niet
 waar te zijn:
 
 
-      S R A M D I S K   Z O N D E R   M S X - V I E W 
+## S R A M D I S K   Z O N D E R   M S X - V I E W 
 
 Veel  mensen  vroegen  zich  (en  anderen...) af  hoe ze  de 
 SRAMdisk  van de  GT konden gebruiken zonder MSX-View van de 
@@ -55,7 +53,7 @@ N.B.  Het broertje van ROMTURBO, RAMTURBO, staat ook op deze
 disk.
 
 
-             E N V I R O N M E N T   I T E M S 
+## E N V I R O N M E N T   I T E M S 
 
 DOS   2.31   kent   de   mijns  inziens   zeer  interessante 
 mogelijkheid om Environment Items (vanaf nu gewoon items) te 
@@ -74,7 +72,7 @@ SRAMD=drivenaam:). (Nee, geen dwerg-smiley, maar een dubbele
 punt.)
 
 
-                            I F 
+## I F 
 
 Met  IF ==  kun je  tekst vergelijken.  Tekst vergelijken is 
 niet echt zo interessant. Maar de kracht van deze functie is 
@@ -83,7 +81,7 @@ batchfiles.
 Je kunt ook kijken of een file wel bestaat:
 
 
-                         E X I S T 
+## E X I S T 
 
 Met  IF EXIST  kun je  erachter komen  of een  bepaalde file 
 bestaat.  Bovenaan,  in  de  regel uit  AUTOEXEC.BAT van  de 
@@ -92,13 +90,13 @@ een  file bestaat  wordt gewoon  het commando wat erop volgt
 uitgevoerd. De file volgt gewoon achter IF EXIST.
 
 
-                           N O T 
+## N O T 
 
 Met NOT  geef je  een negatie  aan. Je kunt dus IF NOT EXIST 
 filenaam.ext enz. gebruiken.
 
 
-                 E E N   V O O R B E E L D 
+## E E N   V O O R B E E L D 
 
 Ik  gebruik zelf een paar leuke batchfiles om mijn leven als 
 HD-gebruiker  te   vergemakkelijken.  Als   je  maar  weinig 
@@ -111,7 +109,7 @@ afnemen   door  het  gebruik  van  deze  batchfile.  Voor  7
 MHz-gebruikers zal het nog wel te doen zijn.
 
 
-                       T E D . B A T 
+## T E D . B A T 
 
         CLS
 
@@ -185,4 +183,4 @@ KARSET.COM    Programma dat  de Europese  karakterset in  de
 TED.BAT       De batchfile van het voorbeeld.
 
 
-                                               Kasper Souren
+Kasper Souren

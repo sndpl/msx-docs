@@ -1,4 +1,4 @@
-                      R E S O U R C E 
+# R E S O U R C E 
                                        
 
 RESOURCE is  een CP/M  Z80 disk-disassembler  die natuurlijk 
@@ -13,7 +13,7 @@ wat ik in mijn eigen programma wil gebruiken" hoef je alleen
 maar even RESOURCE te gebruiken.
 
 
-                     I N S T E L L E N 
+## I N S T E L L E N 
 
 RESOURCE  heeft een  filenaam nodig  in de  prompt. Je  tikt 
 bijv. in
@@ -79,7 +79,7 @@ Maar daarom kun je dan een batchfile maken die gebruik maakt
 van KEYFAKE (ook op deze Special).
 
 
-                       S T A R T E N 
+## S T A R T E N 
 
 Als  je alles  volgens bovenstaande tekst heb ingevuld krijg 
 je 1  of 2  files op  disk: COMMAND2.ASM en COMMAND2.PRN. De 
@@ -104,12 +104,12 @@ voor de grootte van de file. Probeer het zoveel mogelijk via
 RAMdisk te doen.
 
 
-                     V O O R B E E L D 
+## V O O R B E E L D 
 
 Als  voorbeeld zal  ik nu  even een machinetaalprogrammaatje 
 intikken en de geRESOURCEde versie ook afbeelden.
 
-
+```
         BDOS:   EQU     5
         POINT:  EQU     #8000
 
@@ -123,57 +123,57 @@ intikken en de geRESOURCEde versie ook afbeelden.
 
         TEKST:  DB      "Dit is een test voor RESOURCE"
                 DB      13,10,"$"
-
+```
 Ik heb  een paar  variabelen gebruikt  om te  laten zien wat 
 RESOURCE hiervan maakt.
 
 
-         V O O R B E E L D   N A   R E S O U R C E 
-
+## V O O R B E E L D   N A   R E S O U R C E 
+```
                 ORG     00100H
-
+```
 Dit  is het  startadres. en dit je weglaten als je met GEN80 
 of M80 werkt.
-
+```
         X0005   EQU     00005H
-
+```
 Het BDOS-aanroepadres. Als je met TED werkt kun je het beste 
 onvoorwaardelijk X0005 door BDOS laten vervangen.
 
-
+```
         X0177   EQU     00177H
         X017C   EQU     0017CH
         X017D   EQU     0017DH
         X018F   EQU     0018FH
         X0196   EQU     00196H
-
+```
 Deze  labels worden in de tekst gebruikt. Alle tekst dien je 
 toch  te  vervangen  door  DB's, dus  eigenlijk kunnen  deze 
 labels verwijderd worden.
 
-
+```
                 LD      C,009H
                 LD      DE,T010F
                 CALL    X0005
-
+```
 De BDOS-aanroep.
 
-
+```
                 LD      HL,08000H
                 LD      B,04BH
-
+```
 Even  zien wat  er gedaan  wordt met gewone veriabelen: hier 
 komt de "intelligentie" van RESOURCE te voorschijn. Er wordt 
 verschil  gemaakt  tussen tekst  (zie boven)  en een  gewoon 
 adres.
 
-
+```
                 LD      (HL),B
                 RST     000H
-
+```
 Bij RST's worden uiteraard geen labels gebruikt.
 
-
+```
         T010F:  LD      B,H
                 LD      L,C
                 LD      (HL),H
@@ -202,14 +202,14 @@ Bij RST's worden uiteraard geen labels gebruikt.
                 LD      A,(BC)
                 INC     H
                 END
-
+```
 Dit is de tekst. Tekst is te herkennen aan het voorkomen van 
 relatief  veel JR  NZ's, dat  is het gevolg van spaties. Ook 
 bestaat het vrijwel helemaal uit onzinnige LD's.
 Tenslotte wordt elke source be�indigd met END.
 
 
-                       G E B R U I K 
+## G E B R U I K 
 
 Het  bovenste gedeelte  van de  .PRN-file kun  je het  beste 
 uitprinten. Dan  kun je  de onzin-instructies heel makkelijk 
@@ -244,5 +244,5 @@ RESOURCE.COM  en  RESOURCE.BAT,  een  kleine  batchfile  die
 gebruik  maakt  van  KEYFAKE om  RESOURCE automatisch  in te 
 stellen (even aanpassen voor MSX-DOS 1).
 
-                                              Kasper Souren
+Kasper Souren
 

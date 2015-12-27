@@ -1,6 +1,4 @@
-Onbekende MSX-DOS 2 functies:
-
-         R E D I R E C T I O N   E N   P I P I N G 
+# R E D I R E C T I O N   E N   P I P I N G 
                                                     
 
 MSX-DOS 2  kent interessante  mogelijkheden voor programma's 
@@ -15,7 +13,7 @@ Allereerst  moet  je  dan  wel iets  weten van  het volgende
 onderwerp:
 
 
-                       D E V I C E S 
+## D E V I C E S 
 
 Devices, of  voor de  puristen onder ons apparaatnaman, zijn 
 invoer- of uitvoermethodes. Ik zal ze kort omschrijven:
@@ -31,8 +29,7 @@ AUX  Dit is met ADDAUX.COM, een programma van DOS2-tools van
      interface  werkt  hiermee.  Dus  geen  aangepast  modem 
      zonder de RS-232C ROMs.
 
-
-                   R E D I R E C T I O N 
+## R E D I R E C T I O N 
 
 MSX-DOS  kan  ervoor  zorgen  dat  de  standaard  input-  en 
 outputroutines  van  de  BDOS  niet  met  het scherm  en het 
@@ -71,7 +68,7 @@ Ook kun je heel makkelijk een directory afdrukken:
 DIR/W>PRN
 
 
-                    B A T C H F I L E S 
+## B A T C H F I L E S 
 
 Als  de in- of uitvoer van een batchfile geredirectioned is, 
 zal die  redirection betrekking hebben op alle commando's in 
@@ -89,7 +86,7 @@ er is,  online staat  en er  papier in  zit. En  "Het is nog
 onbekend waar deze tekst komt." zal gewoon "verdwijnen".
 
 
-                    P I P E L I N I N G 
+## P I P E L I N I N G 
 
 Het is  niet alleen  mogelijk om  de in-  en output  van een 
 commando  naar een  device of file te sturen, maar ook om de 
@@ -119,7 +116,7 @@ natuurlijk  wel. Bij  harddisk-gebruik kan er natuurlijk ook
 een TEMP-directory voor worden aangemaakt.
 
 
-                    B A T C H F I L E S 
+## B A T C H F I L E S 
 
 Het  is   niet  mogelijk   om  pipelining  rechtstreeks  met 
 batchfiles  te gebruiken.  Maar het  is wel  mogelijk om een 
@@ -147,4 +144,4 @@ immers FDISK noodzakelijk.
 Zie voor  meer voorbeelden  de tekst over MSX-DOS 2.31. (Ook 
 interessant voor mensen zonder een FS-A1GT!)
 
-                                              Kasper Souren
+Kasper Souren

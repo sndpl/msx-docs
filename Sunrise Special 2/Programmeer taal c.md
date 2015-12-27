@@ -1,8 +1,8 @@
-      D E   P R O G R A M M E E R T A A L   C   ( 1  )
+# D E   P R O G R A M M E E R T A A L   C   ( 1  )
                                                        
 
 
-              O V E R   D E Z E   C U R S U S 
+## O V E R   D E Z E   C U R S U S 
 
 Deze  cursus  is  bedoeld  voor  MSX'ers  die  nader  willen 
 kennismaken    met     de    programmeertaal     C.    Enige 
@@ -15,7 +15,7 @@ ontstaan  van  ide�en,  technieken,  routines of  zelfs hele
 bibliotheken.
 
 
-       D E   C - C O M P I L E R S   V O O R   M S X 
+## D E   C - C O M P I L E R S   V O O R   M S X 
 
 Natuurlijk  is het  nuttig om een C-compiler te bezitten, om 
 de  programmeervoorbeelden  zelf te  kunnen compileren.  Bij 
@@ -68,7 +68,7 @@ vergelijkend  onderzoekje  te  doen. (Snelheid,  grootte van
 programma's, volledigheid).
 
 
-       G E B R U I K   V A N   C - C O M P I L E R S 
+## G E B R U I K   V A N   C - C O M P I L E R S 
 
 C-compilers zijn  wat omslachtiger in het gebruik dan BASIC, 
 of  Turbo PASCAL (bij kleine programma's, tenminste). Om een 
@@ -93,7 +93,7 @@ uitgevoerd. Als het werkt: prima! Maar werkt het niet: "back
 to the drawing-board".
 
  
-                     I N L E I D I N G 
+## I N L E I D I N G 
 
 In de  loop der  tijden hebben  computerdeskundigen heel wat 
 manieren gevonden om computers te programmeren. De oudste en 
@@ -189,7 +189,7 @@ verschillende taalelementen  worden uitgelegd. Dus eerst een
 voorbeeldprogramma,  gevolgd door  de uitleg. Tussendoor zal 
 wat dieper op bepaalde onderwerpen worden ingegaan.
 
-
+```
 | /*                                                       |
 | De listings  in de  tekst staan  tussen deze  tekens. Ze |
 | maken  geen deel  uit van  het programma. Ze zijn alleen |
@@ -198,10 +198,10 @@ wat dieper op bepaalde onderwerpen worden ingegaan.
 | besproken,  zijn   die  dingen   niet  gebruikt,  alleen |
 | volledige programma's!                                   |
 | */                                                       |
+```
 
-
-       M I J N   E E R S T E   C - P R O G R A M M A 
-
+## M I J N   E E R S T E   C - P R O G R A M M A 
+```
 |                                                          |
 | #include <STDIO.H>                                       |
 |                                                          |
@@ -213,21 +213,21 @@ wat dieper op bepaalde onderwerpen worden ingegaan.
 |                                                          |
 | }                                                        |
 |                                                          |
-
+```
 Dit is het equivalent van het BASIC-programma:
-
+```
      10 REM Mijn eerste programma
      20 PRINT "Hello, world"
      20 END
-
+```
 Om een of andere reden wordt dit C-programma altijd gebruikt 
 voor de  beginner, en  met zo'n  oude traditie  wil ik  niet 
 breken.
 
 De eerste regel
-
+```
      #include <STDIO.H>
-
+```
 is  bedoeld om  een aantal standaardfuncties, -definities en 
 -constanten  beschikbaar  te maken  voor de  programmeur. In 
 feite betekent het alleen dat het file "STDIO.H" (staat voor 
@@ -244,9 +244,9 @@ De  volgende  regel  is  een  commentaarregel.  De  compiler
 negeert alles tussen '/*' en '*/'.
 
 Vervolgens staat er
-
+```
      main() {
-
+```
 Dit   is   in  feite   een  functiedefinitie,   maar  zonder 
 parameters, zodat  er niets  tussen de  haakjes staat. In de 
 ruimte  tussen  ')'  en  '{'  moeten  de  datatypes  van  de 
@@ -257,9 +257,9 @@ functies  ook hebben, de uitvoering van het programma begint
 altijd  bij  'main'.  Na  de  '{'  volgt  de  daadwerkelijke 
 functie,  de  zgn.  'body'.  Hier bestaat  die body  uit een 
 statement, namelijk:
-
+```
      printf("Hello, world!\n");
-
+```
 'printf'  is  een  I/O  functie, de  naam staat  voor "print 
 formatted", zoiets  als PRINT USING in BASIC, maar je kan er 
 ook  gewoon strings  mee afdrukken. De '\n' aan het eind van 
@@ -291,7 +291,7 @@ vriendelijk   hallo  zegt.   Niet  het  meest  spectaculaire
 programma ter wereld, maar alle begin is eenvoudig.
 
 
-        S I M P E L E   D A T A T Y P E N   I N   C 
+## S I M P E L E   D A T A T Y P E N   I N   C 
 
 Net als BASIC en PASCAL kent C een aantal simpele datatypen, 
 die  -  net  als  PASCAL  -  als  basis  kunnen dienen  voor 
@@ -336,22 +336,8 @@ lijstje:
      long int       = long
      long float     = double
 
-(Nvdr. Deze  tekst was  langer dan  16 kB, u kunt het tweede 
-gedeelte in het submenu vinden.)
 
-
-
-                    - TWEEDE GEDEELTE -
-
-         P R O G R A M M E R E N   I N   C   ( 1  )
-                                                    
-
-
-(Nvdr.  De tekst  was langer  dan 16  kB, u  kunt het eerste 
-gedeelte in het submenu vinden.)
-
-
-               V A R I A B E L E N   I N   C 
+##  V A R I A B E L E N   I N   C 
 
 Dat  we  nu  de  simpele  data-types  kennen  in  C is  heel 
 plezierig, maar we moeten natuurlijk daar ook variabelen mee 
@@ -377,21 +363,20 @@ gedeclareerd  van  hetzelfde type.  De ';'  aan het  eind is
 wederom verplicht!
 
 Voorbeelden:
-
+```
      int x;
      int y, z;
      char lange_naam;
      unsigned catch22;
      float blub, blubblub;  
+```
 
-
-          V O O R B E E L D P R O G R A M M A   2 
-      E E N   K W A D R A T E N T A B E L   M A K E N 
+##  V O O R B E E L D P R O G R A M M A   2  E E N   K W A D R A T E N T A B E L   M A K E N 
 
 In dit  programma kan  kennis worden  gemaakt met wat simpel 
 gereken  in C  en het  gebruik van  variabelen. Ook  komt de 
 eerste lus aan bod, de do..while lus.
-
+```
 |                                                          |
 | #include <STDIO.H>                                       |
 |                                                          |
@@ -415,24 +400,24 @@ eerste lus aan bod, de do..while lus.
 |    printf("\n\nThat's all folks!\n");                    |
 |  }                                                       |
 |                                                          |
-
+```
 De '#include'  kennen we  nog van het vorige programma, maar 
 de  '#define'  is  nieuw. Het  is echter  een simpele,  doch 
 krachtige   manier  om  de  ene  tekst  door  de  andere  te 
 vervangen. Iedere  keer als  de compiler  dus het  hele (!!) 
 woord  'MAXWAARDE' tegenkomt, wordt het door '10' vervangen. 
 De computer "ziet" dus:
-
+```
      while (waarde <= 10);
-
+```
 Maar 'MAXWAARDES'  zou niet veranderd worden, omdat per heel 
 woord  gekeken wordt.  Hiervoor geldt  hetzelfde als voor de 
 namen van  variabelen: letters,  cijfers en '_' mogen worden 
 gebruikt.  De tekst,  waarin dat woord wordt verandert hoeft 
 daar niet aan te voldoen. Met de regel
-
+```
      #define ACCOLADE_OPEN {
-
+```
 is dus niets verkeerds.
 
 Hoewel je  woorden op  die manier  door willekeurige  andere 
@@ -442,17 +427,17 @@ conventies  in   C  is   om  zulke   constanten  altijd   in
 hoofdletters  te schrijven,  vanwege de duidelijkheid. Zulke 
 definities mogen  ook weer binnen andere '#define's gebruikt 
 worden. Dus
-
+```
      #define MAXKWADRAAT MAXWAARDE*MAXWAARDE
-
+```
 is prima.
 
 Nadat  we  in  'main' zijn  aangeland, worden  de variabelen 
 'waarde' en 'kwadraat' gedeclareerd, beide van het int-type. 
 Vervolgens wordt met
-
+```
      waarde = 0;
-
+```
 de  variabele  'waarde'  nul  gemaakt.  In  PASCAL  zou ':=' 
 gebruikt  worden in  plaats van de '=', maar verder is alles 
 hetzelfde.
@@ -470,9 +455,9 @@ betekent  'twee'.)   Als  unaire  operator  -  'un'  is  '1'
 andere keer.
 
 Hierna komt:
-
+```
  printf("Waarde = %4d  Kwadraat = %4d\n", waarde, kwadraat);
-
+```
 wat  ons  leert  hoe  je  met  'printf'  ook  getallen  kunt 
 afdrukken. Hiervoor  is in  de string  tweemaal het gedeelte 
 '%4d'  opgenomen, om  respectievelijk 'waarde' en 'kwadraat' 
@@ -507,15 +492,15 @@ toe  zelf dit  soort functies te schrijven, maar de preciese
 details hoe je dat kan doen verschilt per compiler.
 
 Daarna staat er
-
+```
      ++waarde;
-
+```
 Dit is  voor niet-C programmeurs onbegrijpelijk koeterwaals. 
 Het betekent echter alleen: tel 1 bij 'waarde' op. We hadden 
 dus ook kunnen schrijven:
-
+```
      waarde = waarde + 1;
-
+```
 De  andere schrijfwijze  is korter  en sneller,  wat in  dit 
 voorbeeld misschien  niet zo  erg naar  voren komt,  maar in 
 iets ingewikkelder berekeningen wel.
@@ -536,9 +521,9 @@ tussen  '{'  en  '}'  zetten,  "ziet"  C het  als een  enkel
 statement. Dit wordt een 'compound statement' genoemd.
 
 Aan het einde van de lus staat:
-
+```
      while (waarde <= MAXWAARDE);
-
+```
 Lees  voor  '<=' 'kleiner  of gelijk  aan'. De  '<=' is  een 
 vergelijkingsoperator  die  0 oplevert  als de  vergelijking 
 niet  waar   is,  en  een  waarde  ongelijk  aan  0  als  de 
@@ -599,4 +584,4 @@ Slegte te koop is:
 Dit  is  geen  leerboek!  Er  staat  echter  bijzonder  veel 
 informatie in.
 
-                                               Robert Amesz
+Robert Amesz

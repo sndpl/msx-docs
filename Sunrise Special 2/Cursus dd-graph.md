@@ -1,6 +1,4 @@
-                    - EERSTE GEDEELTE -
-
-                C U R U S   D D - G R A P H 
+# C U R U S   D D - G R A P H 
                                              
  
 DD-Graph is  een tekenprogramma  dat is  ontwikkeld door T&E 
@@ -20,11 +18,11 @@ programma. Wij  beginnen met de bovenste keuze en dat is AGE
 (de tweede keuze is SPEN en de derde is terug naar DOS.)
 
 
-                           A G E 
+## A G E 
                                   
 
 
-              S P E C I A L E   T O E T S E N 
+### S P E C I A L E   T O E T S E N 
 
 (Even  van te  voren, als  ik het  over de rechter en linker 
 muisknop heb, is dat hetzelfde als F1 en F2.)
@@ -108,7 +106,7 @@ menu-balkje  onderin het  menu. (Zie ook het tweede deel van
 deze tekst in het submenu genaamd: DD-GRAPH -2-.)
 
 
-                   D E   F U N C T I E S 
+### D E   F U N C T I E S 
  
 De  eerste functie:  L I N E , (helemaal  linksonder) als we 
 deze functie  kiezen met  de linker  muisknop dan  kunnen we 
@@ -203,25 +201,6 @@ andersom.  Het werkt  alsvolgt: je bepaald het gebied dat je
 groter of kleiner wilt maken en daarna bepaal je de plaatsen 
 grootte van  het plaatje,  simpel toch?!  Deze functie heeft 
 ook geen submenu.
-
-(Het  vervolg  van  dit artikel  is terug  te vinden  in het 
-submenu onder de naam: DD-GRAPH -2-.) 
-
-                                              Bart Schouten
-
-
-
-                    - TWEEDE GEDEELTE -
-
-               C U R S U S   D D - G R A P H 
-                                              
-
-(Dit  is het vervolg van de DD-GRAPH cursus, het eerste deel 
-kunt u  terug vinden  in het submenu onder de naam: DD-GRAPH 
--1-.)
-
-
-            F U N C T I E S   - V E R V O L G - 
 
 De twaalfde  functie: Z O O M , (rechts naast 2COPY). Dit is 
 waarschijnlijk  de  meest  gebruikte  tekenfunctie  maar  is 
@@ -436,7 +415,7 @@ van AGE in het algemeen.
   Nu zal AGE direkt opstarten en niet steeds het intromenu!
 
 
-                          S P E N 
+## S P E N 
                                    
 
 Het  kopje heeft  eigenlijk geen  zin omdat  ik SPEN niet ga 
@@ -452,7 +431,7 @@ naar  sprite-data's in  BASIC. Met de SAMPLE*.* files kunt u
 zien hoe het werkt.
 
 
-                       N A W O O R D 
+## N A W O O R D 
 
 Zo, dat  zit erop, ik hoop dat ik met deze cursus het een en 
 ander  over  Dots  Designer's  Club  (de  originele  titel!) 
@@ -460,10 +439,10 @@ duidelijk heb gemaakt. Ik zou zeggen ga flink teken voor het
 Magazine  of de  Special, misschien  wel voor een eigen demo 
 voor de Picturedisk! Nou ja, dat zoekt u zelf ook maar uit!
 
-                                              Bart Schouten
+Bart Schouten
 
 
 Nvdr. Als  u wel  meer over  SPEN kunt vertellen, schrijf er 
 dan  een tekst over en stuur die dan op een diskette naar de 
-Sunrise postbus. Uppen bij ��n van de twee Sunrise BBS'en is 
+Sunrise postbus. Uppen bij een van de twee Sunrise BBS'en is 
 ook goed. Bij voorbaat dank!

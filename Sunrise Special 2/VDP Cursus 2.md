@@ -1,9 +1,7 @@
-                    - EERSTE GEDEELTE -
-
-        M S X 2 / 2 +   V D P   C U R S U S   ( 2  )
+# M S X 2 / 2 +   V D P   C U R S U S   ( 2  )
                                                      
 
-                     I N L E I D I N G 
+## I N L E I D I N G 
 
 Dit  is het tweede deel van de VDP cursus op herhaling. Deze 
 keer zal  ik een  overzicht geven  van een  groot aantal VDP 
@@ -15,8 +13,8 @@ is  dat er nu bij het lezen/schrijven van VRAM meer aandacht
 wordt besteed aan ML.
 
 
-                M O D E   R E G I S T E R S 
-
+## M O D E   R E G I S T E R S 
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#0      0   DG  IE2 IE1 M5  M4  M3  0      Mode Register 0
 R#1      0   BL  IE0 M1  M2  0   SI  MAG    Mode Register 1
@@ -31,9 +29,9 @@ R#1:     BL :   scherm aan/uit (0=uit)
          IE0:   1 = normale interrupt mogelijk
          SI :   1 = sprite grootte  16x16, 0 = 8x8
          MA :   1 = vergrote sprites, 0 = normale sprites
-
+```
 De schermmodi kunnen worden ingesteld met M1-M5:
-
+```
                  M5  M4  M3  M2  M1
 SCREEN 1 (G1)    0   0   0   0   0
 SCREEN 0 (T1)    0   0   0   0   1   (WIDTH 40)
@@ -45,10 +43,10 @@ SCREEN 5 (G4)    0   1   1   0   0
 SCREEN 6 (G5)    1   0   0   0   0
 SCREEN 7 (G6)    1   0   1   0   0
 SCREEN 8 (G7)    1   1   1   0   0
-
+```
 De tekens  tussen  haakjes  achter  de  schermmodi  zijn  de 
 offici�le benamingen. (T=TEXT, G=GRAPHIC, MC=MULTI COLOR)
-
+```
 R#8:     MS :   1 = color bus input  / muis mogelijk
                 0 = color bus output / geen muis mogelijk
          LP :   1 = lichtpen mogelijk, 0 = geen lichtpen
@@ -70,13 +68,13 @@ R#9:     LN :   Bepaal hoogte van scherm. 1=212, 0=192
          EO :   1 = afwisselen even/oneven PAGE
          NT :   0 = NTSC 60 Hz, 1 = PAL 50 Hz
          DC :   1 = *DLCLK input, 0 = *DLCLK output
+```
 
-
-  T A B L E   B A S E   A D D R E S S   R E G I S T E R S 
+## T A B L E   B A S E   A D D R E S S   R E G I S T E R S 
 
 Deze adressen geven aan waar de diverse tabellen in het VRAM 
 beginnen. Dit komt overeen met BASE(n) in BASIC.
-
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#2      0   A16 A15 A14 A13 A12 A11 A10    scherminfotabel
 R#3      A13 A12 A11 A10 A9  A8  A7  A6     kleurtabel low
@@ -85,7 +83,7 @@ R#4      0   0   A16 A15 A14 A13 A12 A11    patroontabel
 R#5      A14 A13 A12 A11 A10 A9  A8  A7     sprite-info low
 R#11     0   0   0   0   0   0   A16 A15    sprite-info high 
 R#6      0   0   A16 A15 A14 A13 A12 A11    sprite-patroon
-
+```
 In BASIC kun je deze adressen opvragen met BASE(n).  n  moet 
 dan gelijk zijn aan vijf maal de screenmode plus:
 0:  scherminfo       : SCREEN 0-4: patroonnummers
@@ -113,8 +111,8 @@ Het moet dus een veelvoud zijn van 2^11 = 2048.
 Zie verder deel 7 t/m 9.
 
 
-                K L E U R R E G I S T E R S 
-
+## K L E U R R E G I S T E R S 
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#7      TC3 TC2 TC1 TC0 BD3 BD2 BD1 BD0    Tekst/Achtergr
 R#12     T23 T22 T21 T20 BC3 BC2 BC1 BC0    Blinkkleuren
@@ -126,7 +124,7 @@ T23-T20      : tekstkleur voor blink in T2
 BC3-BC0      : achtergrondkleur voor blink in T2
 ON3-ON0      : tijd voor blink-kleur
 OF3-OF0      : tijd voor normale kleur
-
+```
 Je  kunt  R#13  ook  gebruiken  om de  PAGEs van  SCREEN 5-8 
 afwisseld  weer te  geven. Stel  met SET PAGE de weergegeven 
 PAGE op  1 of 3, en zet dan de gewenste tijden in R#13. PAGE 
@@ -135,7 +133,7 @@ Voorbeeld:  SET PAGE 1 : VDP(14)=&H66 'page 0 en 1 worden nu
 beurtelings getoond met een tussenpauze van ca. 1 seconde.
 
 
-          U I T L E G   B I J   B L I N K M O D E 
+## U I T L E G   B I J   B L I N K M O D E 
 
 Je kunt in SCREEN 0, WIDTH 80 (T2 mode) alternatieve scherm- 
 kleuren  gebruiken.   Er  is  hiervoor  een  speciale  tabel 
@@ -200,13 +198,13 @@ BASIC commando's (CMD BCOL, CMD BFIL, CMD BTIM en CMD BRES),
 waarmee de blink mode eenvoudig vanuit BASIC te besturen is.
 
 
-         C O L O R   B U R S T   R E G I S T E R S 
-
+## C O L O R   B U R S T   R E G I S T E R S 
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#20     0   0   0   0   0   0   0   0      Color burst 1
 R#21     0   0   1   1   1   0   1   1      Color burst 2
 R#22     0   0   0   0   0   1   0   1      Color burst 3
-
+```
 Ik weet nog steeds niet waar deze registers voor dienen. Als 
 iemand  het  weet, graag  even een  briefje naar  de Sunrise 
 postbus t.a.v.  ondergetekende. Ik  denk overigens  dat deze 
@@ -214,30 +212,13 @@ registers in het geheel geen nut hebben voor de programmeur,
 het  schrijven van  willekeurige waardes naar deze registers 
 heeft namelijk geen enkel merkbaar effect.
 
-(Nvdr. De tekst was langer dan 16 kB, u kunt het tweede deel 
-in het submenu vinden.)
-
-                                                Stefan Boer
-
-
-
-                    - TWEEDE GEDEELTE -
-
-        M S X 2 / 2 +   V D P   C U R S U S   ( 2  )
-                                                     
-
-
-(Nvdr. De tekst was langer dan 16 kB, u kunt het eerste deel 
-in het submenu vinden.)
-
-
-             D I S P L A Y   R E G I S T E R S 
-
+## D I S P L A Y   R E G I S T E R S 
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#18     V3  V2  V1  V0  H3  H2  H1  H0     Display adjust
 R#23     DO7 DO6 DO5 DO4 DO3 DO2 DO1 DO0    Display offset
 R#19     IL7 IL6 IL5 IL4 IL3 IL2 IL1 IL0    Interrupt line
-
+```
 R#18 werkt ongeveer net zo als SET ADJUST(dx,dy)  in  Basic. 
 Het bepaalt de positie van het beeld op het scherm.
 LINKS: H=7...H=1    MIDDEN: H=0    RECHTS: H=15...H=8
@@ -265,17 +246,17 @@ screensplit  zal  bij  de  praktijkvoorbeelden  (deel 10  en
 verder van de VDP cursus) zeker aan bod komen.
 
 
-               A C C E S   R E G I S T E R S 
+## A C C E S   R E G I S T E R S 
 
 Deze  registers  gebruik  je  bij  lezen/schrijven van  VDP- 
 registers en VRAM.
-
+```
     MSB  7   6   5   4   3   2   1   0  LSB
 R#14     0   0   0   0   0   A16 A15 A14    VRAM Base
 R#15     0   0   0   0   S3  S2  S1  S0     S# pointer
 R#16     0   0   0   0   C3  C2  C1  C0     Color palette
 R#17     AII 0   RS5 RS4 RS3 RS2 RS1 RS0    R# pointer
-
+```
 Over het gebruik van R#15-17 heb ik in deel 1 al het een  en 
 ander uitgelegd. Daarom hier alleen kort de werking:
 R#15  Statusregister pointer.  Schrijf het nummer van het te 
@@ -300,7 +281,7 @@ OUT-instrukties. De  I/O adressen  voor Port  #0 t/m Port #3
 zijn altijd &H98 t/m &H9B.)
 
 
-          L E Z E N / S C H R I J V E N   V R A M 
+## L E Z E N / S C H R I J V E N   V R A M 
 
 Om het VRAM te lezen/schrijven moet je de volgende procedure 
 volgen:
@@ -399,7 +380,7 @@ NSETRD.  Deze routines zijn praktisch gelijk aan de routines
 in  het  MAIN ROM,  die kunt  u dus  rustig gebruiken.  Deze 
 routines zijn dan ook vooral leerzaam!
 
-
+```
 ; VRAM routines door Stefan Boer
 ; VDP cursus op herhaling deel 2
 ; Sunrise Special #2
@@ -452,12 +433,12 @@ RDWRT:  PUSH  AF              ; deze byte moet pas als
         RET
 
 ; data kan nu worden gelezen/geschreven via Port #0 (&H98)
-
+```
 Deze  routine  spreekt  voor  zichzelf,  u  kunt  de  eerder 
 omschreven standaardprocedure hierin herkennen.
 
 
-                     T E N S L O T T E 
+## T E N S L O T T E 
 
 Met vragen  over de  VDP cursus kunt u natuurlijk altijd bij 
 mij  terecht,  net  als  met  alle andere  programmeervragen 
@@ -471,4 +452,4 @@ etc. in machinetaal programmeren!
 
 Tot de volgende keer!
 
-                                                Stefan Boer
+Stefan Boer

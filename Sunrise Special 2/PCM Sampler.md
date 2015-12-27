@@ -1,4 +1,4 @@
-                   P C M   S A M P L E R 
+# P C M   S A M P L E R 
 
 Een  van de leuke dingen van de turbo R is de ingebouwde PCM 
 sampler. Voor het opnemen en afspelen met deze PCM chip zijn 
@@ -20,8 +20,8 @@ worden besproken.
 Maar nu eerst de twee nieuwe BIOS calls.
 
 
-             N I E U W E   B I O S   C A L L S 
-
+## N I E U W E   B I O S   C A L L S 
+```
 Naam:    PCMPLY
 Adres:   &H0186 (MAIN ROM)
 Functie: sample afspelen
@@ -35,7 +35,7 @@ Invoer:  EHL = startadres
          bit 2-6:    0
          bit 7:      0   RAM
                      1   VRAM
-
+```
 Bij  gebruik van  alleen RAM zou een 16 bits adres voldoende 
 zijn, maar  omdat we ook met VRAM kunnen werken zijn 17 bits 
 noodzakelijk.  Daar wordt het DE register voor gebruikt, het 
@@ -44,23 +44,23 @@ de  lengte  staat  in  D.  Voor  de  duidelijkheid een  paar
 voorbeelden:
 
 1) Sample op adres &H9000-&HBFFF (RAM) afspelen op 5.25 kHz:
-
+```
         LD   HL,&H9000
         LD   BC,&H3000  ; &HBFFF-&H9000+1 = &H3000
         LD   DE,0
         LD   A,&B00000010
         CALL PCMPLY
-
+```
 2) Sample op  adres &H04000-&H1BFFF (VRAM) afspelen op 15.75 
    kHz:
-
+```
         LD   HL,&H4000
         LD   BC,&H8000  ; &H1BFFF-&H04000+1 = &H18000
         LD   DE,&H0100
         LD   A,&B10000000
         CALL PCMPLY
-
-
+```
+```
 Naam:    PCMREC
 Adres:   &H0189 (MAIN ROM)
 Functie: sample opnemen
@@ -72,7 +72,7 @@ Invoer:  EHL = startadres
                      1 crunch mode uit
          bit 3-6   : trigger
          bit 7     : zie PCMPLY
-
+```
 Voor de  uitleg bij  EHL en DBC verwijs ik naar PCMPLY. Voor 
 bit  2 heb  ik zelf maar de naam "crunch mode" verzonnen, ik 
 weet niet  wat de offici�le naam hiervoor is. Als dit bit is 
@@ -91,22 +91,22 @@ gestart. Ook hier weer twee voorbeelden:
 
 1) Sample met 7.875 kHz opnemen van &H8300 tot &HD4FF (RAM), 
    trigger is uit en crunch mode is aan:
-
+```
         LD   HL,&H8300
         LD   BC,&H5200  ; &H8300-&HD4FF+1 = &H5200
         LD   DE,0
         LD   A,&B00000101
         CALL PCMREC
-
+```
 2) Sample met  3.9375 kHz  opnemen van  &H13000 tot  &H13FFF 
    (VRAM), trigger is 10 en crunch mode is uit:
-
+```
         LD   HL,&H3000
         LD   BC,&H1000  ; &H13000-&H13FFF+1 = &H1000
         LD   DE,&H0001
         LD   A,&B11010011
         CALL PCMREC
-
+```
 
 Het is  nu tijd  voor het  voorbeeldprogramma: LONG PCM. Dit 
 programma  is vanzelfsprekend ook onder dezelfde naam in het 
@@ -118,7 +118,7 @@ naam "LONGPCM.ASC". We gaan deze source nu bespreken.
 eens  uit te  proberen, en  dan pas  de assemblerlisting  te 
 bestuderen.)
 
-
+```
 ; L O N G P C M . A S M 
 ; Door Stefan Boer 25/10/92
 ; Lange samples opnemen en afspelen
@@ -126,14 +126,14 @@ bestuderen.)
 ; systeem RAM + routine)
 ; Alleen MSX turbo R
 ; Geen DOS2!!
-
+```
 
 Om  het simpel  te houden  wordt DOS2  niet ondersteund, het 
 aansturen van  het geheugen  zou dan namelijk anders worden. 
 Bovendien  moet er dan rekening worden gehouden met de 32 kB 
 RAM die DOS2 in beslag neemt, en dat doen we ook niet.
 
-
+```
 CHGMOD: EQU   &H5F
 ERAFNK: EQU   &HCC
 CHGET:  EQU   &H9F
@@ -142,12 +142,12 @@ CHGCPU: EQU   &H0180
 PCMREC: EQU   &H0189
 PCMPLY: EQU   &H0186
 LINL80: EQU   &HF3AE
-
+```
 
 De  in  de  routine  gebruikte  BIOS  calls  en  systeem RAM 
 adressen worden hier gedefinieerd.
 
-
+```
         ORG   &HC800
         IN    A,(&HFE)
         PUSH  AF
@@ -164,7 +164,7 @@ adressen worden hier gedefinieerd.
         LD    A,7+128
         OUT   (&H99),A
         EI
-
+```
 
 Hier wordt eerst de inhoud van I/O poort &HFE bewaard, zodat 
 we  die  straks  weer  kunnen  herstellen.  Verder  wordt de 
@@ -172,7 +172,7 @@ computer  in R800  DRAM mode  gezet, en initialiseren we het
 scherm.  De  R800  DRAM  mode is  noodzakelijk omdat  anders 
 PCMREC alleen werkt bij lage frequenties.
 
-
+```
         CALL  MEMCNT          ; geheugen tellen
         LD    (MAXPGE),A
 MAIN:   LD    HL,WELKOM
@@ -183,7 +183,7 @@ MAIN:   LD    HL,WELKOM
         LD    BC,112
         ADD   HL,BC           ; VRAM erbij
         CALL  PRTDEC          ; getal in decimaal naar scherm
-
+```
 
 Hier  wordt  eerste  MEMCOUNT  aangeroepen, mijn  standaard- 
 routine  om  de  grootte  van  de  actuele memory  mapper te 
@@ -211,26 +211,26 @@ Deze  waarde wordt  met PRTDEC  in decimaal  naar het scherm
 gestuurd (met  voorloopnullen), deze standaardroutine zal ik 
 een andere keer nog wel eens bespreken.
 
-
+```
         LD    HL,WELKM2
         CALL  PRINTS
         LD    HL,MENU
         CALL  PRINTS
-
+```
 
 Met WELKM2 wordt er nog een "kB" achter het zojuist geprinte 
 getal gezet, achter MENU gaat het complete menu schuil. (Het 
 is  misschien  handig  om  even  vooruit  te kijken  naar de 
 definites van WELKOM, WELKM2, MENU, etc.)
 
-
+```
         LD    A,(FREQUE)      ; current frequency
         LD    HL,FREQ0
         AND   A
         JR    Z,FQ0
         LD    HL,FREQ1
 FQ0:    CALL  PRINTS
-
+```
 
 Hier wordt de actuele frequentie (15.75 kHz of 7.875 kHz) op 
 het  scherm  gezet.  Vanaf  FREQ0 en  FREQ1 staan  de juiste 
@@ -238,7 +238,7 @@ teksten,  via  een voorwaardelijke  sprong wordt  HL met  de
 juiste  waarde  geladen. Vervolgens  wordt de  juiste string 
 op het scherm gezet.
 
-
+```
         LD    HL,MENU2
         CALL  PRINTS
         LD    A,(CRUNCH)      ; crunch mode
@@ -247,25 +247,25 @@ op het scherm gezet.
         JR    Z,CR0
         LD    HL,CRU1
 CR0:    CALL  PRINTS
-
+```
 
 Hier hetzelfde, alleen nu voor de crunch mode.
 
-
+```
         LD    HL,MENU3        ; trigger
         CALL  PRINTS
         LD    A,(TRIGGR)
         LD    L,A
         LD    H,0
         CALL  PRTDC2
-
+```
 
 Bij de  trigger gaat het om een getal. Dit wordt in HL gezet 
 en vervolgens wordt PRTDC2 aangeroepen, een ingekorte versie 
 van  PRTDEC die  een decimaal  getal op  twee cijfers  print 
 (eventueel met voorloopnul).
 
-
+```
         LD    HL,MENU4
         CALL  PRINTS
         LD    A,(LIST_F)
@@ -275,7 +275,7 @@ van  PRTDEC die  een decimaal  getal op  twee cijfers  print
         JR    Z,LI0
         LD    HL,CRU1
 LI0:    CALL  PRINTS          ; listen
-
+```
 
 Tot slot van ons overzicht van de instellingen de instelling 
 "listen".  Hiermee  kan  het  binnenkomende  signaal  worden 
@@ -292,7 +292,7 @@ De  waarde  wordt  elke  keer  opnieuw  naar I/O  poort &HA5
 gestuurd, omdat het wordt uitgezet bij aanroep van PCMPLY of 
 PCMREC.
 
-
+```
         LD    HL,PROMPT
         CALL  PRINTS
 GETKEY: CALL  CHGET
@@ -306,7 +306,7 @@ GETKEY: CALL  CHGET
         CALL  &HA2
         LD    A,10
         CALL  &HA2
-
+```
 
 Hier  wordt de  prompt ("Your choice please?") op het scherm 
 gezet. Vervolgens  wordt CHGET aangeroepen, die op een toets 
@@ -320,7 +320,7 @@ niet gezet.  Anders moeten we het nog eens proberen. Bij een
 goede  toets  wordt  AF  bewaard  en wordt  er een  linefeed 
 (13,10) gegeven.
 
-
+```
         POP   AF
         SUB   "1"             ; omzetten in getal 0-7
         ADD   A,A
@@ -333,7 +333,7 @@ goede  toets  wordt  AF  bewaard  en wordt  er een  linefeed
         LD    D,(HL)
         EX    DE,HL
         JP    (HL)            ; spring naar juiste routine
-
+```
 
 Hier  wordt er aan de hand van het ingetoetse cijfer naar de 
 juiste routine gesprongen. Eerst halen we de eerder bewaarde 
@@ -348,30 +348,13 @@ HL  overgedragen.  De  JP  (HL) springt  tenslotte naar  het
 juiste adres. Onthoud deze constructie goed, het is de beste 
 manier om een dergelijk menu te programmeren.
 
-(Nvdr.  De tekst  was langer  dan 16  kB, u  kunt het tweede 
-gedeelte in het submenu vinden.)
-
-                                                Stefan Boer
-
-
-
-                    - TWEEDE GEDEELTE -
-
-                   P C M   S A M P L E R 
-                                          
-
-
-(Nvdr.  Dit  is  het  tweede  gedeelte.  U  kunt  het eerste 
-gedeelte in het submenu vinden.)
-
-
 Nu komen  de afzonderlijke  routines, die door het maken van 
 een  keuze  uit  het  menu  worden aangeroepen.  De routines 
 eindigen  met een  JP MAIN, waardoor het scherm wordt gewist 
 en het  menu opnieuw  opgebouwd. Vervolgens kan de gebruiker 
 zijn (of haar?) volgende keuze maken.
 
-
+```
 ; 1) Record sample
 
 RECORD: LD    HL,RECTXT
@@ -379,13 +362,13 @@ RECORD: LD    HL,RECTXT
         CALL  CHGET
         LD    HL,RECTX2
         CALL  PRINTS
-
+```
 
 Eerst  wordt er  gevraagd om  op een toets te drukken om met 
 het  opnemen   te  beginnen.   Vervolgens  wordt   de  tekst 
 "Recording..." op het scherm gezet.
 
-
+```
         LD    A,(TRIGGR)
         ADD   A,A
         ADD   A,A
@@ -402,29 +385,29 @@ CRNCH:  LD    A,(CRUNCH)
         SET   2,C             ; crunch mode aan
 REC:    LD    A,C
         PUSH  AF
-
+```
 Eerst  samplen we  het VRAM vol. Hier wordt de juiste waarde 
 voor het  A register berekend. De trigger wordt met drie ADD 
 A,A  instrukties naar  bit 3-6  verplaatst. Met  een OR  128 
 wordt het  VRAM bit  gezet. Tot  slot worden  nog de  juiste 
 crunch en frequntie bits toegevoegd.
 
-
+```
         LD    HL,&H4000       ; startadres in VRAM = &H04000
         LD    BC,&HC000       ; lengte in VRAM = &H1C000
         LD    DE,&H0100
         CALL  PCMREC
-
+```
 
 Het  eigenlijke  aanroepen van  de BIOS  routine wordt  hier 
 gedaan. De  eerste 16 kB VRAM wordt overgeslagen, hier staat 
 immmers de schermdata.
 
-
+```
         POP   AF
         AND   &B00000111      ; wis VRAM en trigger
         LD    (PARAM),A
-
+```
 
 We  hadden de berekende waarde voor A zojuist bewaard, zodat 
 we die  niet nog  een keer  hoeven te  berekenen. De trigger 
@@ -432,7 +415,7 @@ moet nu echter worden uitgezet, omdat er anders een "gat" in
 de opnamen komt bij de overgang van VRAM naar RAM. Uiteraard 
 wordt ook bit 7 (het VRAM bit) gewist.
 
-
+```
         LD    A,(MAXPGE)
         LD    B,A
 RECLUS: LD    A,B
@@ -446,7 +429,7 @@ RECLUS: LD    A,B
         POP   BC
         DJNZ  RECLUS
         JP    MAIN
-
+```
 
 Nu is het RAM aan de beurt. Bovenstaande lus wordt voor alle 
 mapper pagina's die beschikbaar zijn voor samplen doorlopen. 
@@ -454,7 +437,7 @@ De  juiste  waarde  wordt  naar  I/O  poort  &HFE  gestuurd,
 vervolgens   wordt   PCMREC   met   de   juiste   parameters 
 aangeroepen.
 
-
+```
 ; 2) Play sample
 
 PLAY:   LD    HL,PLYTXT
@@ -465,7 +448,7 @@ PLAY:   LD    HL,PLYTXT
         LD    BC,&HC000
         LD    DE,&H0100
         CALL  PCMPLY
-
+```
 
 Eerst   worde  tekst   "Playing..."  op  het  scherm  gezet. 
 Vervolgens wordt de waarde voor het A register berekend. Bij 
@@ -473,7 +456,7 @@ afspelen  is  dit veel  simpeler dan  bij opnemen,  het gaat
 immers  alleen   om  de  frequentie  en  het  RAM/VRAM  bit. 
 Vervolgens wordt de sample in het VRAM afgespeeld.
 
-
+```
         LD    A,(MAXPGE)
         LD    B,A
 PLYLUS: LD    A,B
@@ -487,35 +470,35 @@ PLYLUS: LD    A,B
         POP   BC
         DJNZ  PLYLUS
         JP    MAIN
-
+```
 
 Deze lus  lijkt sprekend  op die  voor het  opnemen, verdere 
 uitleg is hier dan ook overbodig. Merk op dat het A register 
 nu  alleen de  frequentie bits  bevat, het  RAM/VRAM bit  is 
 immers 0.
 
-
+```
 ; 3) Frequency 15.75 kHz/7.875 kHz
 
 CHFREQ: LD    A,(FREQUE)
         XOR   1
         LD    (FREQUE),A
         JP    MAIN
-
+```
 
 Hier  wordt  er  geswitchd  tussen  15.75 en  7.875 kHz.  De 
 frequentie wordt aangegeven door bit 0 van (FREQUE), dit bit 
 wordt  met een  XOR 1  omgeklapt. Door  de JP  MAIN wordt de 
 wijziging vanzelf op het scherm zichtbaar gemaakt.
 
-
+```
 ; 4) Crunch mode ON/OFF
 
 CHCRUN: LD    A,(CRUNCH)
         XOR   1
         LD    (CRUNCH),A
         JP    MAIN
-
+```
 
 Analoog  aan   de  frequentie.  De  trigger  is  echter  wat 
 moeilijker,  omdat hier een getal tussen 0 en 15 moet worden 
@@ -524,7 +507,7 @@ scherm.  Vervolgens wordt de tekst "Trigger: " op het scherm
 gezet met  daarachter de  actuele waarde. Hiervoor gebruiken 
 we PRTDC2.
 
-
+```
 ; 5) Change trigger
 
 CHTRIG: LD    HL,TRGTXT
@@ -548,7 +531,7 @@ CURSOR: CALL  CHGET
         DEC   A
         LD    (TRIGGR),A
         JR    CHTRG2
-
+```
 
 Bij CURSOR wordt er op een toets gewacht. Is dit een spatie, 
 dan  is de  juiste waarde  blijkbaar bereikt  en kan  worden 
@@ -563,14 +546,14 @@ dan wordt  A met  een verlaagd  en wordt  de nieuwe  trigger
 waarde  opgeslagen. Door  naar CHTRG2  te springen  wordt de 
 nieuwe waarde op het scherm gezet.
 
-
+```
 TRGUP:  LD    A,(TRIGGR)
         CP    15
         JR    Z,CURSOR
         INC   A
         LD    (TRIGGR),A
         JR    CHTRG2
-
+```
 
 De routine  voor trigger up is praktisch gelijk aan die voor 
 trigger down. Listen gaat weer net als frequentie en crunch, 
@@ -578,7 +561,7 @@ met het verschil dat er hier wordt geswitchd tussen 10 en 0.
 De  OUT (&HA5),A is eigenlijk overbodig, dit wordt immers in 
 MAIN al gedaan.
 
-
+```
 ; 6) Listen ON/OFF
 
 LISTEN: LD    A,(LIST_F)
@@ -594,28 +577,28 @@ QUIT:   LD    HL,QUITTX
         POP   AF
         OUT   (&HFE),A
         RET
-
+```
 
 Bij   het   verlaten   van  het   programma  wordt   er  een 
 afscheidstekst  op  het  scherm gezet.  Vervolgens wordt  de 
 inhoud  van I/O poort &HFE hersteld en wordt er teruggekeerd 
 naar BASIC.
 
-
+```
 PRINTS: LD    A,(HL)
         AND   A
         RET   Z
         CALL  CHPUT
         INC   HL
         JR    PRINTS
-
+```
 
 Deze standaardroutine zet een string op het scherm. HL wijst 
 naar het  eerste teken  van de  string, de  string moet zijn 
 afgesloten   met  een   0.  Dit  is  een  van  de  bekendste 
 standaardroutines.
 
-
+```
 MAXPGE: DS    1
 PARAM:  DS    1
 FREQUE: DB    0
@@ -623,7 +606,7 @@ TRIGGR: DB    0
 CRUNCH: DB    0
 LIST_F: DB    0
 JPTAB:  DW    RECORD,PLAY,CHFREQ,CHCRUN,CHTRIG,LISTEN,QUIT
-
+```
 
 Hierboven   het   numerieke   datagebied.  Hier   worden  de 
 variabelen  opgeslagen, bovendien  staat hier de sprongtabel 
@@ -632,7 +615,7 @@ die  in het programma met PRINTS op het scherm kunnen worden
 gezet. (Nvdr.  Omdat de layout van de Special in 60 kolommen 
 is, past het hier en daar niet echt lekker.)
 
-
+```
 WELKOM: DM    12,"LONG PCM v1.0                           "
         DM    "                By Stefan Boer 25/10/92"
               ,13,10
@@ -665,13 +648,13 @@ QUITTX: DM    13,10,"Good bye!",13,10,0
 RECTXT: DM    13,10,"Press any key to start recording",0
 RECTX2: DM    13,10,"Recording...",0
 PLYTXT: DM    13,10,"Playing...",0
-
+```
 
 Onderstaande standaardroutine  zet het  getal in  HL op  het 
 scherm,  met voorloopnullen.  Deze routine  wordt een andere 
 keer misschien nog eens behandeld.
 
-
+```
 ; PRTDEC
 ; Zet getal in HL in decimaal op scherm
 ; Door Stefan Boer, juli 1992
@@ -699,13 +682,13 @@ EINDE:  LD    H,B
         ADD   "0"
         CALL  CHPUT           ; cijfer naar scherm
         RET
-
+```
 
 De  volgende  standaardroutine  is al  op de  vorige Sunrise 
 Special  besproken, voor  uitleg verwijs  ik je dus naar die 
 Special.
 
-
+```
 ; MEMCNT
 ; Door Stefan Boer 19/03/92
 ; Uitvoer: A=aantal vrije memory mapper segmenten van 16 kB
@@ -754,9 +737,9 @@ RESTOR: OUT   (C),B
         RET
 
 BUFFER: DEFS  256
+```
 
-
-                      T O T   S L O T 
+## T O T   S L O T 
 
 In het  softwaremenu vindt  u het programmaatje LONGPCM.BAS, 
 dat  de routine van disk laadt en start. Bovendien zorgt het 
@@ -774,4 +757,4 @@ van   de  samplechip   bespreken,  de   frequentie  kan  dan
 bijvoorbeeld veel nauwkeuriger worden gekozen. Maar daarover 
 de volgende keer meer.
 
-                                                Stefan Boer
+Stefan Boer
