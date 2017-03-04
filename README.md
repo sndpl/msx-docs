@@ -1,11 +1,20 @@
 # MSX Documentation
+This repository contains texts from Disk Magazines. Most texts haven't been formatted to markdown yet, but PR's are welcome!
+
+Happy reading!!
 
 ## Assembly
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---             | ---          |
-| [Assembly cursus 2](Future Disk/33/Assembly Cursus 2.md) | Arjan Bakker | Future Disk 33 |
+| [Assembly cursus 2](Future Disk/33/Assembly cursus 2.md) | Arjan Bakker | Future Disk 33 |
+| [Assembly cursus 3](Future Disk/34/Assembly cursus 3.md) | Arjan Bakker | Future Disk 34 |
+| [Assembly cursus 4](Future Disk/35/Assembly cursus 4.md) | Arjan Bakker | Future Disk 35 |
+| [Assembly cursus 5](Future Disk/36/Assembly cursus 5.md) | Arjan Bakker | Future Disk 36 |
+| [Assembly cursus 6](Future Disk/37/Assembly cursus 6.md) | Arjan Bakker | Future Disk 37 |
+| [Assembly cursus 7](Future Disk/38/Assembly cursus 7.md) | Arjan Bakker | Future Disk 38 |
 | [Assembly cursus 8](Future Disk/40/Assembly cursus 8.md) | Arjan Bakker | Future Disk 40 |
+| [Assembly cursus 9](Future Disk/42/Assembly cursus 9.md) | Arjan Bakker | Future Disk 42 |
 | [Assembly voor beginners](Future Disk/30/Assembly voor beginners.md) | Arjan Bakker | Future Disk 30 |
 | [Bits en bull](Future Disk/33/Bits en bull.md) | Tobias Keizer | Future Disk 33 |
 | [CDD](Sunrise Special/2/CDD.md) | Stefan Boer | Sunrise Special 2 |
@@ -15,6 +24,8 @@
 | [Data compressie 3](Future Disk/18/Data compressie 3.md) | Jan-Willem van Helden | Future Disk 18 |
 | [Data compressie 4](Future Disk/20/Data compressie 4.md) | Jan-Willem van Helden | Future Disk 20 |
 | [Data compressie 5](Future Disk/22/Data compressie 5.md) | Jan-Willem van Helden | Future Disk 22 |
+| [Data compressie](Future Disk/35/Datacompressie.md) | Arjan Bakker | Future Disk 35 |
+| [Data compressie 2](Future Disk/36/Datacompressie 2.md) | Arjan Bakker | Future Disk 36 |
 | [Disk cursus special 1](Sunrise Special/1/Disk cursus special 1.md) | Stefan Boer | Sunrise Special 1 |
 | [File handles](Sunrise Special/3/File handles.md) | Kasper Souren | Sunrise Special 3 |
 | [Geheugen schakelen](Sunrise Special/2/Geheugen schakelen.md) | Stefan Boer | Sunrise Special 2 |
@@ -23,6 +34,7 @@
 | [Het rel file formaat](Sunrise Special/1/Het rel formaat.md) | Stefan Boer | Sunrise Special 1 |
 | [Interrupt service routines](Sunrise Special/2/Interrupt service routines.md) | Alex van der Wal | Sunrise Special 2 |
 | [Ledjes](Sunrise Special/2/Ledjes.md) | Stefan Boer | Sunrise Special 2 |
+| [Lijntjes](Future Disk/42/Lijntjes.md) | Arjan Bakker | Future Disk 42 |
 | [Machinetaal](Future Disk/00/Machinetaal.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 0 |
 | [Machinetaal 2](Future Disk/00/Machinetaal 2.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 1 |
 | [Machinetaal 3](Future Disk/02/Machinetaal 3.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 2 |
@@ -31,9 +43,14 @@
 | [Machinetaal 6](Future Disk/05/Machinetaal 6.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 5 |
 | [Machinetaal 7](Future Disk/06/Machinetaal 7.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 6 |
 | [Machinetaal 8](Future Disk/07/Machinetaal 8.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 7 |
+| [Machinetaal 9](Future Disk/075/Machinetaal 9.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 7 1/2 |
+| [Machinetaal 10](Future Disk/10/Machinetaal 10.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 10 |
 | [Machinetaal 11](Future Disk/11/Machinetaal 11.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 11 |
 | [Machinetaal 12](Future Disk/13/Machinetaal 12.md) | Ruud Gelissen & Jan-Willem van Helden | Future Disk 13 |
 | [Macro commando's met gen80](Sunrise Special/2/Macro commandos met gen80.md) | Kasper Souren | Sunrise Special 2 |
+| [Mathpack](Future Disk/34/Mathpack.md) | Arjan Bakker | Future Disk 34 |
+| [Mathpack 2](Future Disk/36/Mathpack 2.md) | Arjan Bakker | Future Disk 36 |
+| [Mathpack 3](Future Disk/37/Mathpack 3.md) | Arjan Bakker | Future Disk 37 |
 | [Mcode Special 1](Future Disk/19/Mcode Special 1.md) | Ruud Gelissen | Future Disk 19 |
 | [Mcode Special 2](Future Disk/21/Mcode Special 2.md) | Ruud Gelissen | Future Disk 21 |
 | [Mcode Special 3](Future Disk/23/Mcode Special 3.md) | Ruud Gelissen | Future Disk 23 |
@@ -53,6 +70,7 @@
 | [Rechtstreeks via PCM afspelen](Sunrise Special/2/Rechtstreeks via PCM afspelen.md) | Pierre Gielen | Sunrise Special 2 |
 | [Rel assembleren](Sunrise Special/1/Rel assembleren.md) | Rudy Oppers | Sunrise Special 1 |
 | [Resource dis-assembler](Sunrise Special/2/Resource.md) | Kasper Souren | Sunrise Special 2 |
+| [ROM images laden](Future Disk/36/ROM images laden.md) | Arjan Bakker | Future Disk 36 |
 | [Rotatie](Future Disk/27/Rotatie.md) | Jan-Willem van Helden | Future Disk 27 |
 | [Schuiven en roteren](FD40/Schuiven en roteren.md) | Arjan | Future Disk 40 |
 | [Screen 12](Future Disk/21/Screen 12.md) | Tobias Keizer | Future Disk 21 |
@@ -72,12 +90,16 @@
 | ---          | ---              | ---          |
 | [2+ Schermen](Future Disk/24/2+ Schermen.md) | Tobias Keizer | Future Disk 24 |
 | [Advanced Basic](Future Disk/30/Advances Basic.md) | Arjan Bakker | Future Disk 30 |
-| [Advanced Basic 2](Future Disk/31/Advances Basic 2.md) | Arjan Bakker | Future Disk 31 |
-| [Advanced Basic 3](Future Disk/33/Advances Basic 3.md) | Arjan Bakker | Future Disk 33 |
+| [Advanced Basic 2](Future Disk/31/Advanced Basic 2.md) | Arjan Bakker | Future Disk 31 |
+| [Advanced Basic 3](Future Disk/33/Advanced Basic 3.md) | Arjan Bakker | Future Disk 33 |
+| [Advanced Basic 4](Future Disk/33/Advanced Basic 4.md) | Arjan Bakker | Future Disk 34 |
+| [Advanced Basic 5](Future Disk/36/Advanced Basic 5.md) | Arjan Bakker | Future Disk 36 |
+| [Advanced Basic 6](Future Disk/37/Advanced Basic 6.md) | Arjan Bakker | Future Disk 37 |
 | [Basic Cursus 6](Future Disk/17/Basic Cursus 6.md) | Tobias Keizer | Future Disk 17 |
 | [Basic Cursus 8](Future Disk/19/Basic Cursus 8.md) | Tobias Keizer | Future Disk 19 |
 | [Basic voor beginners](Future Disk/19/Basic voor beginners.md) | Tobias Keizer | Future Disk 19 |
 | [Call Kanji](Future Disk/21/Call Kanji.md) | Tobias Keizer | Future Disk 21 |
+| [Copy in BASIC](Future Disk/25/Copy in BASIC.md) | Vincent | Future Disk 35 |
 | [DIsk IO in BASIC](Future Disk/31/Disk IO in BASIC.md) | Tobias Keizer | Future Disk 31 |
 | [Ledjes](Future Disk/21/Ledjes.md) | Tobias Keizer | Future Disk 21 |
 | [MSX2+ Schermen in BASIC](Future Disk/19/MSX2+ Schermen in BASIC.md) | Tobias Keizer | Future Disk 19 |
@@ -86,8 +108,10 @@
 | [Special Effects BASIC](Future Disk/05/Special Effects BASIC.md) | Tom Wauben | Future Disk 5 |
 | [Special Effects BASIC 2](Future Disk/06/Special Effects BASIC 2.md) | Tom Wauben | Future Disk 6 |
 | [Special Effects BASIC 3](Future Disk/07/Special Effects BASIC 3.md) | Tom Wauben | Future Disk 7 |
+| [Special Effects BASIC 4](Future Disk/075/Special Effects BASIC 4.md) | Tom Wauben | Future Disk 7 1/2 |
 | [Special Effects BASIC 5](Future Disk/10/Special Effects BASIC 5.md) | Tom Wauben | Future Disk 10 |
 | [Special Effects BASIC 5](Future Disk/12/Special Effects BASIC 5.md) | Tom Wauben | Future Disk 12 |
+| [Turbo-R BASIC](Future Disk/750/Turbo-R BASIC.md) | Tobias Keizer | Future Disk 7 1/2 |
 | [Turbo-R BASIC](Future Disk/20/Turbo-R BASIC.md) | Tobias Keizer | Future Disk 20 |
 
 
@@ -163,6 +187,10 @@
 | [Pascal cursus 2 (English)](Future Disk/32/Pascal cursus 2 EN.md) | Jeroen Smael | Future Disk 32 |
 | [Pascal cursus 3](Future Disk/33/Pascal 3.md) | Jeroen Smael | Future Disk 33 |
 | [Pascal cursus 4](Future Disk/33/Pascal 4.md) | Jeroen Smael | Future Disk 33 |
+| [Pascal cursus 5](Future Disk/34/Pascal 5.md) | Jeroen Smael | Future Disk 34 |
+| [Pascal cursus 7](Future Disk/35/Pascal 7.md) | Jeroen Smael | Future Disk 35 |
+| [Pascal cursus 8](Future Disk/35/Pascal 8.md) | Jeroen Smael | Future Disk 35 |
 | [Pointers in Pascal](Sunrise Special/1/Pointers in Pascal.md) | Rudy Oppers | Sunrise Special 1 |
 | [Recursie](Future Disk/21/Recursie.md) | Jeroen Smael | Future Disk 21 |
+| [Recursie 2](Future Disk/36/Recursie 2.md) | Jeroen Smael | Future Disk 36 |
 | [Turbo Pascal Patch](Sunrise Special/3/Turbo Pascal Patch.md) | Pierre Gielen | Sunrise Special 3 |
