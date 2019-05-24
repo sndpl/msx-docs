@@ -16,6 +16,7 @@ Happy reading!!
 | [Assembly cursus 8](future_disk/40/assembly_cursus_8.md) | Arjan Bakker | Future Disk 40 |
 | [Assembly cursus 9](future_disk/42/assembly_cursus_9.md) | Arjan Bakker | Future Disk 42 |
 | [Assembly voor beginners](future_disk/30/assembly_voor_beginners.md) | Arjan Bakker | Future Disk 30 |
+| [BDOS Foutafhandelingen](sunrise_special/4/bdos_foutafhandeling.md) | Alex van der Wal | Sunrise Special 4 |
 | [Bits en bull](future_disk/33/bits_en_bull.md) | Tobias Keizer | Future Disk 33 |
 | [CDD](sunrise_special/2/cdd.md) | Stefan Boer | Sunrise Special 2 |
 | [Cirkels in ML](future_disk/02/cirkels_in_ml.md) | Jeroen Smael  | Future Disk 02 |
@@ -27,11 +28,14 @@ Happy reading!!
 | [Data compressie](future_disk/35/datacompressie.md) | Arjan Bakker | Future Disk 35 |
 | [Data compressie 2](future_disk/36/datacompressie_2.md) | Arjan Bakker | Future Disk 36 |
 | [Disk cursus special 1](sunrise_special/1/disk_cursus_special_1.md) | Stefan Boer | Sunrise Special 1 |
+| [Easy BDOS](sunrise_special/4/easy_bdos.md) | Alex van der Wal | Sunrise Special 4 |
 | [File handles](sunrise_special/3/file_handles.md) | Kasper Souren | Sunrise Special 3 |
 | [Geheugen schakelen](sunrise_special/2/geheugen_schakelen.md) | Stefan Boer | Sunrise Special 2 |
 | [Geheugen tellen](sunrise_special/1/geheugen_tellen.md) | Stefan Boer | Sunrise Special 1 |
 | [Getallen printen](sunrise_special/3/getallen_printen.md) | Stefan Boer | Sunrise Special 3 |
 | [Het rel file formaat](sunrise_special/1/het_rel_formaat.md) | Stefan Boer | Sunrise Special 1 |
+| [Hex Printen](sunrise_special/4/hex_printen.md) | Stefan Boer | Sunrise Special 4 |
+| [Index registers](sunrise_special/4/index_registers.md) | Stefan Boer | Sunrise Special 4 | 
 | [Interrupt service routines](sunrise_special/2/interrupt_service_routines.md) | Alex van der Wal | Sunrise Special 2 |
 | [Ledjes](sunrise_special/2/ledjes.md) | Stefan Boer | Sunrise Special 2 |
 | [Lijntjes](future_disk/42/lijntjes.md) | Arjan Bakker | Future Disk 42 |
@@ -56,17 +60,22 @@ Happy reading!!
 | [Mcode Special 3](future_disk/23/mcode_special_3.md) | Ruud Gelissen | Future Disk 23 |
 | [Mcode Special 4](future_disk/25/mcode_special_4.md) | Ruud Gelissen | Future Disk 25 |
 | [Mcode Special 5](future_disk/27/mcodespecial_5.md) | Ruud Gelissen | Future Disk 27 |
+| [MSX Audio](sunrise_special/4/msx_audio.md) | Kasper Souren | Sunrise Special 4 | 
 | [MSX Assemblers](sunrise_special/1/msx_assemblers.md) | Alex van der Wal | Sunrise Special 1 |
 | [MSX-DOS 2 voor machinetaalprogrammeur](sunrise_special/2/msx-dos_2_voor_machinetaalprogrammeurs.md) | Daniel Wiermans | Sunrise Special 2 |
 | [MSX-DOS2 deel 1](future_disk/25/msx-dos2_deel_1.md) | Tobias Keizer | Future Disk 25 |
 | [MSX-DOS2 deel 2](future_disk/28/msx-dos2_deel_2.md) | Tobias Keizer | Future Disk 28 |
 | [MSX-DOS2 deel 3](future_disk/28/msx-dos2_deel_3.md) | Tobias Keizer | Future Disk 28 |
 | [Muis uitlezen](sunrise_special/1/muis_uitlezen.md) | Alex van der Wal | Sunrise Special 1 |
+| [NTM Coordin](sunrise_special/4/ntm_coordin.md) | Kasper Souren | Sunrise Special 4 |
 | [Paint in ML](future_disk/30/paint_in_ml.md) | Arjan Bakker | Future Disk 30 |
 | [Pauze toets](sunrise_special/2/pauze_toets.md) | Stefan Boer | Sunrise Special 2 |
+| [PCM rechtstreeks](sunrise_special/4/pcm_rechtstreeks.md) | Stefan Boer | Sunrise Special 4 | 
 | [PCM routines van de bios](sunrise_special/2/pcm_routines_van_de_bios.md) | Bernard Lamers | Sunrise Special 2 |
 | [PCM Sampler](sunrise_special/2/pcm_sampler.md) | Stefan Boer | Sunrise Special 2 |
+| [Print routine](sunrise_special/4/print_routine.md) | Kasper Souren | Sunrise Special 4 |
 | [R800](sunrise_special/1/r800.md) | Stefan Boer | Sunrise Special 1 |
+| [Random](sunrise_special/4/random.md) | Kasper Souren | Sunrise Special 4 |
 | [Rechtstreeks via PCM afspelen](sunrise_special/2/rechtstreeks_via_pcm_afspelen.md) | Pierre Gielen | Sunrise Special 2 |
 | [Rel assembleren](sunrise_special/1/rel_assembleren.md) | Rudy Oppers | Sunrise Special 1 |
 | [Resource dis-assembler](sunrise_special/2/resource.md) | Kasper Souren | Sunrise Special 2 |
@@ -83,6 +92,17 @@ Happy reading!!
 | [VDP Cursus 2](sunrise_special/2/vdp_cursus_2.md) | Stefan Boer | Sunrise Special 2 |
 | [VDP Cursus 3](sunrise_special/3/vdp_cursus_3.md) | Stefan Boer | Sunrise Special 3 |
 | [VDP Cursus 4](sunrise_special/3/vdp_cursus_4.md) | Stefan Boer | Sunrise Special 3 |
+| [VDP Cursus 5](sunrise_special/4/vdp_cursus_5.md) | Stefan Boer | Sunrise Special 4 |
+| [VDP Cursus 6](sunrise_special/4/vdp_cursus_6.md) | Stefan Boer | Sunrise Special 4 |
+| [VDP Cursus 7](sunrise_special/5/vdp_cursus_7.md) | Stefan Boer | Sunrise Special 5 |
+| [VDP Cursus 8](sunrise_special/5/vdp_cursus_8.md) | Stefan Boer | Sunrise Special 5 |
+| [VDP Cursus 9](sunrise_special/5/vdp_cursus_9.md) | Stefan Boer | Sunrise Special 5 |
+| [VDP Cursus 11](sunrise_special/7/vdp_cursus_11.md) | Stefan Boer | Sunrise Special 7 |
+| [VDP Cursus 12](sunrise_special/7/vdp_cursus_12.md) | Stefan Boer | Sunrise Special 7 |
+| [VDP Cursus 13](sunrise_special/7/vdp_cursus_13.md) | Stefan Boer | Sunrise Special 7 |
+| [VDP Cursus 14](sunrise_special/7/vdp_cursus_14.md) | Stefan Boer | Sunrise Special 7 |
+| [VDP Cursus 15](sunrise_special/7/vdp_cursus_15.md) | Stefan Boer | Sunrise Special 7 |
+| [VDP Cursus 16](sunrise_special/7/vdp_cursus_16.md) | Stefan Boer | Sunrise Special 7 |
 
 ## Basic
 
@@ -95,12 +115,15 @@ Happy reading!!
 | [Advanced Basic 4](future_disk/33/advanced_basic_4.md) | Arjan Bakker | Future Disk 34 |
 | [Advanced Basic 5](future_disk/36/advanced_basic_5.md) | Arjan Bakker | Future Disk 36 |
 | [Advanced Basic 6](future_disk/37/advanced_basic_6.md) | Arjan Bakker | Future Disk 37 |
+| [Barcode](sunrise_special/7/barcode.md) | Rob Augusteijn | Sunrise Special 7 |
 | [Basic Cursus 6](future_disk/17/basic_cursus_6.md) | Tobias Keizer | Future Disk 17 |
 | [Basic Cursus 8](future_disk/19/basic_cursus_8.md) | Tobias Keizer | Future Disk 19 |
 | [Basic voor beginners](future_disk/19/basic_voor_beginners.md) | Tobias Keizer | Future Disk 19 |
 | [Call Kanji](future_disk/21/call_kanji.md) | Tobias Keizer | Future Disk 21 |
+| [Circle](sunrise_special/4/circle.md) | Stefan Boer | Sunrise Special 4 | 
 | [Copy in BASIC](future_disk/25/copy_in_basic.md) | Vincent | Future Disk 35 |
-| [DIsk IO in BASIC](future_disk/31/disk_io_in_basic.md) | Tobias Keizer | Future Disk 31 |
+| [Disk IO in BASIC](future_disk/31/disk_io_in_basic.md) | Tobias Keizer | Future Disk 31 |
+| [KUN-BASIC Cursus](sunrise_special/4/kun_basic_cursus.md) | Randy Simons | Sunrise Special 4 | 
 | [Ledjes](future_disk/21/ledjes.md) | Tobias Keizer | Future Disk 21 |
 | [MSX2+ Schermen in BASIC](future_disk/19/msx2+_schermen_in_basic.md) | Tobias Keizer | Future Disk 19 |
 | [Muizen in BASIC](future_disk/20/muizen_in_basic.md) | Tobias Keizer | Future Disk 20 |
@@ -120,9 +143,11 @@ Happy reading!!
 | ---          | ---             | ---          |
 | [Programmeer taal c](sunrise_special/2/programmeer_taal_c.md) | Robert Amesz | Sunrise Special 2 |
 | [Programmeer taal c 2](sunrise_special/2/programmeer_taal_c_2.md) | Robert Amesz | Sunrise Special 2 |
-| [Programmeer taal c 3](sunrise_special/3/de_programmeer_taal_c_deel_3.md) | Robert Amesz | Sunrise Special 3 |
-| [Programmeer taal c 4](sunrise_special/3/de_programmeer_taal_c_deel_4.md) | Robert Amesz | Sunrise Special 3 |
+| [Programmeer taal c 3](sunrise_special/3/de_programmeertaal_c_deel_3.md) | Robert Amesz | Sunrise Special 3 |
+| [Programmeer taal c 4](sunrise_special/3/de_programmeertaal_c_deel_4.md) | Robert Amesz | Sunrise Special 3 |
+| [Programmeer taal c 5](sunrise_special/4/de_programmeertaal_c_deel_5.md) | Robert Amesz | Sunrise Special 4 |
 | [Werken met ASCII C.md](sunrise_special/3/werken_met_ascii_c.md) | Alex Wulms | Sunrise Special 3 |
+| [Werken met ASCII C 2.md](sunrise_special/4/werken_met_ascii_c_deel_2.md) | Alex Wulms | Sunrise Special 4 |
 
 
 ## Hybrid (Basic + Assembly)
@@ -152,10 +177,17 @@ Happy reading!!
 
 | Title        | Author           | Disk Magazine |
 | ---          | ---              | ---          |
+| [Boot2com](sunrise_special/3/boot2com.md) | Kasper Souren | Sunrise Special 4 |
 | [Clock chip](future_disk/25/clock_chip.md) | ? | Future Disk 25 |
+| [Copdisk](sunrise_special/4/copdisk.md) | Michel Shuqair | Sunrise Special 4 |
 | [Cursus DD-Graph](sunrise_special/2/cursus_dd-graph.md) | Bart Schouten | Sunrise Special 2 |
 | [De archeologie van de MSX](sunrise_special/3/de_archeologie_van_de_msx.md) | Bart Schouten | Sunrise Special 2 |
+| [Dirsort](sunrise_special/4/dirsort.md) | Rainier Maas | Sunrise Special 4 | 
+| [DOS2 Batch files](sunrise_special/4/dos2_batchfiles.md) | Kasper Souren | Sunrise Special 4 |
 | [Get disk](sunrise_special/3/getdisk.md) | Michel Shuqair | Sunrise Special 3 |
+| [Get disk 2](sunrise_special/4/getdisk_2.0.md) | Michel Shuqair | Sunrise Special 4 |
+| [HD Indelen](sunrise_special/4/hd_indelen.md) | Kasper Souren | Sunrise Special 4 |
+| [MBScan](sunrise_special/4/mbscan.md) | Stefan Boer | Sunrise Special 4 |
 | [Moonblaster Music Cursus](future_disk/18/moonblaster_music_cursus.md) | Jorrith Schaap | Future Disk 18 |
 | [Moonblaster Music Cursus 2](future_disk/19/moonblaster_music_cursus_2.md) | Jorrith Schaap | Future Disk 19 |
 | [Moonblaster Music Cursus 3](future_disk/20/moonblaster_music_cursus_3.md) | Jorrith Schaap | Future Disk 20 |
@@ -163,11 +195,16 @@ Happy reading!!
 | [Moonblaster Music Cursus 5](future_disk/22/moonblaster_music_cursus_5.md) | Jorrith Schaap | Future Disk 22 |
 | [MSX-DOS 2.31](sunrise_special/2/msx-dos_2.31.md) | Kasper Souren | Sunrise Special 2 |
 | [MSX-DOS 2 - Redirection](sunrise_special/2/redirection.md) | Kasper Souren | Sunrise Special 2 |
+| [R800 Drive](sunrise_special/4/r800_drive.md) | Kasper Souren | Sunrise Special 4 |
+| [Read to kana](sunrise_special/4/read_to_kana.md) | Kasper Souren | Sunrise Special 4 |
 | [Rescursief programmeren](sunrise_special/1/recursief_programmeren.md) | Alex van der Wal | Sunrise Special 1 |
 | [Stereo SCC](sunrise_special/2/stereo_scc.md) | Haiko de Boer | Sunrise Special 2 |
 | [Te zachte PSG bij de NMS 8250/55/80](sunrise_special/1/te_zachte_psg_bij_de_NMS_8250_55_80.md) | Haiko de Boer | Sunrise Special 1 |
 | [The 2+ Corner](future_disk/15/the_2+_corner.md) | Marcel Otten | Future Disk 15 |
 | [Track 0 op de turbo-r](sunrise_special/1/track_0_op_de_turbo-r.md) | Stefan Boer | Sunrise Special 1 |
+| [Tweede drive aan turbo-r](sunrise_special/4/tweede_drive_aan_turbor.md) | Sunrise | Sunrise Special 4 |
+| [V9990](sunrise_special/4/v9990.md) | Erik Maas | Sunrise Special 4 |
+| [V9990 Specificaties](sunrise_special/4/v9990_specificaties.md) | Erik Maas | Sunrise Special 4 |
 
 ## Pascal
 
@@ -194,3 +231,9 @@ Happy reading!!
 | [Recursie](future_disk/21/recursie.md) | Jeroen Smael | Future Disk 21 |
 | [Recursie 2](future_disk/36/recursie_2.md) | Jeroen Smael | Future Disk 36 |
 | [Turbo Pascal Patch](sunrise_special/3/turbo_pascal_patch.md) | Pierre Gielen | Sunrise Special 3 |
+
+
+## Handleidingen
+| Title        | Author           |
+| ---          | ---              |
+| [MCBC 2](other/mcbc2handleiding.md) | Frank H. Druijff | 
