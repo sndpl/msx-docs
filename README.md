@@ -236,4 +236,4 @@ Happy reading!!
 ## Handleidingen
 | Title        | Author           |
 | ---          | ---              |
-| [MCBC 2](other/mcbc2handleiding.md) | Frank H. Druijff | 
+| [MCBC 2](other/mcbc2handleiding.txt) | Frank H. Druijff | 
