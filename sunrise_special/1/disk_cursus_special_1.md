@@ -23,7 +23,7 @@ volgende onderwerpen aan bod komen:
 
 - BDOS system calls
 - BIOS calls (PHYDIO en FORMAT)
-- Opbouw en werking bootsector
+- Opbouw en werking     bootsector
 - Opbouw en werking FAT
 - Opbouw en werking directory
 - Zelf een programma schrijven dat vanuit de bootsector
